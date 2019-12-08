@@ -1182,14 +1182,14 @@ public class DepositDaoController {
     }
 
     private void setStatmentForAMD(Deposit prepaireDepositInfoForData, PreparedStatement statement) throws SQLException {
-            statement.setDouble(1, prepaireDepositInfoForData.getAmdMonth1());
-            statement.setDouble(2, prepaireDepositInfoForData.getAmdMonth3());
-            statement.setDouble(3, prepaireDepositInfoForData.getAmdMonth6());
-            statement.setDouble(4, prepaireDepositInfoForData.getAmdMonth9());
-            statement.setDouble(5, prepaireDepositInfoForData.getAmdMonth12());
-            statement.setDouble(6, prepaireDepositInfoForData.getAmdMonth18());
-            statement.setDouble(7, prepaireDepositInfoForData.getAmdMonth24());
-            statement.setDouble(8, prepaireDepositInfoForData.getAmdMonth36());
+        statement.setDouble(1, prepaireDepositInfoForData.getAmdMonth1());
+        statement.setDouble(2, prepaireDepositInfoForData.getAmdMonth3());
+        statement.setDouble(3, prepaireDepositInfoForData.getAmdMonth6());
+        statement.setDouble(4, prepaireDepositInfoForData.getAmdMonth9());
+        statement.setDouble(5, prepaireDepositInfoForData.getAmdMonth12());
+        statement.setDouble(6, prepaireDepositInfoForData.getAmdMonth18());
+        statement.setDouble(7, prepaireDepositInfoForData.getAmdMonth24());
+        statement.setDouble(8, prepaireDepositInfoForData.getAmdMonth36());
 
     }
 
@@ -1395,6 +1395,7 @@ public class DepositDaoController {
             deposit.setUsdMonth3(set.getDouble("usd3"));
             deposit.setUsdMonth6(set.getDouble("usd6"));
             deposit.setUsdMonth9(set.getDouble("usd9"));
+
             deposit.setUsdMonth12(set.getDouble("usd12"));
             deposit.setUsdMonth18(set.getDouble("usd18"));
             deposit.setUsdMonth24(set.getDouble("usd24"));
@@ -1503,7 +1504,7 @@ public class DepositDaoController {
         } catch (SQLException exception) {
             exception.printStackTrace();
         } finally {
-           if (connection != null) {
+            if (connection != null) {
                 connection.close();
             }
             if (statment != null) {

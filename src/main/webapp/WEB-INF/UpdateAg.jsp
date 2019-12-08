@@ -307,7 +307,7 @@
 </section>
 
 <section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid" style="height: 600px">
 
     </div>
 </section>

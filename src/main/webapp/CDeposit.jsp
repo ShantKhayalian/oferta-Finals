@@ -58,14 +58,14 @@
                         </ul>
                     </div>&ndash;%&gt;
                 </span>--%>
-                        <span class="compere-box show-for-tablet relative">
+                    <%--    <span class="compere-box show-for-tablet relative">
                      <span class="compere-icon">
                         <span class="count">4</span>
-                        <i class="icon-libra"></i>
+                        <i class="icon-libra"></i>--%>
                     </span>
                     <div class="tooltip-container bottom right" id="compareTooltipMb">
                         <div class="tooltip"> <!--Todo add 'tp-blue' class when there is no item -->
-                            <span class="tooltip-title">Համեմատության</span>
+                           <%-- <span class="tooltip-title">Համեմատության</span>
                             <ul>
                                 <li>
                                     <span>Սպառողական վարկ</span>
@@ -74,7 +74,7 @@
                                 </li>
                             </ul>
                             <!--Todo add when there is no item -->
-                            <!--                            <span>Համեմատության էջում տեղ չկա</span>-->
+                            <!--                            <span>Համեմատության էջում տեղ չկա</span>-->--%>
                         </div>
                     </div>
                 </span>
@@ -497,7 +497,7 @@
                 </div>--%>
                 <div class="flex align-items-center">
                     <div class="flex-item">
-                        <p class="title">Հագեցածություն</p>
+                        <p class="title">Համալրման հնարաորություն</p>
                     </div>
 
                     <c:if test="${requestScope.DepositComapreList != null}">
@@ -525,7 +525,7 @@
                 </div>
                 <div class="flex align-items-center">
                     <div class="flex-item">
-                        <p class="title">Կապիտալիզացիա</p>
+                        <p class="title">Ժամկետից շուտ քումար դուրս բերում</p>
                     </div>
                     <c:if test="${requestScope.DepositComapreList != null}">
                         <c:forEach var="compare" items="${requestScope.DepositComapreList}">
@@ -551,7 +551,7 @@
                 </div>
                 <div class="flex align-items-center">
                     <div class="flex-item">
-                        <p class="title">Պրոգրեսիվ լիցքավորումը % </p>
+                        <p class="title">Աֆտոմատ երկարացում</p>
                     </div>
                     <c:if test="${requestScope.DepositComapreList != null}">
                         <c:forEach var="compare" items="${requestScope.DepositComapreList}">
@@ -577,7 +577,7 @@
                 </div>
                 <div class="flex align-items-center">
                     <div class="flex-item">
-                        <p class="title">Մասնակի դուրսբերում</p>
+                        <p class="title">Տոկոսների քաբիդալիզացիա</p>
                     </div>
                     <c:if test="${requestScope.DepositComapreList != null}">
                         <c:forEach var="compare" items="${requestScope.DepositComapreList}">

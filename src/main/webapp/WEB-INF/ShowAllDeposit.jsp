@@ -130,7 +130,7 @@
                 <c:forEach items="${requestScope.DepositList}" var="DepositList"
                            varStatus="loop">
 
-                            <div class="col-xs-12 col-sm-3">
+                            <div class="col-xs-12 col-sm-4">
                                 <div class="card profile-card">
                                     <div class="profile-header">&nbsp;</div>
 
@@ -187,9 +187,13 @@
                                             </li>
 
                                             <li>
-                                                <span>Ավանդի ժամկետը տարիքը</span>
-                                                <span><c:out
-                                                        value="${DepositList.timeLine}"/> օր</span>
+                                                <span>Ավանդի ժամկետը </span>
+                                                <c:set var="month" value="${DepositList.timeLine}" scope="request"/>
+                                                <%
+                                                    int month  = (int) request.getAttribute("month");
+                                                    int monthConverted = month/30;
+                                                %>
+                                                <span><c:out value="${DepositList.timeLine}"/> օր  / <c:out  value='<%=monthConverted%>'/> Ամիս</span>
                                             </li>
 
                                             <li>
@@ -275,7 +279,7 @@
     </div>
 </section>
 <section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid" style="height: 600px">
 
     </div>
 </section>

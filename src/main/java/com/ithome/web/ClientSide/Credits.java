@@ -127,9 +127,11 @@ public class Credits extends HttpServlet {
     private void getDepositListByProductCode(int productCode) throws SQLException {
         DepositDaoController depositDaoController = new DepositDaoController();
         depositList = depositDaoController.getDepositByCardCode(productCode);
+
         BanksDaoController banksDaoController = new BanksDaoController();
         int bankId = depositList.get(0).getBankId();
         banksList = banksDaoController.getBankInfoById(bankId);
+
 
 
     }
@@ -290,7 +292,7 @@ public class Credits extends HttpServlet {
             List<Deposit> depositForPercentage = new ArrayList<>();
             DepositDaoController de = new DepositDaoController();
             depositForPercentage = de.getDepositByCardCode(ProductCode);
-            if (depositForPercentage.get(0).getCurrancy().equals("AMD")) {
+            if (pageCurrancy.equals("AMD")) {
                 switch (Integer.parseInt(Months)) {
                     case 1:
                         percentage = (float) depositForPercentage.get(0).getAmdMonth1();
@@ -315,6 +317,93 @@ public class Credits extends HttpServlet {
                         break;
                     case 36:
                         percentage = (float) depositForPercentage.get(0).getAmdMonth36();
+                        break;
+
+                }
+            }
+            if (pageCurrancy.equals("USD")) {
+                switch (Integer.parseInt(Months)) {
+                    case 1:
+                        percentage = (float) depositForPercentage.get(0).getUsdMonth1();
+                        break;
+                    case 3:
+                        percentage = (float) depositForPercentage.get(0).getUsdMonth3();
+                        break;
+                    case 6:
+                        percentage = (float) depositForPercentage.get(0).getUsdMonth6();
+                        break;
+                    case 9:
+                        percentage = (float) depositForPercentage.get(0).getUsdMonth9();
+                        break;
+                    case 12:
+                        percentage = (float) depositForPercentage.get(0).getUsdMonth12();
+                        break;
+                    case 18:
+                        percentage = (float) depositForPercentage.get(0).getUsdMonth18();
+                        break;
+                    case 24:
+                        percentage = (float) depositForPercentage.get(0).getUsdMonth24();
+                        break;
+                    case 36:
+                        percentage = (float) depositForPercentage.get(0).getUsdMonth36();
+                        break;
+
+                }
+            }
+            if (pageCurrancy.equals("EUR")) {
+                switch (Integer.parseInt(Months)) {
+                    case 1:
+                        percentage = (float) depositForPercentage.get(0).getEurMonth1();
+                        break;
+                    case 3:
+                        percentage = (float) depositForPercentage.get(0).getEurMonth3();
+                        break;
+                    case 6:
+                        percentage = (float) depositForPercentage.get(0).getEurMonth6();
+                        break;
+                    case 9:
+                        percentage = (float) depositForPercentage.get(0).getEurMonth9();
+                        break;
+                    case 12:
+                        percentage = (float) depositForPercentage.get(0).getEurMonth12();
+                        break;
+                    case 18:
+                        percentage = (float) depositForPercentage.get(0).getEurMonth18();
+                        break;
+                    case 24:
+                        percentage = (float) depositForPercentage.get(0).getEurMonth24();
+                        break;
+                    case 36:
+                        percentage = (float) depositForPercentage.get(0).getEurMonth36();
+                        break;
+
+                }
+            }
+            if (pageCurrancy.equals("RUB")) {
+                switch (Integer.parseInt(Months)) {
+                    case 1:
+                        percentage = (float) depositForPercentage.get(0).getRubMonth1();
+                        break;
+                    case 3:
+                        percentage = (float) depositForPercentage.get(0).getRubMonth3();
+                        break;
+                    case 6:
+                        percentage = (float) depositForPercentage.get(0).getRubMonth6();
+                        break;
+                    case 9:
+                        percentage = (float) depositForPercentage.get(0).getRubMonth9();
+                        break;
+                    case 12:
+                        percentage = (float) depositForPercentage.get(0).getRubMonth12();
+                        break;
+                    case 18:
+                        percentage = (float) depositForPercentage.get(0).getRubMonth18();
+                        break;
+                    case 24:
+                        percentage = (float) depositForPercentage.get(0).getRubMonth24();
+                        break;
+                    case 36:
+                        percentage = (float) depositForPercentage.get(0).getRubMonth36();
                         break;
 
                 }

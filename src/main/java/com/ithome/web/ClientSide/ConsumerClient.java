@@ -78,14 +78,14 @@ public class ConsumerClient extends HttpServlet {
 
     private List<Integer> comparListDeposit = new ArrayList<>();
     private List<Integer> comparListMortgage = new ArrayList<>();
-    private static List<Integer> comparListConsumer =  new ArrayList<>();
-    private static List<Integer> comparListCarLoan =  new ArrayList<>();
-    private static List<Integer> comparListMicro =  new ArrayList<>();
-    private static List<Integer> comparListAg =  new ArrayList<>();
-    private static List<Integer> comparListCard =  new ArrayList<>();
+    private static List<Integer> comparListConsumer = new ArrayList<>();
+    private static List<Integer> comparListCarLoan = new ArrayList<>();
+    private static List<Integer> comparListMicro = new ArrayList<>();
+    private static List<Integer> comparListAg = new ArrayList<>();
+    private static List<Integer> comparListCard = new ArrayList<>();
     private String WorningMessage = null;
     private int DepositCompareSize = 0;
-    private String PageNameToDelete =null;
+    private String PageNameToDelete = null;
 
     List<ConsumerCredit> depositStartFilter = new ArrayList<>();
     List<ConsumerCredit> depositAmountFilter = new ArrayList<>();
@@ -107,7 +107,7 @@ public class ConsumerClient extends HttpServlet {
     String BankLink = null;
 
 
-    int getAgList=0;
+    int getAgList = 0;
     int getDpList = 0;
     int getMoList = 0;
     int getCoList = 0;
@@ -115,10 +115,9 @@ public class ConsumerClient extends HttpServlet {
     int getMiList = 0;
 
 
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            consumerClient(request,response);
+            consumerClient(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -126,7 +125,7 @@ public class ConsumerClient extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            consumerClient(request,response);
+            consumerClient(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -137,7 +136,7 @@ public class ConsumerClient extends HttpServlet {
         sessionControlling(request, response);
         getLanguagesFromPage(request);
         getCurancyFromPage(request);
-       // getCityFromUser(request);
+        // getCityFromUser(request);
         getPageName(request);
         getPageLanguage(language);
         getParameters(request);
@@ -161,9 +160,9 @@ public class ConsumerClient extends HttpServlet {
     private void checkForCompareList() {
         comparListDeposit = CompareHelper.getDepositList(sessionId);
         comparListMortgage = CompareHelper.getMortgageList(sessionId);
-        comparListConsumer =  CompareHelper.getConsumerList(sessionId);
-        comparListCarLoan =  CompareHelper.getCarLoanList(sessionId);
-        comparListMicro =  CompareHelper.getMicroList(sessionId);
+        comparListConsumer = CompareHelper.getConsumerList(sessionId);
+        comparListCarLoan = CompareHelper.getCarLoanList(sessionId);
+        comparListMicro = CompareHelper.getMicroList(sessionId);
         comparListAg = CompareHelper.getAgList(sessionId);
         getAgList = CompareHelper.getAgListSize();
         getDpList = CompareHelper.getDepositListSize();
@@ -172,29 +171,29 @@ public class ConsumerClient extends HttpServlet {
         getCaList = CompareHelper.getCarLoanListSize();
         getMiList = CompareHelper.getMicroListSize();
 
-        comparListCard =  CompareHelper.getCardList(sessionId);
-
+        comparListCard = CompareHelper.getCardList(sessionId);
 
 
     }
+
     private void getMaxAmount() throws SQLException {
         getPageRange();
         dropDownsListWithCurrancy = dropDownCurrancyHelper.getDropDownWithCurrancy(dropDownsList, pageCurrancy);
-        for (int i = 0; i <dropDownsListWithCurrancy.size() ; i++) {
+        for (int i = 0; i < dropDownsListWithCurrancy.size(); i++) {
             MaxAmount = dropDownsListWithCurrancy.get(i).getMaxAmount();
         }
         CommentDaoComtroller commentDaoComtroller = new CommentDaoComtroller();
         commentsList = commentDaoComtroller.getAllComments();
 
         ConsumerCreditDaoController consumerCreditDaoController = new ConsumerCreditDaoController();
-        ccControllerList= consumerCreditDaoController.getAllCardsList();
+        ccControllerList = consumerCreditDaoController.getAllCardsList();
     }
 
     private void getParameters(HttpServletRequest request) throws SQLException {
-        if(request.getParameter("months") !=null){
+        if (request.getParameter("months") != null) {
             months = Integer.parseInt(request.getParameter("months"));
-        }else{
-            months =0;
+        } else {
+            months = 0;
         }
 
         if (request.getParameter("range") != null) {
@@ -222,21 +221,21 @@ public class ConsumerClient extends HttpServlet {
 
         if (request.getParameter("id") != null) {
             ID = Integer.parseInt(request.getParameter("id"));
-            startCompare(ID,request);
+            startCompare(ID, request);
 
         } else {
             WorningMessage = "";
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("WorningMessage",WorningMessage);
+            jsonObject.put("WorningMessage", WorningMessage);
             String s = jsonObject.toString();
-            request.getSession().setAttribute("jsonArray",s);
+            request.getSession().setAttribute("jsonArray", s);
             ID = 0;
         }
-        if(request.getParameter("pageNameToDelete")!= null){
+        if (request.getParameter("pageNameToDelete") != null) {
             PageNameToDelete = request.getParameter("pageNameToDelete");
             deleteList(PageNameToDelete);
-        }else{
-            PageNameToDelete ="";
+        } else {
+            PageNameToDelete = "";
         }
 
         if (request.getParameter("sorting") != null) {
@@ -302,7 +301,20 @@ public class ConsumerClient extends HttpServlet {
                 subDepositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterOrderApperanceListSub3(subDepositCurrancyFilter);
+        FilterByRange8(subDepositCurrancyFilter);
+    }
+
+    private void FilterByRange8(List<ConsumerCredit> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getCCMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterOrderApperanceListSub3(depositCurrancyFilter);
     }
 
     private void FilterOrderApperanceListSub3(List<ConsumerCredit> subDepositCurrancyFilter) throws SQLException {
@@ -334,6 +346,19 @@ public class ConsumerClient extends HttpServlet {
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             String CurrancyFilter = depositAmountFilter.get(i).getCurrancy();
             if (CurrancyFilter.equals(pageCurrancy)) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterByRange7(depositCurrancyFilter);
+    }
+
+    private void FilterByRange7(List<ConsumerCredit> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getCCMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -375,7 +400,20 @@ public class ConsumerClient extends HttpServlet {
                 subDepositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterOrderApperanceListSub6(subDepositCurrancyFilter);
+        FilterByRange6(subDepositCurrancyFilter);
+    }
+
+    private void FilterByRange6(List<ConsumerCredit> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getCCMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterOrderApperanceListSub6(depositCurrancyFilter);
     }
 
     private void FilterOrderApperanceListSub6(List<ConsumerCredit> subDepositCurrancyFilter) throws SQLException {
@@ -408,6 +446,19 @@ public class ConsumerClient extends HttpServlet {
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             String CurrancyFilter = depositAmountFilter.get(i).getCurrancy();
             if (CurrancyFilter.equals(pageCurrancy)) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterByRange5(depositCurrancyFilter);
+    }
+
+    private void FilterByRange5(List<ConsumerCredit> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getCCMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -452,6 +503,19 @@ public class ConsumerClient extends HttpServlet {
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
         }
+        FilterByRange3(depositCurrancyFilter);
+    }
+
+    private void FilterByRange3(List<ConsumerCredit> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getCCMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
         FilterOrderApperanceList3(depositCurrancyFilter);
     }
 
@@ -489,7 +553,20 @@ public class ConsumerClient extends HttpServlet {
                 subDepositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterOrderApperanceListSub4(subDepositCurrancyFilter);
+        FilterByRange4(subDepositCurrancyFilter);
+    }
+
+    private void FilterByRange4(List<ConsumerCredit> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getCCMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterOrderApperanceListSub4(depositCurrancyFilter);
     }
 
     private void FilterOrderApperanceListSub4(List<ConsumerCredit> subDepositCurrancyFilter) throws SQLException {
@@ -524,6 +601,23 @@ public class ConsumerClient extends HttpServlet {
             if (CurrancyFilter.equals(pageCurrancy)) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterByRange(depositCurrancyFilter);
+    }
+
+    private void FilterByRange(List<ConsumerCredit> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        List<ConsumerCredit> depositminAmountFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getCCMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+
+            } else {
+                continue;
             }
         }
         FilterOrderApperanceList(depositCurrancyFilter);
@@ -563,7 +657,20 @@ public class ConsumerClient extends HttpServlet {
                 subDepositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterOrderApperanceListSub(subDepositCurrancyFilter);
+        FilterByRange2(subDepositCurrancyFilter);
+    }
+
+    private void FilterByRange2(List<ConsumerCredit> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getCCMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterOrderApperanceListSub(depositCurrancyFilter);
     }
 
     private void FilterOrderApperanceListSub(List<ConsumerCredit> subDepositCurrancyFilter) throws SQLException {
@@ -596,7 +703,7 @@ public class ConsumerClient extends HttpServlet {
     }
 
     private void deleteList(String pageNameToDelete) throws SQLException {
-        switch (pageNameToDelete){
+        switch (pageNameToDelete) {
             case "Ավանդ":
                 CompareHelper.DeleteDepositList(sessionId);
 
@@ -631,7 +738,7 @@ public class ConsumerClient extends HttpServlet {
         System.out.println("amoutFiltered " + amoutFiltered);
     }
 
-    private void startCompare(int id,HttpServletRequest request) throws SQLException {
+    private void startCompare(int id, HttpServletRequest request) throws SQLException {
         List<ConsumerCredit> getDeposit = new ArrayList<>();
         boolean isSizeInRange = CompareHelper.ConsumerCheckOutOfBound();
         boolean isIdAlreadyHad = CompareHelper.CheckIfIdExsistConsumer(id);
@@ -654,18 +761,18 @@ public class ConsumerClient extends HttpServlet {
             comparListDeposit = CompareHelper.getConsumerList(sessionId);
             WorningMessage = "";
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("WorningMessage",WorningMessage);
+            jsonObject.put("WorningMessage", WorningMessage);
             String s = jsonObject.toString();
-            request.getSession().setAttribute("jsonArray",s);
+            request.getSession().setAttribute("jsonArray", s);
             DepositCompareSize = CompareHelper.GetSizeConsumer();
         } else {
             if (DepositCompareSize > 3) {
-                WorningMessage="";
+                WorningMessage = "";
                 WorningMessage = "Դուք չեք կարող 4 ից ավել համեմատել։";
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.put("WorningMessage",WorningMessage);
+                jsonObject.put("WorningMessage", WorningMessage);
                 String s = jsonObject.toString();
-                request.getSession().setAttribute("jsonArray",s);
+                request.getSession().setAttribute("jsonArray", s);
             } else {
                 WorningMessage = "";
                 WorningMessage = "Դուք արդեն ունեք նույն ID-ին";
@@ -678,10 +785,14 @@ public class ConsumerClient extends HttpServlet {
     }
 
     private ConsumerComparing CreateObjects() {
-        return new ConsumerComparing(ID, sessionId, Integer.parseInt(amoutFiltered), 1, BankId, productName, percentage,Service);
+        if (months == 0) {
+            months = 1;
+        }
+        return new ConsumerComparing(ID, sessionId, Integer.parseInt(amoutFiltered), 1, BankId, productName, percentage, Service);
     }
 
     private void gotoPageConsumerPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         request.getRequestDispatcher("/Consumer.jsp").forward(request, response);
     }
 
@@ -754,10 +865,10 @@ public class ConsumerClient extends HttpServlet {
         depositeAseList = new ArrayList<>();
 
         searchUpList = searchDatabase();
-        for (int i = 0; i <searchUpList.size() ; i++) {
+        for (int i = 0; i < searchUpList.size(); i++) {
             int firstSearch = searchUpList.get(i).getCCMinAmount();
             String firstSearchCurrancy = searchUpList.get(i).getCurrancy();
-            if (Integer.parseInt(amoutFiltered) >= firstSearch && firstSearchCurrancy.equals(pageCurrancy) ) {
+            if (Integer.parseInt(amoutFiltered) >= firstSearch && firstSearchCurrancy.equals(pageCurrancy)) {
                 int id = Integer.parseInt(String.valueOf(searchUpList.get(i).getCLId()));
                 depositeAseList.addAll(FilteredList(id));
             }
@@ -787,9 +898,9 @@ public class ConsumerClient extends HttpServlet {
     }
 
     private void getPageName(HttpServletRequest request) {
-        if(pageName == null){
+        if (pageName == null) {
             pageName = "ՍՊԱՌՈՂԱԿԱՆ";
-        }else {
+        } else {
             pageName = pageNameHelper.pageName(request);
         }
     }
@@ -831,13 +942,12 @@ public class ConsumerClient extends HttpServlet {
     }
 
 
-
     private void getProductnamesList() throws SQLException {
         ProductNameDaoController productNameDaoController = new ProductNameDaoController();
         productNameList = productNameDaoController.getAllProductNames();
     }
 
-    private void getCardsSpecialOffers()  throws SQLException{
+    private void getCardsSpecialOffers() throws SQLException {
         cardsListOffer = cardsSpecialOfferHelper.getStarted();
     }
 
@@ -845,11 +955,11 @@ public class ConsumerClient extends HttpServlet {
         agriculturalCreditListoffer = agSpecialOfferHelper.getStarted();
     }
 
-    private void getCarLoanSpecialOffers()  throws SQLException{
+    private void getCarLoanSpecialOffers() throws SQLException {
         carLoansListoffer = carLoanSpecialOfferHelper.getStarted();
     }
 
-    private void getConsumerSpecialOffers()  throws SQLException {
+    private void getConsumerSpecialOffers() throws SQLException {
         consumerCreditListoffer = consumerSpecialOfferHelper.getStarted();
     }
 

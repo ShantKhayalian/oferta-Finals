@@ -724,14 +724,8 @@
 .table-cell:nth-child(4) {
   text-align: left!important;
 }
+
 @media (max-width: 1120px) {
-    .main-faq__el {
-        display: flex;
-        flex-direction: column;
-    }
-    .main-faq__el > div {
-        margin: auto;
-    }
   .font-20 {
     font-size: 18px !important; }
 
@@ -2286,30 +2280,8 @@
 
   .padding-bt-60 {
     padding-top: 30px;
-    padding-bottom: 30px; }
-    .table-cell:nth-child(4) {
-        text-align: center!important;}
-}
+    padding-bottom: 30px; } }
 @media (max-width: 620px) {
-    .rigthtwo-one {
-        display: none;
-    }
-    .rigthtwo-two {
-        width: 100%!important;
-    }
-    .right-side__mobile {
-        width: 100%!important;
-        margin-top: 5%;
-    }
-    .left-side__mobile {
-        width: 100%!important;
-    }
-    .main-left-right__side {
-        flex-direction: column;
-    }
-    .item-block__image {
-        height: 55px!important;
-    }
   .font-34 {
     font-size: 22px !important; }
 
@@ -4807,13 +4779,15 @@ footer .bottom ul li a:hover {
   color: #2C8CF4; }
 .faq-item .item-img {
   background: no-repeat center;
-  background-size: cover; }
+  background-size: cover;
+  padding-top: 82%; }
 .faq-item .item-desc > span {
   display: block;
   color: #002245;
   font-family: notoSansMedium, 'Noto Sans', sans-serif;
   padding: 12px 0; }
 .faq-item .item-desc .item-title {
+  border-bottom: 1px solid rgba(0, 34, 69, 0.06);
   -webkit-transition: 0.3s;
   -ms-transition: 0.3s;
   -moz-transition: 0.3s;
@@ -5313,9 +5287,6 @@ footer .bottom ul li a:hover {
   .credit-form .form-row > div:last-child {
     margin-bottom: 0; } }
 @media (max-width: 620px) {
-    .main-faq__el > div {
-        margin: unset;
-    }
   .cards-container .card-item-row {
     padding-bottom: 10px; }
   .cards-container .card-item-row .col {
@@ -5476,6 +5447,8 @@ footer .bottom ul li a:hover {
   align-items: self-start; }
 .credit-info .item > span {
   flex: 1; }
+.credit-info .item > span:first-child {
+  max-width: 200px; }
 .credit-info .item > span:last-child {
   padding: 0 10px;
   font-weight: bold; }

@@ -265,6 +265,11 @@ public class MortgageClient extends HttpServlet {
             startCompare(ID,request);
 
         } else {
+            WorningMessage = "";
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("WorningMessage", WorningMessage);
+            String s = jsonObject.toString();
+            request.getSession().setAttribute("jsonArray", s);
             ID = 0;
         }
         if (request.getParameter("pageNameToDelete") != null) {
@@ -343,8 +348,24 @@ public class MortgageClient extends HttpServlet {
                 subDepositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterOrderApperanceListSub3(subDepositCurrancyFilter);
+        FilterByRange8(subDepositCurrancyFilter);
     }
+
+    private void FilterByRange8(List<Mortgage> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterOrderApperanceListSub3(depositCurrancyFilter);
+    }
+
 
     private void FilterOrderApperanceListSub3(List<Mortgage> subDepositCurrancyFilter) throws SQLException {
         depositAllInSubRage = new ArrayList<>();
@@ -374,6 +395,21 @@ public class MortgageClient extends HttpServlet {
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             String CurrancyFilter = depositAmountFilter.get(i).getCurrancy();
             if (CurrancyFilter.equals(pageCurrancy)) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterByRange7(depositCurrancyFilter);
+    }
+
+    private void FilterByRange7(List<Mortgage> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -417,7 +453,22 @@ public class MortgageClient extends HttpServlet {
                 subDepositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterOrderApperanceListSub6(subDepositCurrancyFilter);
+        FilterByRange6(subDepositCurrancyFilter);
+    }
+
+    private void FilterByRange6(List<Mortgage> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterOrderApperanceListSub6(depositCurrancyFilter);
     }
 
     private void FilterOrderApperanceListSub6(List<Mortgage> subDepositCurrancyFilter) throws SQLException {
@@ -450,6 +501,21 @@ public class MortgageClient extends HttpServlet {
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             String CurrancyFilter = depositAmountFilter.get(i).getCurrancy();
             if (CurrancyFilter.equals(pageCurrancy)) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterByRange5(depositCurrancyFilter);
+    }
+
+    private void FilterByRange5(List<Mortgage> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -492,7 +558,22 @@ public class MortgageClient extends HttpServlet {
                 subDepositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterOrderApperanceListSub4(subDepositCurrancyFilter);
+        FilterByRange4(subDepositCurrancyFilter);
+    }
+
+    private void FilterByRange4(List<Mortgage> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterOrderApperanceListSub4(depositCurrancyFilter);
     }
 
     private void FilterOrderApperanceListSub4(List<Mortgage> subDepositCurrancyFilter) throws SQLException {
@@ -527,6 +608,20 @@ public class MortgageClient extends HttpServlet {
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             String CurrancyFilter = depositAmountFilter.get(i).getCurrancy();
             if (CurrancyFilter.equals(pageCurrancy)) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterByRange3(depositCurrancyFilter);
+    }
+    private void FilterByRange3(List<Mortgage> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -568,7 +663,26 @@ public class MortgageClient extends HttpServlet {
                 subDepositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterOrderApperanceListSub(subDepositCurrancyFilter);
+        FilterByRange2(subDepositCurrancyFilter);
+    }
+
+    private void FilterByRange2(List<Mortgage> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount = null;
+        getMaxAmount();
+
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMMinAmount();
+
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }else{
+                continue;
+            }
+        }
+        FilterOrderApperanceListSub(depositCurrancyFilter);
     }
 
     private void FilterOrderApperanceListSub(List<Mortgage> subDepositCurrancyFilter) throws SQLException {
@@ -602,6 +716,7 @@ public class MortgageClient extends HttpServlet {
 
     }
 
+
     private void FilterCurrancyList(List<Mortgage> depositAmountFilter) throws SQLException {
         depositCurrancyFilter = new ArrayList<>();
         for (int i = 0; i < depositAmountFilter.size(); i++) {
@@ -611,9 +726,26 @@ public class MortgageClient extends HttpServlet {
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
         }
+        FilterByRange(depositCurrancyFilter);
+    }
+    private void FilterByRange(List<Mortgage> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            // int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }else{
+                continue;
+            }
+        }
         FilterOrderApperanceList(depositCurrancyFilter);
     }
-
     private void FilterOrderApperanceList(List<Mortgage> depositCurrancyFilter) throws SQLException {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {

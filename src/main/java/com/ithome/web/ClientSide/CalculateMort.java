@@ -470,7 +470,9 @@ public class CalculateMort extends HttpServlet {
         System.out.println(percentage);
         System.out.println(Service);
         System.out.println(RangeTwo);
-
+        if(months.equals("0")){
+            months = "1";
+        }
         return new MoComparing(ID, sessionId, Integer.parseInt(amoutFiltered), Integer.parseInt(months), BankId, productName, percentage, Service, RangeTwo);
     }
     //Start from here
@@ -528,6 +530,7 @@ public class CalculateMort extends HttpServlet {
         request.setAttribute("comparListMicro", comparListMicro);
         request.setAttribute("comparListAg", comparListAg);
         request.setAttribute("comparListCard", comparListCard);
+        request.setAttribute("months", months);
 
      /*   request.setAttribute("getAgList", getAgList);
         request.setAttribute("getDpList", getDpList);
@@ -655,9 +658,23 @@ public class CalculateMort extends HttpServlet {
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
         }
+        FilterByRange2(depositCurrancyFilter);
+    }
+    private void FilterByRange2(List<Mortgage> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
         FilterOptionsListSort(depositCurrancyFilter);
     }
-
     private void FilterOptionsListSort(List<Mortgage> depositOptionFilter) throws SQLException {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {
@@ -717,9 +734,23 @@ public class CalculateMort extends HttpServlet {
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
         }
+        FilterByRange(depositCurrancyFilter);
+    }
+    private void FilterByRange(List<Mortgage> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
         FilterOptionsList(depositCurrancyFilter);
     }
-
     private void FilterOptionsList(List<Mortgage> depositCurrancyFilter) throws SQLException {
         depositOptiosInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {
@@ -755,8 +786,12 @@ public class CalculateMort extends HttpServlet {
     /* firstSection Ends */
 
 
-    private String getMaxAmount() {
-        return dropDownsListWithCurrancy.get(0).getMaxAmount();
+    private void getMaxAmount() throws SQLException {
+        getPageRange();
+        dropDownsListWithCurrancy = dropDownCurrancyHelper.getDropDownWithCurrancy(dropDownsList, pageCurrancy);
+        for (int i = 0; i <dropDownsListWithCurrancy.size() ; i++) {
+            MaxAmount = dropDownsListWithCurrancy.get(i).getMaxAmount();
+        }
     }
 
 

@@ -155,9 +155,9 @@ public class Calculate extends HttpServlet {
         depositStartFilter = depositDaoController.getAllDepositeList();
         depositAmountFilter = new ArrayList<>();
         for (int i = 0; i < depositStartFilter.size(); i++) {
-            int minAamountFilter = depositStartFilter.get(i).getDMinAmount();
+            int minAmount = depositStartFilter.get(i).getDMinAmount();
             /*int maxAmountFilter = depositStartFilter.get(i).getDMinAmount();*/
-            if (Integer.parseInt(amoutFiltered) >= minAamountFilter) {
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositStartFilter.get(i).getDId()));
                 depositAmountFilter.addAll(FilteredList(id));
             }
@@ -182,7 +182,7 @@ public class Calculate extends HttpServlet {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {
             int timeLineFilter = depositCurrancyFilter.get(i).getTimeLine();
-            if (timeLineFilter != Integer.parseInt(montheToDays)) {
+            if (timeLineFilter <= Integer.parseInt(montheToDays)) {
                 continue;
             }else{
                 int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getDId()));
@@ -259,6 +259,19 @@ public class Calculate extends HttpServlet {
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             String CurrancyFilter = depositAmountFilter.get(i).getCurrancy();
             if (CurrancyFilter.equals(Currancy)) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getDId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterByRange1(depositCurrancyFilter);
+    }
+
+    private void FilterByRange1(List<Deposit> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getDMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getDId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }

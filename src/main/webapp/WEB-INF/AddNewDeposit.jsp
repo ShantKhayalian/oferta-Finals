@@ -238,16 +238,12 @@
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <select class="form-control show-tick" id="timeline" name="timeline" required>
-                                                <%-- <input type="text" name="MMinPeriodMonth" class="form-control" required/>--%>
-                                                <option value="30">1 </option>
-                                                <option value="90">2 </option>
-                                                <option value="180">6 </option>
-                                                <option value="270">9 </option>
-                                                <option value="365">12 </option>
-                                                <option value="540">18 </option>
-                                                <option value="720">24 </option>
-                                                <option value="1080">36 </option>
-
+                                            <c:if test="${requestScope.timeLineList != null}">
+                                                <c:forEach items="${requestScope.timeLineList}"
+                                                           var="timelineList">
+                                                    <option value="${timelineList.time}">${timelineList.time}</option>
+                                                </c:forEach>
+                                            </c:if>
                                             </select>
                                         </div>
                                     </div>
@@ -326,7 +322,7 @@
     <!-- #END# Input -->
 </section>
 <section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid" style="height: 600px">
 
     </div>
 </section>

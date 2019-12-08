@@ -204,8 +204,8 @@
                         </ul>
                     </div>&ndash;%&gt;
                 </span>--%>
-                       <%-- <span class="compere-box show-for-tablet relative">
-                     <span class="compere-icon" onclick="toggleBoxes('compareTooltipMb')">
+                        <span class="compere-box show-for-tablet relative">
+                    <%-- <span class="compere-icon" onclick="toggleBoxes('compareTooltipMb')">
                         <span class="count">4</span>
                         <i class="icon-libra"></i>
                     </span>
@@ -222,9 +222,9 @@
                             <!--Todo add when there is no item -->
                             <!--                            <span>Համեմատության էջում տեղ չկա</span>-->
                         </div>
-                    </div>--%>
+                    </div>
                 </span>
-                        <span class="i-menu show-for-tablet" id="mbNavBtn"><i class="icon-menu font-20"></i></span>
+                        <span class="i-menu show-for-tablet" id="mbNavBtn"><i class="icon-menu font-20"></i></span>--%>
                     </div>
                 </div>
             </div>
@@ -425,7 +425,7 @@
                                             type="hidden">--%>
                                     </form>
                             </c:if>
-                            <form action="CompareMicro" method="get" name="MicroCompare">
+                            <%--<form action="CompareMicro" method="get" name="MicroCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
                             <c:if test="${requestScope.comparListMicro != null}">
@@ -453,12 +453,12 @@
                                      <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
                                      <input name="ProductCode" value="<%=request.getParameter("ProductCode")%>"
                                             type="hidden">
-                                  <%--   <input name="value_two" value="<%=request.getParameter("value_two")%>"
-                                            type="hidden">--%>
+                                  &lt;%&ndash;   <input name="value_two" value="<%=request.getParameter("value_two")%>"
+                                            type="hidden">&ndash;%&gt;
 
                                     </form>
                             </ul>
-                            </c:if>
+                            </c:if>--%>
                             <form action="CompareAg" method="get" name="AgCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
@@ -590,22 +590,8 @@
                         <%!
                             static double percentageTopper;
                             double percentageToStart;
-                            static int monthsMain2;
                         %>
-
                         <%
-                            if(request.getAttribute("monthsSectionMain")!= null){
-                                monthsMain2 = Integer.parseInt(String.valueOf(request.getAttribute("monthsSectionMain")));
-                                if (monthsMain2 == 30 || monthsMain2 == 90 || monthsMain2 == 180 || monthsMain2 == 360 || monthsMain2 == 540 || monthsMain2 == 720 || monthsMain2 == 1080) {
-                                    monthsMain2 /= 30;
-                                }
-                            }else{
-                                monthsMain2 = Integer.parseInt(String.valueOf(request.getParameter("months")));
-                                if (monthsMain2 == 30 || monthsMain2 == 90 || monthsMain2 == 180 || monthsMain2 == 360 || monthsMain2 == 540 || monthsMain2 == 720 || monthsMain2 == 1080) {
-                                    monthsMain2 /= 30;
-                                }
-                            }
-
                             if (request.getAttribute("Perc") != null) {
                                 percentageToStart = Double.parseDouble(String.valueOf(request.getAttribute("Perc")));
                             } else {
@@ -632,66 +618,65 @@
                             </c:when>
                             <c:when test="${currancy == 'AMD'}">
                                 <c:choose>
-                                    <c:when test="<%=monthsMain2== 1 %>">
+                                    <c:when test="${monthsSectionMain == '1'}">
                                         <span>Տոկոսադրույքը</span><span>${details.amdMonth1}%</span>
                                         <c:set value="${details.amdMonth1}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 3  %>">
+                                    <c:when test="${monthsSectionMain == '3' }">
                                         <span>Տոկոսադրույքը</span><span>${details.amdMonth3}%</span>
                                         <c:set value="${details.amdMonth3}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 6 %>">
+                                    <c:when test="${monthsSectionMain == '6' }">
                                         <span>Տոկոսադրույքը</span><span>${details.amdMonth6}%</span>
                                         <c:set value="${details.amdMonth6}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 9 %>">
+                                    <c:when test="${monthsSectionMain == '9' }">
                                         <span>Տոկոսադրույքը</span><span>${details.amdMonth9}%</span>
-                                        <c:set value="${details.amdMonth9}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.amdMonth9}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 12 %>">
+                                    <c:when test="${monthsSectionMain == '12'}">
                                         <span>Տոկոսադրույքը</span><span>${details.amdMonth12}%</span>
-                                        <c:set value="${details.amdMonth12}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.amdMonth12}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 18 %>">
+                                    <c:when test="${monthsSectionMain == '18'}">
                                         <span>Տոկոսադրույքը</span><span>${details.amdMonth18}%</span>
-                                        <c:set value="${details.amdMonth18}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.amdMonth18}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 24 %>">
+                                    <c:when test="${monthsSectionMain == '24'}">
                                         <span>Տոկոսադրույքը</span><span>${details.amdMonth24}%</span>
-                                        <c:set value="${details.amdMonth24}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.amdMonth24}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 36 %>">
+                                    <c:when test="${monthsSectionMain == '36' }">
                                         <span>Տոկոսադրույքը</span><span>${details.amdMonth36}%</span>
-                                        <c:set value="${details.amdMonth36}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.amdMonth36}" var="PercentageDFromTop" scope="request"/>
                                         <%
                                             float checkValue = Float.parseFloat(String.valueOf(request.getAttribute("PercentageD")));
                                             if (checkValue == 0) {
                                                 percentageTopper = 0.0;
                                             } else {
-                                                percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                                percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                             }
-
                                         %>
                                     </c:when>
                                 </c:choose>
@@ -699,120 +684,120 @@
 
                             <c:when test="${currancy == 'USD'}">
                                 <c:choose>
-                                    <c:when test="<%=monthsMain2== 1 %>">
+                                    <c:when test="${monthsSectionMain == 1}">
                                         <span>Տոկոսադրույքը</span><span>${details.usdMonth1}%</span>
                                         <c:set value="${details.usdMonth1}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 3 %>">
+                                    <c:when test="${monthsSectionMain == 3 }">
                                         <span>Տոկոսադրույքը</span><span>${details.usdMonth3}%</span>
                                         <c:set value="${details.usdMonth3}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 6 %>">
+                                    <c:when test="${monthsSectionMain == 6 }">
                                         <span>Տոկոսադրույքը</span><span>${details.usdMonth6}%</span>
                                         <c:set value="${details.usdMonth6}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 9 %>">
+                                    <c:when test="${monthsSectionMain == 9 }">
                                         <span>Տոկոսադրույքը</span><span>${details.usdMonth9}%</span>
-                                        <c:set value="${details.usdMonth9}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.usdMonth9}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 12 %>">
+                                    <c:when test="${monthsSectionMain == 12}">
                                         <span>Տոկոսադրույքը</span><span>${details.usdMonth12}%</span>
-                                        <c:set value="${details.usdMonth12}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.usdMonth12}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 18 %>">
+                                    <c:when test="${monthsSectionMain == 18}">
                                         <span>Տոկոսադրույքը</span><span>${details.usdMonth18}%</span>
-                                        <c:set value="${details.usdMonth18}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.usdMonth18}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 24 %>">
+                                    <c:when test="${monthsSectionMain == 24}">
                                         <span>Տոկոսադրույքը</span><span>${details.usdMonth24}%</span>
-                                        <c:set value="${details.usdMonth24}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.usdMonth24}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 36 %>">
+                                    <c:when test="${monthsSectionMain == 36 }">
                                         <span>Տոկոսադրույքը</span><span>${details.usdMonth36}%</span>
-                                        <c:set value="${details.usdMonth36}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.usdMonth36}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
                                 </c:choose>
                             </c:when>
                             <c:when test="${currancy == 'EUR'}">
                                 <c:choose>
-                                    <c:when test="<%=monthsMain2== 1 %>">
+                                    <c:when test="${monthsSectionMain == 1}">
                                         <span>Տոկոսադրույքը</span><span>${details.eurMonth1}%</span>
                                         <c:set value="${details.eurMonth1}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 3 %>">
+                                    <c:when test="${monthsSectionMain == 3 }">
                                         <span>Տոկոսադրույքը</span><span>${details.eurMonth3}%</span>
                                         <c:set value="${details.eurMonth3}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 6 %>">
+                                    <c:when test="${monthsSectionMain == 6 }">
                                         <span>Տոկոսադրույքը</span><span>${details.eurMonth6}%</span>
                                         <c:set value="${details.eurMonth6}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 9 %>">
+                                    <c:when test="${monthsSectionMain == 9 }">
                                         <span>Տոկոսադրույքը</span><span>${details.eurMonth9}%</span>
-                                        <c:set value="${details.eurMonth9}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.eurMonth9}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 12 %>">
+                                    <c:when test="${monthsSectionMain == 12}">
                                         <span>Տոկոսադրույքը</span><span>${details.eurMonth12}%</span>
-                                        <c:set value="${details.eurMonth12}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.eurMonth12}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 18 %>">
+                                    <c:when test="${monthsSectionMain == 18}">
                                         <span>Տոկոսադրույքը</span><span>${details.eurMonth18}%</span>
-                                        <c:set value="${details.eurMonth18}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.eurMonth18}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 24 %>">
+                                    <c:when test="${monthsSectionMain == 24}">
                                         <span>Տոկոսադրույքը</span><span>${details.eurMonth24}%</span>
-                                        <c:set value="${details.eurMonth24}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.eurMonth24}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 36 %>">
+                                    <c:when test="${monthsSectionMain == 36 }">
                                         <span>Տոկոսադրույքը</span><span>${details.eurMonth36}%</span>
-                                        <c:set value="${details.eurMonth36}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.eurMonth36}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
                                 </c:choose>
@@ -820,72 +805,68 @@
                             </c:when>
                             <c:when test="${currancy == 'RUB'}">
                                 <c:choose>
-                                    <c:when test="<%=monthsMain2== 1 %>">
+                                    <c:when test="${monthsSectionMain == 1}">
                                         <span>Տոկոսադրույքը</span><span>${details.rubMonth1}%</span>
                                         <c:set value="${details.rubMonth1}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 3 %>">
+                                    <c:when test="${monthsSectionMain == 3 }">
                                         <span>Տոկոսադրույքը</span><span>${details.rubMonth3}%</span>
                                         <c:set value="${details.rubMonth3}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 6 %>">
+                                    <c:when test="${monthsSectionMain == 6 }">
                                         <span>Տոկոսադրույքը</span><span>${details.rubMonth6}%</span>
                                         <c:set value="${details.rubMonth6}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 9 %>">
+                                    <c:when test="${monthsSectionMain == 9 }">
                                         <span>Տոկոսադրույքը</span><span>${details.rubMonth9}%</span>
-                                        <c:set value="${details.rubMonth9}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.rubMonth9}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 12 %>">
+                                    <c:when test="${monthsSectionMain == 12}">
                                         <span>Տոկոսադրույքը</span><span>${details.rubMonth12}%</span>
-                                        <c:set value="${details.rubMonth12}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.rubMonth12}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 18 %>">
+                                    <c:when test="${monthsSectionMain == 18}">
                                         <span>Տոկոսադրույքը</span><span>${details.rubMonth18}%</span>
-                                        <c:set value="${details.rubMonth18}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.rubMonth18}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 24 %>">
+                                    <c:when test="${monthsSectionMain == 24}">
                                         <span>Տոկոսադրույքը</span><span>${details.rubMonth24}%</span>
-                                        <c:set value="${details.rubMonth24}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.rubMonth24}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
-                                    <c:when test="<%=monthsMain2== 36 %>">
+
+                                    <c:when test="${monthsSectionMain == 36 }">
                                         <span>Տոկոսադրույքը</span><span>${details.rubMonth36}%</span>
-                                        <c:set value="${details.rubMonth36}" var="PercentageD" scope="request"/>
+                                        <c:set value="${details.rubMonth36}" var="PercentageDFromTop" scope="request"/>
                                         <%
-                                            int checkValue = (int) request.getAttribute("PercentageD");
-                                            if (checkValue == 0) {
-
-                                            } else {
-                                                percentageTopper = Double.parseDouble(String.valueOf(request.getAttribute("PercentageDFromTop")));
-                                            }
-
+                                            percentageTopper = (double) request.getAttribute("PercentageDFromTop");
                                         %>
                                     </c:when>
+
+
                                 </c:choose>
                             </c:when>
                         </c:choose>
-
                     </div>
 
                     <!-- comment first -->
@@ -1041,7 +1022,7 @@
                                                    step="${dropDownList2.steps}"
                                                    value='<%=request.getAttribute("range")%>'
                                                    oninput="showVal(this.value)"
-                                                   onchange="showVal(this.value)" id="amount">
+                                                   onchange="showVal(this.value)" id="amount" inputmode="numeric">
 
                                             <input type="range" name="range" min="${dropDownList2.minAmount}"
                                                    max="${dropDownList2.maxAmount}"
@@ -1065,7 +1046,7 @@
                                                    step="${dropDownList3.steps}"
                                                    value="${dropDownList3.minAmount}"
                                                    oninput="showVal(this.value)"
-                                                   onchange="showVal(this.value)" id="amount">
+                                                   onchange="showVal(this.value)" id="amount" inputmode="numeric">
 
                                             <input type="range" name="range" min="${dropDownList3.minAmount}"
                                                    max="${dropDownList3.maxAmount}"
@@ -1247,7 +1228,7 @@
 
                                 <%
                                     monthsFinal =Integer.parseInt(String.valueOf(request.getParameter("months")));
-                                    if (monthsFinal == 30 || monthsFinal == 90 || monthsFinal == 180 || monthsFinal == 360 || monthsFinal == 540 || monthsFinal == 720 || monthsFinal == 1080) {
+                                    if (monthsFinal == 30 || monthsFinal == 90 || monthsFinal == 180 || monthsFinal == 270 || monthsFinal == 360 || monthsFinal == 540 || monthsFinal == 720 || monthsFinal == 1080) {
                                         monthsFinal /= 30;
                                     }
                                 %>
@@ -1492,7 +1473,7 @@
 
                                             <option value="1">1 ամիս</option>
                                             <option value="3">3 ամիս</option>
-                                            <option value="6">6 ամիս</option>
+                                            <option value="6" >6 ամիս</option>
                                             <option value="9" selected>9 ամիս</option>
                                             <option value="12">12 ամիս</option>
                                             <option value="18">18 ամիս</option>
@@ -1507,7 +1488,7 @@
                                                 onchange="document.main.submit();">
                                             <option value="1">1 ամիս</option>
                                             <option value="3">3 ամիս</option>
-                                            <option value="6">6 ամիս</option>
+                                            <option value="6" >6 ամիս</option>
                                             <option value="9" selected>9 ամիս</option>
                                             <option value="12">12 ամիս</option>
                                             <option value="18">18 ամիս</option>
@@ -1520,7 +1501,7 @@
                                                 onchange="document.main.submit();">
                                             <option value="1">1 ամիս</option>
                                             <option value="3">3 ամիս</option>
-                                            <option value="6">6 ամիս</option>
+                                            <option value="6" >6 ամիս</option>
                                             <option value="9" selected>9 ամիս</option>
                                             <option value="12">12 ամիս</option>
                                             <option value="18">18 ամիս</option>
@@ -1532,8 +1513,8 @@
                                                 onchange="document.main.submit();">
                                             <option value="1">1 ամիս</option>
                                             <option value="3">3 ամիս</option>
-                                            <option value="6">6 ամիս</option>
-                                            <option value="9" selected>9 ամիս</option>
+                                            <option value="6" >6 ամիս</option>
+                                            <option value="9"  selected>9 ամիս</option>
                                             <option value="12">12 ամիս</option>
 
                                         </select>
@@ -1543,10 +1524,11 @@
                                                 onchange="document.main.submit();">
                                             <option value="1">1 ամիս</option>
                                             <option value="3">3 ամիս</option>
-                                            <option value="6">6 ամիս</option>
+                                            <option value="6" >6 ամիս</option>
                                             <option value="9" selected>9 ամիս</option>
                                         </select>
                                     </c:when>
+
 
 
                                     <c:when test="${monthsSection == '12' && DisableMonth8 > 0}">
@@ -1694,14 +1676,8 @@
                                     <c:otherwise>
                                         <select name="months" id="select_month"
                                                 onchange="document.main.submit();">
-                                            <option value="1" selected>1 ամիս</option>
-                                            <option value="3">3 ամիս</option>
-                                            <option value="6">6 ամիս</option>
-                                            <option value="9">9 ամիս</option>
-                                            <option value="12">12 ամիս</option>
-                                            <option value="18">18 ամիս</option>
-                                            <option value="24">24 ամիս</option>
-                                            <option value="36">36 ամիս</option>
+                                            <option value="1" selected>Տվյալներ չկան</option>
+
                                         </select>
                                     </c:otherwise>
 
@@ -1724,7 +1700,7 @@
                                 <c:set var="DEquippingPossibilities" value="${checker.DEquippingPossibilities}"/>
                             </c:forEach>
                             <c:choose>
-                                <c:when test="${DEquippingPossibilities=='Այո'}">
+                                <c:when test="${DEquippingPossibilities.equals('Այո')}">
                                     <span class="label">Ամսական լրացումներ</span>
                                     <div class="def-range int-outline">
                                         <script language="javascript" type="text/javascript">
@@ -1752,7 +1728,7 @@
                                                        step="${dropDownList2.steps}"
                                                        value="<%=request.getAttribute("value_url")%>"
                                                        oninput="showVal(this.value)"
-                                                       onchange="showVal(this.value)" id="amount_two">
+                                                       onchange="showVal(this.value)" id="amount_two" inputmode="numeric">
 
                                                 <input type="range" name="range_two" min="0"
                                                        max="${dropDownList2.maxAmount}"
@@ -1801,7 +1777,7 @@
                                                        step="<%=request.getAttribute("step")%>"
                                                        value="0"
                                                        oninput="showVal(this.value)"
-                                                       onchange="showVal(this.value)" id="amount_two">
+                                                       onchange="showVal(this.value)" id="amount_two" inputmode="numeric">
 
                                                 <input type="range" name="range_two" min="0"
                                                        max="${dropDownList.maxAmount}"
@@ -1863,9 +1839,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-8 right-side">
+                <div class="col-8 right-side right-side__mobile">
                     <div class="row-lg">
-                        <div class="col-4 col">
+                        <div class="col-4 col rigthtwo-one">
                             <span class="label">Ավանդի շահութաբերությունը</span>
                             <%!
                                 long blueResult;
@@ -2155,7 +2131,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-8 col">
+                        <div class="col-8 col rigthtwo-two" >
                             <div class="total-info margin-top-0">
                                 <div class="flex  margin-bottom-15">
                                     <div>

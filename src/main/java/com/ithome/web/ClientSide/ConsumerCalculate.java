@@ -133,7 +133,7 @@ public class ConsumerCalculate extends HttpServlet {
         sessionControlling(request, response);
         getLanguagesFromPage(request);
         getCurancyFromPage(request);
-       //  getCityFromUser(request);
+        //  getCityFromUser(request);
         getPageName(request);
         getPageLanguage(language);
         getParameters(request);
@@ -162,6 +162,9 @@ public class ConsumerCalculate extends HttpServlet {
             request.setAttribute("Bankid",BankIdFromData);
             ConsumerBanks consumerBanks = new ConsumerBanks();
             consumerBanks.doGet(request,response);
+        }else  if(months.equals("0")){
+            ConsumerClient consumerClient = new ConsumerClient();
+            consumerClient.doGet(request,response);
         }else {
             request.getRequestDispatcher("/CalculateConsumer.jsp").forward(request, response);
         }
@@ -313,9 +316,9 @@ public class ConsumerCalculate extends HttpServlet {
         depositStartFilter = consumerCreditDaoController.getAllCardsList();
         depositAmountFilter = new ArrayList<>();
         for (int i = 0; i < depositStartFilter.size(); i++) {
-            int minAamountFilter = depositStartFilter.get(i).getCCMinAmount();
+            int period = depositStartFilter.get(i).getCCMinPeriodMonth();
             /*int maxAmountFilter = depositStartFilter.get(i).getDMinAmount();*/
-            if (Integer.parseInt(amoutFiltered) >= minAamountFilter) {
+            if (Integer.parseInt(months) <= period) {
                 int id = Integer.parseInt(String.valueOf(depositStartFilter.get(i).getCLId()));
                 depositAmountFilter.addAll(FilteredList(id));
             }
@@ -330,6 +333,21 @@ public class ConsumerCalculate extends HttpServlet {
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             String CurrancyFilter = depositAmountFilter.get(i).getCurrancy();
             if (CurrancyFilter.equals(Currancy)) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterByRange2(depositCurrancyFilter);
+    }
+    private void FilterByRange2(List<ConsumerCredit> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getCCMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -366,9 +384,9 @@ public class ConsumerCalculate extends HttpServlet {
         depositStartFilter = consumerCreditDaoController.getAllCardsList();
         depositAmountFilter = new ArrayList<>();
         for (int i = 0; i < depositStartFilter.size(); i++) {
-            int minAamountFilter = depositStartFilter.get(i).getCCMinAmount();
+            int period = depositStartFilter.get(i).getCCMinPeriodMonth();
             /*int maxAmountFilter = depositStartFilter.get(i).getDMinAmount();*/
-            if (Integer.parseInt(amoutFiltered) >= minAamountFilter) {
+            if (Integer.parseInt(months) <= period) {
                 int id = Integer.parseInt(String.valueOf(depositStartFilter.get(i).getCLId()));
                 depositAmountFilter.addAll(FilteredList(id));
             }
@@ -383,6 +401,21 @@ public class ConsumerCalculate extends HttpServlet {
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             String CurrancyFilter = depositAmountFilter.get(i).getCurrancy();
             if (CurrancyFilter.equals(Currancy)) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterByRange(depositCurrancyFilter);
+    }
+    private void FilterByRange(List<ConsumerCredit> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getCCMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }

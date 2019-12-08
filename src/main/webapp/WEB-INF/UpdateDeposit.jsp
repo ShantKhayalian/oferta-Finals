@@ -232,6 +232,18 @@
                                                                 <option value="${timelineList.time}">${timelineList.time}</option>
                                                             </c:forEach>
                                                         </c:if>
+                                                       <%-- <select class="form-control show-tick" id="timeline" name="timeline" required>
+                                                                &lt;%&ndash; <input type="text" name="MMinPeriodMonth" class="form-control" required/>&ndash;%&gt;
+                                                                    <option value="30">1 </option>
+                                                                    <option value="90">3 </option>
+                                                                    <option value="180">6 </option>
+                                                                    <option value="270">9 </option>
+                                                                    <option value="360">12 </option>
+                                                                    <option value="540">18 </option>
+                                                                    <option value="720">24 </option>
+                                                                    <option value="1080">36 </option>
+
+                                                        </select>--%>
                                                     </select>
                                                 </div>
                                             </div>
@@ -351,7 +363,7 @@
 </section>
 
 <section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid" style="height: 600px;">
 
     </div>
 </section>

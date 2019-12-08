@@ -46,6 +46,8 @@ public class PageNameHelper {
                 return "ՀԻՓՈԹԵՔ";
             case "ՍՊԱՌՈՂԱԿԱՆ":
                 return "Սպարողական";
+            case "ConsumerCalculate":
+                return "Սպարողական";
             case "MortgageClientsss":
                 return "Հիփոթեք";
             case "AutoClient":

@@ -227,7 +227,8 @@ public class App extends HttpServlet {
     private void sessionControlling(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(false);
         sessionId = session.getId();
-        session.setMaxInactiveInterval(60 * 240);
+
+        session.setMaxInactiveInterval(0);
         DeleteData();
     }
 
