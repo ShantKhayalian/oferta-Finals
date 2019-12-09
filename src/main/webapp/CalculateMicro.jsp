@@ -85,7 +85,7 @@
                         </div>
                     </div>
                 </span>
-                        <span class="i-menu show-for-tablet" id="mbNavBtn"><i class="icon-menu font-20"></i></span>--%>
+                        <span class="i-menu show-for-tablet" id="mbNavBtn"><i class="icon-menu font-20"></i></span>
                     </div>
                 </div>
             </div>
@@ -175,9 +175,10 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                        <input name="PageToGo" value="MicroCalculate"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                        <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
                                     </form>
                                 </li>
                             </ul>
@@ -207,9 +208,10 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                        <input name="PageToGo" value="MicroCalculate"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                 <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
                                     </form>
                             </ul>
                             </c:if>
@@ -235,9 +237,10 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                        <input name="PageToGo" value="MicroCalculate"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                 <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
                                     </form>
                             </ul>
                              </c:if>
@@ -264,12 +267,13 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                        <input name="PageToGo" value="MicroCalculate"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                    <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
                                     </form>
                             </c:if>
-                             <form action="CompareMicro" method="get" name="MicroCompare">
+                            <%-- <form action="CompareMicro" method="get" name="MicroCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
                             <c:if test="${requestScope.comparListMicro != null}">
@@ -291,12 +295,12 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                        <input name="PageToGo" value="MicroCalculate"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                     </form>
                             </ul>
-                            </c:if>
+                            </c:if>--%>
                            <form action="CompareAg" method="get" name="AgCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
@@ -318,9 +322,10 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                        <input name="PageToGo" value="MicroCalculate"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                        <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
                                     </form>
                             </ul>
                             </c:if>
@@ -394,7 +399,7 @@
                                                    value="${requestScope.Amountfiltered}"
                                                    oninput="showVal(this.value)"
                                                    onchange="showVal(this.value)" id="amount"
-                                                   onblur="document.main.submit();">
+                                                   onblur="document.main.submit();" inputmode="numeric">
 
                                             <input type="range" name="range" min="${dropDownList2.minAmount}"
                                                    max="${dropDownList2.maxAmount}" step="${dropDownList2.steps}"
@@ -417,7 +422,7 @@
                                                    value="${requestScope.Amountfiltered}"
                                                    oninput="showVal(this.value)"
                                                    onchange="showVal(this.value)" id="amount"
-                                                   onblur="document.main.submit();">
+                                                   onblur="document.main.submit();" inputmode="numeric">
 
                                             <input type="range" name="range" min="${dropDownList3.minAmount}"
                                                    max="${dropDownList3.maxAmount}" step="${dropDownList3.steps}"
@@ -669,16 +674,16 @@
                                     <a href="CreditSend?id=${SpecialConsumer.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmount=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=Micro&&Amount=<%=request.getAttribute("range")%>&&PageName=Micro"
                                        class="def-button btn-green with-shadow  margin-bottom-15">Իմանալ ավելին</a>
                                     <p>
-                                        <a href="CalculatMocri?id=${SpecialConsumer.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                        <%--<a href="CalculatMocri?id=${SpecialConsumer.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                         </c:when>
 
                                         <c:when test="${gotoPage == 0 && sendRequest== 0 && lastLogic==1}">
                                         <a href="${SpecialConsumer.bankLink}"
                                            class="def-button btn-green with-shadow  margin-bottom-15" target="_blank">Անցնել էջ</a>
                                     <p>
-                                        <a href="CalculatMocri?id=${SpecialConsumer.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                       <%-- <a href="CalculatMocri?id=${SpecialConsumer.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
 
                                         </c:when>
                                         </c:choose>
@@ -694,8 +699,8 @@
                                            class="def-button btn-green with-shadow  margin-bottom-15">Իմանալ
                                             ավելին</a>
                                     <p>
-                                        <a href="CalculatMocri?id=${SpecialConsumer.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                       <%-- <a href="CalculatMocri?id=${SpecialConsumer.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                         </c:when>
                                         </c:choose>
                                         <c:choose>
@@ -703,8 +708,8 @@
                                         <a href="${SpecialConsumer.bankLink}"
                                            class="def-button btn-green with-shadow  margin-bottom-15" target="_blank">Անցնել էջ</a>
                                     <p>
-                                        <a href="CalculatMocri?id=${SpecialConsumer.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                       <%-- <a href="CalculatMocri?id=${SpecialConsumer.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
 
                                         </c:when>
                                         </c:choose>
@@ -944,8 +949,8 @@
                                                                     <a href="CreditSend?id=${firstDepo.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmount=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=Micro&&Amount=<%=request.getAttribute("range")%>&&PageName=Micro"
                                                                        class="def-button btn-green with-shadow  margin-bottom-15">Իմանալ
                                                                         ավելին</a>
-                                                                    <a href="CalculatMocri?id=${firstDepo.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                                                  <%--  <a href="CalculatMocri?id=${firstDepo.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                                                     <%--  <p><a href="index.php?page=compare/deposit"
                                                                             class="blue-link font-12">Համեմատել</a></p>--%>
 
@@ -954,14 +959,14 @@
                                                                     <a href=""
                                                                        class="def-button btn-green with-shadow  margin-bottom-15" target="_blank">Անցնել
                                                                         էջ</a>
-                                                                    <a href="CalculatMocri?id=${firstDepo.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                                                    <%--<a href="CalculatMocri?id=${firstDepo.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                                                     <%--<p><a href="index.php?page=compare/deposit"
                                                                           class="blue-link font-12">Համեմատել</a></p>--%>
                                                                 </c:when>
                                                                 <c:otherwise>
-                                                                    <a href="CalculatMocri?id=${firstDepo.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                                                   <%-- <a href="CalculatMocri?id=${firstDepo.productCode}&&months=<%=request.getParameter("months")%>&&MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                                                     <%-- <p><a href="index.php?page=compare/deposit"
                                                                            class="blue-link font-12">Համեմատել</a></p>--%>
                                                                 </c:otherwise>
@@ -987,14 +992,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="padding-bt-60">
+                    <div class="padding-bt-60" style="width: inherit;">
                         <div class="inner-container">
                             <p class="font-24 title margin-bottom-35">
                                 Հատուկ առաջարկներ
                             </p>
                             <div class="tab-container">
                                 <div class="tab-nav flex align-items-center flex-wrap">
-						<span class="tab-link" onclick="openTabItem(event, 'deposit')" id="defaultOpen">
+						<span class="tab-link" onclick="openTabItem(event, 'deposit')" >
                            Ավանդներ</span>
                                     <span class="tab-link" onclick="openTabItem(event, 'mortgage')">
                         Հիպոթեկային վարկ</span>
@@ -1002,7 +1007,7 @@
                    Սպառողական վարկ</span>
                                     <span class="tab-link" onclick="openTabItem(event, 'car-loan')">
                     Ավտովարկ</span>
-                                    <span class="tab-link" onclick="openTabItem(event, 'agricultural')">
+                                    <span class="tab-link active" onclick="openTabItem(event, 'agricultural')" id="defaultOpen">
                     Միկրոկրեդիտ</span>
                                     <span class="tab-link" onclick="openTabItem(event, 'card')">
                    Քարտեր</span>

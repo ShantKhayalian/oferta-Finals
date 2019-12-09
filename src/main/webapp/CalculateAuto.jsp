@@ -76,25 +76,240 @@
                         </ul>
                     </div>&ndash;%&gt;
                 </span>--%>
-                       <%-- <span class="compere-box show-for-tablet relative">
+                        <span class="compere-box show-for-tablet relative">
                      <span class="compere-icon" onclick="toggleBoxes('compareTooltipMb')">
-                        <span class="count">4</span>
-                        <i class="icon-libra"></i>
+                        <c:if test="${requestScope.comparListCarLoan != null}">
+                            <c:forEach var="size" items="${requestScope.comparListCarLoan}" varStatus="TheCount">
+                                <span class="count"><c:out value="${TheCount.count}"/></span>
+                            </c:forEach>
+                        </c:if>
                     </span>
                     <div class="tooltip-container bottom right" id="compareTooltipMb">
-                        <div class="tooltip"> <!--Todo add 'tp-blue' class when there is no item -->
+                        <div class="tooltip">
                             <span class="tooltip-title">Համեմատության</span>
+                            <form action="CompareDeposit" method="get" name="DepositComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListDeposit != null}">
                             <ul>
                                 <li>
-                                    <span>Սպառողական վարկ</span>
-                                    <span class="bold font-14">4</span>
-                                    <i class="icon-delete"></i>
+                                    <c:forEach var="DepositCompare" items="${requestScope.comparListDeposit}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterDeposit" value="${TheCount.count}" scope="request"/>
+
+                                    </c:forEach>
+                                    <span onclick="document.DepositComparesmall.submit();">Ավանդ</span>
+                                    <span class="bold font-14">${counterDeposit}</span>
+                                     <i class="icon-delete" onclick="document.Deletesmall.submit();"></i>
+                                </li>
+                                   <form action="DepositClient" method="get" name="Deletesmall">
+                                        <input type="hidden" name="pageNameToDelete" value="Ավանդ">
+                                        <input name="MaxAmount" value="<%=request.getParameter("MaxAmount")%>"
+                                               type="hidden">
+                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
+                                               type="hidden">
+                                        <input name="PageToGo" value="AutoCalculate"
+                                               type="hidden">
+                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                        <input name="percentageSecond"
+                                               value="<%=request.getAttribute("percentageSecond")%>" type="hidden">
+                                       <%-- <input name="range_two" value="<%=request.getParameter("range_two")%>" type="hidden">--%>
+                                        <input name="options" value="<%=request.getParameter("options")%>"
+                                               type="hidden">
+                                        <input name="months" value="<%=request.getParameter("months")%>" type="hidden">
+                                    </form>
+                            </ul>
+                            </c:if>
+                             <form action="CompareMortgage" method="get" name="MortgageComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListMortgage != null}">
+                            <ul>
+                                <li>
+                                    <c:forEach var="MortgagCompare" items="${requestScope.comparListMortgage}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterMortgag" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                      <span onclick="document.MortgageComparesmall.submit();">Հիփոթեք</span>
+                                     <span class="bold font-14">${counterMortgag}</span>
+                                        <i type="submit" class="icon-delete"
+                                           onclick="document.DeleteHipoteksmall.submit();"></i>
+                                </li>
+                                 <form action="DepositClient" method="get" name="DeleteHipoteksmall">
+                                       <input type="hidden" name="pageNameToDelete" value="Հիփոթեք">
+                                        <input name="MaxAmount" value="<%=request.getParameter("MaxAmount")%>"
+                                               type="hidden">
+                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
+                                               type="hidden">
+                                        <input name="PageToGo" value="AutoCalculate"
+                                               type="hidden">
+                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                        <input name="percentageSecond"
+                                               value="<%=request.getAttribute("percentageSecond")%>" type="hidden">
+                                      <%--  <input name="range_two" value="<%=request.getParameter("range_two")%>" type="hidden">--%>
+                                        <input name="options" value="<%=request.getParameter("options")%>"
+                                               type="hidden">
+                                        <input name="months" value="<%=request.getParameter("months")%>" type="hidden">
+                                    </form>
+                            </ul>
+                            </c:if>
+                            <form action="CompareConsumer" method="get" name="ConsumerComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                             <c:if test="${requestScope.comparListConsumer != null}">
+                            <ul>
+                                <li>
+                                    <c:forEach var="ConsumerCompare" items="${requestScope.comparListConsumer}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterCompare" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                     <span onclick="document.ConsumerComparesmall.submit();">Սպառողական</span>
+                                     <span class="bold font-14">${counterCompare}</span>
+                                         <i type="submit" class="icon-delete"
+                                            onclick="document.DeleteConsumersmall.submit();"></i>
+                                </li>
+                                <form action="DepositClient" method="get" name="DeleteConsumersmall">
+                                        <input type="hidden" name="pageNameToDelete" value="Սպարողական">
+                                        <input name="MaxAmount" value="<%=request.getParameter("MaxAmount")%>"
+                                               type="hidden">
+                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
+                                               type="hidden">
+                                        <input name="PageToGo" value="AutoCalculate"
+                                               type="hidden">
+                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                        <input name="percentageSecond"
+                                               value="<%=request.getAttribute("percentageSecond")%>" type="hidden">
+                                       <%-- <input name="range_two" value="<%=request.getParameter("range_two")%>" type="hidden">--%>
+                                        <input name="options" value="<%=request.getParameter("options")%>"
+                                               type="hidden">
+                                        <input name="months" value="<%=request.getParameter("months")%>" type="hidden">
+                                    </form>
+                            </ul>
+                             </c:if>
+
+
+                            <form action="CompareCarLoan" method="get" name="CarLoanComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListCarLoan != null}">
+                            <ul>
+                                <li>
+                                    <c:forEach var="CarLoanCompare" items="${requestScope.comparListCarLoan}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterCarLoan" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                    <span onclick="document.CarLoanComparesmall.submit();">Ավտովարկ</span>
+                                      <span class="bold font-14">${counterCarLoan}</span>
+                                          <i type="submit" class="icon-delete"
+                                             onclick="document.DeleteCarsmall.submit();"></i>
                                 </li>
                             </ul>
+                                <form action="DepositClient" method="get" name="DeleteCarsmall">
+                                         <input type="hidden" name="pageNameToDelete" value="Ավտովարկ">
+                                        <input name="MaxAmounr" value="<%=request.getParameter("MaxAmounr")%>"
+                                               type="hidden">
+                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
+                                               type="hidden">
+                                        <input name="PageToGo" value="AutoCalculate"
+                                               type="hidden">
+                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                     <input name="months" value="<%=request.getParameter("months")%>" type="hidden">
+                                    </form>
+                            </c:if>
+
+
+
+                           <%-- <form action="CompareMicro" method="get" name="MicroCompare">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListMicro != null}">
+                            <ul>
+                                <li>
+                                    <c:forEach var="MicroCompare" items="${requestScope.comparListMicro}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterMicro" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                    <span onclick="document.MicroCompare.submit();">Միկրովարկ</span>
+                                     <span class="bold font-14">${counterMicro}</span>
+                                         <i type="submit" class="icon-delete"
+                                            onclick="document.DeleteMicro.submit();"></i>
+                                </li>
+                                <form action="DepositClient" method="get" name="DeleteMicro">
+                                      <input type="hidden" name="pageNameToDelete" value="ՄԻԿՐՈՎԱՐԿ">
+                                        <input name="MaxAmount" value="<%=request.getParameter("MaxAmount")%>"
+                                               type="hidden">
+                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
+                                               type="hidden">
+                                        <input name="PageToGo" value="AutoCalculate"
+                                               type="hidden">
+                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                        <input name="percentageSecond"
+                                               value="<%=request.getAttribute("percentageSecond")%>" type="hidden">
+                                      &lt;%&ndash;  <input name="range_two" value="<%=request.getParameter("range_two")%>" type="hidden">&ndash;%&gt;
+                                        <input name="options" value="<%=request.getParameter("options")%>"
+                                               type="hidden">
+                                        <input name="months" value="<%=request.getParameter("months")%>" type="hidden">
+                                    </form>
+                            </ul>
+                            </c:if>--%>
+                            <form action="CompareAg" method="get" name="AgComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListAg != null}">
+                            <ul>
+                                <li>
+                                    <c:forEach var="AgCompare" items="${requestScope.comparListAg}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterAg" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                      <span onclick="document.AgComparesmall.submit();">Գյուղատնտեսական</span>
+                                      <span class="bold font-14">${counterAg}</span>
+                                        <i type="submit" class="icon-delete" onclick="document.DeleteAGsmall.submit();"></i>
+                                </li>
+                                <form action="DepositClient" method="get" name="DeleteAGsmall">
+                                      <input type="hidden" name="pageNameToDelete" value="Գյուղատնտեսական">
+                                        <input name="MaxAmount" value="<%=request.getParameter("MaxAmount")%>"
+                                               type="hidden">
+                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
+                                               type="hidden">
+                                        <input name="PageToGo" value="AutoCalculate"
+                                               type="hidden">
+                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                        <input name="percentageSecond"
+                                               value="<%=request.getAttribute("percentageSecond")%>" type="hidden">
+                                       <%-- <input name="range_two" value="<%=request.getParameter("range_two")%>" type="hidden">--%>
+                                        <input name="options" value="<%=request.getParameter("options")%>"
+                                               type="hidden">
+                                        <input name="months" value="<%=request.getParameter("months")%>" type="hidden">
+                                    </form>
+                            </ul>
+                            </c:if>
+
+                             <%--<c:if test="${requestScope.comparListCard != null}">
+                            <ul>
+                                <li>
+                                    <c:forEach var="CardCompare" items="${requestScope.comparListCard}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterCard" value="${TheCount.count}" scope="request"/>
+
+                                    </c:forEach>
+                                     <span>Քարտեր</span>
+                                      <span class="bold font-14">${counterCard}</span>
+                                        <i class="icon-delete"></i>
+                                </li>
+                            </ul>
+                             </c:if>--%>
                             <!--Todo add when there is no item -->
                             <!--                            <span>Համեմատության էջում տեղ չկա</span>-->
+
                         </div>
-                    </div>--%>
+                    </div>
                 </span>
                         <span class="i-menu show-for-tablet" id="mbNavBtn"><i class="icon-menu font-20"></i></span>
                     </div>
@@ -181,7 +396,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CalculateMort"
+                                        <input name="PageToGo" value="AutoCalculate"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                         <input name="percentageSecond"
@@ -215,7 +430,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CalculateMort"
+                                        <input name="PageToGo" value="AutoCalculate"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                         <input name="percentageSecond"
@@ -249,7 +464,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CalculateMort"
+                                        <input name="PageToGo" value="AutoCalculate"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                         <input name="percentageSecond"
@@ -286,15 +501,16 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                        <input name="PageToGo" value="AutoCalculate"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                    <input name="months" value="<%=request.getParameter("months")%>" type="hidden">
                                     </form>
                             </c:if>
 
 
 
-                            <form action="CompareMicro" method="get" name="MicroCompare">
+                           <%-- <form action="CompareMicro" method="get" name="MicroCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
                             <c:if test="${requestScope.comparListMicro != null}">
@@ -316,18 +532,18 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CalculateMort"
+                                        <input name="PageToGo" value="AutoCalculate"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                         <input name="percentageSecond"
                                                value="<%=request.getAttribute("percentageSecond")%>" type="hidden">
-                                      <%--  <input name="range_two" value="<%=request.getParameter("range_two")%>" type="hidden">--%>
+                                      &lt;%&ndash;  <input name="range_two" value="<%=request.getParameter("range_two")%>" type="hidden">&ndash;%&gt;
                                         <input name="options" value="<%=request.getParameter("options")%>"
                                                type="hidden">
                                         <input name="months" value="<%=request.getParameter("months")%>" type="hidden">
                                     </form>
                             </ul>
-                            </c:if>
+                            </c:if>--%>
                             <form action="CompareAg" method="get" name="AgCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
@@ -349,7 +565,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CalculateMort"
+                                        <input name="PageToGo" value="AutoCalculate"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                         <input name="percentageSecond"
@@ -699,90 +915,134 @@
                                         <option value="18">18 ամիս</option>
                                         <option value="24">24 ամիս</option>
                                         <option value="36">36 ամիս</option>
+                                        <option value="48">48 ամիս</option>
+                                        <option value="60">60 ամիս</option>
                                     </select>
                                 </c:when>
                                 <c:when test="${monthsSection == '3'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
-                                        <option value="1">1 ամիս</option>
-                                        <option value="3" selected>3 ամիս</option>
+                                        <option value="1" >1 ամիս</option>
+                                        <option value="3"  selected>3 ամիս</option>
                                         <option value="6">6 ամիս</option>
                                         <option value="9">9 ամիս</option>
                                         <option value="12">12 ամիս</option>
                                         <option value="18">18 ամիս</option>
                                         <option value="24">24 ամիս</option>
                                         <option value="36">36 ամիս</option>
+                                        <option value="48">48 ամիս</option>
+                                        <option value="60">60 ամիս</option>
                                     </select>
                                 </c:when>
                                 <c:when test="${monthsSection == '6'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
-                                        <option value="1">1 ամիս</option>
-                                        <option value="3">3 ամիս</option>
+                                        <option value="1" >1 ամիս</option>
+                                        <option value="3"  >3 ամիս</option>
                                         <option value="6" selected>6 ամիս</option>
                                         <option value="9">9 ամիս</option>
                                         <option value="12">12 ամիս</option>
                                         <option value="18">18 ամիս</option>
                                         <option value="24">24 ամիս</option>
                                         <option value="36">36 ամիս</option>
+                                        <option value="48">48 ամիս</option>
+                                        <option value="60">60 ամիս</option>
                                     </select>
                                 </c:when>
                                 <c:when test="${monthsSection == '9'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
-                                        <option value="1">1 ամիս</option>
-                                        <option value="3">3 ամիս</option>
-                                        <option value="6">6 ամիս</option>
+                                        <option value="1" >1 ամիս</option>
+                                        <option value="3"  >3 ամիս</option>
+                                        <option value="6" >6 ամիս</option>
                                         <option value="9" selected>9 ամիս</option>
                                         <option value="12">12 ամիս</option>
                                         <option value="18">18 ամիս</option>
                                         <option value="24">24 ամիս</option>
                                         <option value="36">36 ամիս</option>
+                                        <option value="48">48 ամիս</option>
+                                        <option value="60">60 ամիս</option>
                                     </select>
                                 </c:when>
                                 <c:when test="${monthsSection == '12'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
-                                        <option value="1">1 ամիս</option>
-                                        <option value="3">3 ամիս</option>
-                                        <option value="6">6 ամիս</option>
-                                        <option value="9">9 ամիս</option>
+                                        <option value="1" >1 ամիս</option>
+                                        <option value="3"  >3 ամիս</option>
+                                        <option value="6" >6 ամիս</option>
+                                        <option value="9" >9 ամիս</option>
                                         <option value="12" selected>12 ամիս</option>
                                         <option value="18">18 ամիս</option>
                                         <option value="24">24 ամիս</option>
                                         <option value="36">36 ամիս</option>
+                                        <option value="48">48 ամիս</option>
+                                        <option value="60">60 ամիս</option>
                                     </select>
                                 </c:when>
                                 <c:when test="${monthsSection == '18'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
-                                        <option value="1">1 ամիս</option>
-                                        <option value="3">3 ամիս</option>
-                                        <option value="6">6 ամիս</option>
-                                        <option value="9">9 ամիս</option>
-                                        <option value="12">12 ամիս</option>
+                                        <option value="1" >1 ամիս</option>
+                                        <option value="3"  >3 ամիս</option>
+                                        <option value="6" >6 ամիս</option>
+                                        <option value="9" >9 ամիս</option>
+                                        <option value="12" >12 ամիս</option>
                                         <option value="18" selected>18 ամիս</option>
                                         <option value="24">24 ամիս</option>
                                         <option value="36">36 ամիս</option>
+                                        <option value="48">48 ամիս</option>
+                                        <option value="60">60 ամիս</option>
                                     </select>
                                 </c:when>
                                 <c:when test="${monthsSection == '24'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
-                                        <option value="1">1 ամիս</option>
-                                        <option value="3">3 ամիս</option>
-                                        <option value="6">6 ամիս</option>
-                                        <option value="9">9 ամիս</option>
-                                        <option value="12">12 ամիս</option>
-                                        <option value="18">18 ամիս</option>
-                                        <option value="24" selected>24 ամիս</option>
+                                        <option value="1" >1 ամիս</option>
+                                        <option value="3"  >3 ամիս</option>
+                                        <option value="6" >6 ամիս</option>
+                                        <option value="9" >9 ամիս</option>
+                                        <option value="12" >12 ամիս</option>
+                                        <option value="18" >18 ամիս</option>
+                                        <option value="24"selected>24 ամիս</option>
                                         <option value="36">36 ամիս</option>
+                                        <option value="48">48 ամիս</option>
+                                        <option value="60">60 ամիս</option>
                                     </select>
                                 </c:when>
                                 <c:when test="${monthsSection == '36'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
-                                        <option value="1">1 ամիս</option>
-                                        <option value="3">3 ամիս</option>
-                                        <option value="6">6 ամիս</option>
-                                        <option value="9">9 ամիս</option>
-                                        <option value="12">12 ամիս</option>
-                                        <option value="18">18 ամիս</option>
-                                        <option value="24">24 ամիս</option>
+                                        <option value="1" >1 ամիս</option>
+                                        <option value="3"  >3 ամիս</option>
+                                        <option value="6" >6 ամիս</option>
+                                        <option value="9" >9 ամիս</option>
+                                        <option value="12" >12 ամիս</option>
+                                        <option value="18" >18 ամիս</option>
+                                        <option value="24" >24 ամիս</option>
                                         <option value="36" selected>36 ամիս</option>
+                                        <option value="48">48 ամիս</option>
+                                        <option value="60">60 ամիս</option>
+                                    </select>
+                                </c:when>
+                                <c:when test="${monthsSection == '48'}">
+                                    <select name="months" id="select_month" onchange="document.main.submit();">
+                                        <option value="1" >1 ամիս</option>
+                                        <option value="3"  >3 ամիս</option>
+                                        <option value="6" >6 ամիս</option>
+                                        <option value="9" >9 ամիս</option>
+                                        <option value="12" >12 ամիս</option>
+                                        <option value="18" >18 ամիս</option>
+                                        <option value="24" >24 ամիս</option>
+                                        <option value="36" >36 ամիս</option>
+                                        <option value="48" selected>48 ամիս</option>
+                                        <option value="60">60 ամիս</option>
+                                    </select>
+                                </c:when>
+                                <c:when test="${monthsSection == '60'}">
+                                    <select name="months" id="select_month" onchange="document.main.submit();">
+                                        <option value="1" >1 ամիս</option>
+                                        <option value="3"  >3 ամիս</option>
+                                        <option value="6" >6 ամիս</option>
+                                        <option value="9" >9 ամիս</option>
+                                        <option value="12" >12 ամիս</option>
+                                        <option value="18" >18 ամիս</option>
+                                        <option value="24" >24 ամիս</option>
+                                        <option value="36" >36 ամիս</option>
+                                        <option value="48">48 ամիս</option>
+                                        <option value="60" selected>60 ամիս</option>
                                     </select>
                                 </c:when>
                                 <c:otherwise>
@@ -1126,8 +1386,8 @@
                                                              </div>--%>
 
                                                         <div class="table-cell">
-                                                                <%--  <p>Ձեր եկամուտը</p>--%>
-                                                                <%--<p class="font-24 bold">--%>
+                                                                <%-- <p>Ձեր եկամուտը</p>--%>
+                                                            <p class="font-24 bold">
                                                             <%!
                                                                 int calculatePercentage(float Amount, double Percentage, int month) {
                                                                     int newAmount = (int) (Amount - (Amount *percentageForDiscount /100));
@@ -1176,6 +1436,7 @@
                                                                         data-speed="1739"></h2>
                                                                 </c:when>
                                                             </c:choose>
+                                                        </p>
                                                         </div>
                                                         <div class="table-cell">
                                                                 <%-- <sql:setDataSource var="db"

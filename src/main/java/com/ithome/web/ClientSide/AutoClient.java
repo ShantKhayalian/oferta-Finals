@@ -243,16 +243,21 @@ public class AutoClient extends HttpServlet {
     }
 
     private void getApperance() throws SQLException {
-        String currancy= "";
+        searchUpList = new ArrayList<>();
         depositeAseList = new ArrayList<>();
-        List<CarLoans> fillAll = new ArrayList<>();
-        fillAll = searchDatabase();
-        for (int i = 0; i <fillAll.size() ; i++) {
-            currancy= fillAll.get(i).getCurrancy();
-            if(currancy.equals(pageCurrancy)){
-                int id = Integer.parseInt(String.valueOf(fillAll.get(i).getCLId()));
+
+        searchUpList = searchDatabase();
+        MaxAmount=null;
+        getMaxAmount();
+        for (int i = 0; i <searchUpList.size() ; i++) {
+            int firstSearch = searchUpList.get(i).getCLMinAmount();
+            String firstSearchCurrancy = searchUpList.get(i).getCurrancy();
+
+            if (Integer.parseInt(amoutFiltered) >= firstSearch || Integer.parseInt(amoutFiltered) <= firstSearch && Integer.parseInt(MaxAmount) <= firstSearch && firstSearchCurrancy.equals(pageCurrancy) ) {
+                int id = Integer.parseInt(String.valueOf(searchUpList.get(i).getCLId()));
                 depositeAseList.addAll(FilteredList(id));
             }
+            Collections.shuffle(depositeAseList);
         }
 
     }

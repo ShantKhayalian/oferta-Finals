@@ -35,18 +35,20 @@ public class PageNameHelper {
             case "CreditSend":
                 return "";
             case "MortgagClient":
-                return "ՀԻՓՈԹԵՔ";
+                return "Հիփոթեք";
             case "CalculateMort":
-                return "ՀԻՓՈԹԵՔ";
+                return "Հիփոթեք";
             case "MortgageClientss":
                 return "Հիփոթեք";
             case "ՀԻՓՈԹԵՔ":
                 return "Հիփոթեք";
             case "Հիփոթեք":
-                return "ՀԻՓՈԹԵՔ";
+                return "Հիփոթեք";
             case "ՍՊԱՌՈՂԱԿԱՆ":
                 return "Սպարողական";
             case "ConsumerCalculate":
+                return "Սպարողական";
+            case "ConsumerClient":
                 return "Սպարողական";
             case "MortgageClientsss":
                 return "Հիփոթեք";

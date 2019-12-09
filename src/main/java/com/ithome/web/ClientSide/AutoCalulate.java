@@ -212,10 +212,12 @@ public class AutoCalulate extends HttpServlet {
     private void PercentageAsecSorted() throws SQLException {
         depositStartFilter = carLoanDao.getAllCarLoans();
         depositAmountFilter = new ArrayList<>();
+        MaxAmount=null;
+        getMaxAmount();
         for (int i = 0; i < depositStartFilter.size(); i++) {
             int minAamountFilter = depositStartFilter.get(i).getCLMinAmount();
             /*int maxAmountFilter = depositStartFilter.get(i).getDMinAmount();*/
-            if (Integer.parseInt(amoutFiltered) >= minAamountFilter) {
+            if (Integer.parseInt(Amount) >= minAamountFilter  || Integer.parseInt(Amount) <= minAamountFilter && Integer.parseInt(MaxAmount) <= minAamountFilter) {
                 int id = Integer.parseInt(String.valueOf(depositStartFilter.get(i).getCLId()));
                 depositAmountFilter.addAll(FilteredList(id));
             }
@@ -242,9 +244,11 @@ public class AutoCalulate extends HttpServlet {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {
             double timeLineFilter = depositCurrancyFilter.get(i).getCLFatual();
-
-            int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getCLId()));
-            depositAllInRage.addAll(FilteredList(id));
+            int monthsFromData = depositOptiosInRage.get(i).getCLMinPeriodMonths();
+            if(monthsFromData >= Integer.parseInt(months)) {
+                int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getCLId()));
+                depositAllInRage.addAll(FilteredList(id));
+            }
 
         }
 
@@ -267,10 +271,12 @@ public class AutoCalulate extends HttpServlet {
     private void PercentageAsec() throws SQLException {
         depositStartFilter = carLoanDao.getAllCarLoans();
         depositAmountFilter = new ArrayList<>();
+        MaxAmount = null;
+        getMaxAmount();
         for (int i = 0; i < depositStartFilter.size(); i++) {
             int minAamountFilter = depositStartFilter.get(i).getCLMinAmount();
             /*int maxAmountFilter = depositStartFilter.get(i).getDMinAmount();*/
-            if (Integer.parseInt(amoutFiltered) >= minAamountFilter) {
+            if (Integer.parseInt(Amount) >= minAamountFilter  || Integer.parseInt(Amount) <= minAamountFilter && Integer.parseInt(MaxAmount) <= minAamountFilter) {
                 int id = Integer.parseInt(String.valueOf(depositStartFilter.get(i).getCLId()));
                 depositAmountFilter.addAll(FilteredList(id));
             }
@@ -279,6 +285,7 @@ public class AutoCalulate extends HttpServlet {
         FilterCurrancyList(depositAmountFilter);
 
     }
+
 
     private void FilterCurrancyList(List<CarLoans> depositAmountFilter) throws SQLException {
         depositCurrancyFilter = new ArrayList<>();
@@ -289,7 +296,7 @@ public class AutoCalulate extends HttpServlet {
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterMonthsList(depositOptiosInRage);
+        FilterMonthsList(depositCurrancyFilter);
     }
 
 
@@ -297,9 +304,11 @@ public class AutoCalulate extends HttpServlet {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositOptiosInRage.size(); i++) {
             double timeLineFilter = depositOptiosInRage.get(i).getCLFatual();
-
-            int id = Integer.parseInt(String.valueOf(depositOptiosInRage.get(i).getCLId()));
-            depositAllInRage.addAll(FilteredList(id));
+            int monthsFromData = depositOptiosInRage.get(i).getCLMinPeriodMonths();
+            if(monthsFromData >= Integer.parseInt(months)) {
+                int id = Integer.parseInt(String.valueOf(depositOptiosInRage.get(i).getCLId()));
+                depositAllInRage.addAll(FilteredList(id));
+            }
 
         }
         Collections.sort(depositAllInRage, new ComparePercentage2());
@@ -449,7 +458,7 @@ public class AutoCalulate extends HttpServlet {
         for (int i = 0; i <fillAll.size() ; i++) {
             currancy= fillAll.get(i).getCurrancy();
             int monthsFromData = fillAll.get(i).getCLMinPeriodMonths();
-            if(currancy.equals(pageCurrancy) && monthsFromData == Integer.parseInt(months)){
+            if(currancy.equals(pageCurrancy) && monthsFromData <= Integer.parseInt(months)){
                 int id = Integer.parseInt(String.valueOf(fillAll.get(i).getCLId()));
                 depositeAseList.addAll(FilteredList(id));
             }
@@ -549,6 +558,11 @@ public class AutoCalulate extends HttpServlet {
             startCompare(ID,request);
 
         } else {
+            WorningMessage = "";
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("WorningMessage", WorningMessage);
+            String s = jsonObject.toString();
+            request.getSession().setAttribute("jsonArray", s);
             ID = 0;
         }
         if (request.getParameter("pageNameToDelete") != null) {

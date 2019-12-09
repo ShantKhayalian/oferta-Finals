@@ -132,20 +132,20 @@
                         </c:if>
                     </div>
                     <!-- starting compare Section -->
-<%--
-                    <%
-                        if (request.getAttribute("WorningMessage") != null) {
-                    %>
-                    <%=request.getAttribute("WorningMessage")%>
-                    <%
-                        }
-                    %>--%>
+                    <%--
+                                        <%
+                                            if (request.getAttribute("WorningMessage") != null) {
+                                        %>
+                                        <%=request.getAttribute("WorningMessage")%>
+                                        <%
+                                            }
+                                        %>--%>
                     <span class="right hide-for-tablet">
 
                 <span><i class="icon-search" id="searchBtn"></i></span>
                 <span class="compere-box">
 
-                    <span class="compere-icon" >
+                    <span class="compere-icon">
                         <c:if test="${requestScope.comparListDeposit != null}">
                             <c:forEach var="size" items="${requestScope.comparListDeposit}" varStatus="TheCount">
                                 <span class="count"><c:out value="${TheCount.count}"/></span>
@@ -359,59 +359,59 @@
                 <form class="credit-form" action="CreditSend" name="main">
                     <div class="col-4 left-side mobile-left__sides">
                         <div class="row-md clearfix form-row">
-                            <%--<div class="col-12">
-                                <span class="label">Նպատակը</span>
-                                <div class="def-select-box st-outline">
-                                    <c:set var="options" value='<%=request.getParameter("options")%>'/>
-                                    <c:choose>
-                                        <c:when test="${options == 0}">
-                                            <select name="options" onchange="document.main.submit();">
-                                                <option value="0" selected>Բոլորը</option>
-                                                <option value="1">Վերանորոգման վարկ</option>
-                                                <option value="2">Վերաֆինանսավորում</option>
-                                                <option value="3">Անշարժ գույքի ձեռք բերման վարկ</option>
-                                                <option value="4">Կառուցապատման համար</option>
-                                            </select>
-                                        </c:when>
-                                        <c:when test="${options == 1}">
-                                            <select name="options" onchange="document.main.submit();">
-                                                <option value="0">Բոլորը</option>
-                                                <option value="1" selected>Վերանորոգման վարկ</option>
-                                                <option value="2">Վերաֆինանսավորում</option>
-                                                <option value="3">Անշարժ գույքի ձեռք բերման վարկ</option>
-                                                <option value="4">Կառուցապատման համար</option>
-                                            </select>
-                                        </c:when>
-                                        <c:when test="${options == 2}">
-                                            <select name="options" onchange="document.main.submit();">
-                                                <option value="0">Բոլորը</option>
-                                                <option value="1">Վերանորոգման վարկ</option>
-                                                <option value="2" selected>Վերաֆինանսավորում</option>
-                                                <option value="3">Անշարժ գույքի ձեռք բերման վարկ</option>
-                                                <option value="4">Կառուցապատման համար</option>
-                                            </select>
-                                        </c:when>
-                                        <c:when test="${options == 3}">
-                                            <select name="options" onchange="document.main.submit();">
-                                                <option value="0">Բոլորը</option>
-                                                <option value="1">Վերանորոգման վարկ</option>
-                                                <option value="2">Վերաֆինանսավորում</option>
-                                                <option value="3" selected>Անշարժ գույքի ձեռք բերման վարկ</option>
-                                                <option value="4">Կառուցապատման համար</option>
-                                            </select>
-                                        </c:when>
-                                        <c:when test="${options == 4}">
-                                            <select name="options" onchange="document.main.submit();">
-                                                <option value="0">Բոլորը</option>
-                                                <option value="1">Վերանորոգման վարկ</option>
-                                                <option value="2">Վերաֆինանսավորում</option>
-                                                <option value="3">Անշարժ գույքի ձեռք բերման վարկ</option>
-                                                <option value="4" selected>Կառուցապատման համար</option>
-                                            </select>
-                                        </c:when>
-                                    </c:choose>
-                                </div>
-                            </div>--%>
+                                <%--<div class="col-12">
+                                    <span class="label">Նպատակը</span>
+                                    <div class="def-select-box st-outline">
+                                        <c:set var="options" value='<%=request.getParameter("options")%>'/>
+                                        <c:choose>
+                                            <c:when test="${options == 0}">
+                                                <select name="options" onchange="document.main.submit();">
+                                                    <option value="0" selected>Բոլորը</option>
+                                                    <option value="1">Վերանորոգման վարկ</option>
+                                                    <option value="2">Վերաֆինանսավորում</option>
+                                                    <option value="3">Անշարժ գույքի ձեռք բերման վարկ</option>
+                                                    <option value="4">Կառուցապատման համար</option>
+                                                </select>
+                                            </c:when>
+                                            <c:when test="${options == 1}">
+                                                <select name="options" onchange="document.main.submit();">
+                                                    <option value="0">Բոլորը</option>
+                                                    <option value="1" selected>Վերանորոգման վարկ</option>
+                                                    <option value="2">Վերաֆինանսավորում</option>
+                                                    <option value="3">Անշարժ գույքի ձեռք բերման վարկ</option>
+                                                    <option value="4">Կառուցապատման համար</option>
+                                                </select>
+                                            </c:when>
+                                            <c:when test="${options == 2}">
+                                                <select name="options" onchange="document.main.submit();">
+                                                    <option value="0">Բոլորը</option>
+                                                    <option value="1">Վերանորոգման վարկ</option>
+                                                    <option value="2" selected>Վերաֆինանսավորում</option>
+                                                    <option value="3">Անշարժ գույքի ձեռք բերման վարկ</option>
+                                                    <option value="4">Կառուցապատման համար</option>
+                                                </select>
+                                            </c:when>
+                                            <c:when test="${options == 3}">
+                                                <select name="options" onchange="document.main.submit();">
+                                                    <option value="0">Բոլորը</option>
+                                                    <option value="1">Վերանորոգման վարկ</option>
+                                                    <option value="2">Վերաֆինանսավորում</option>
+                                                    <option value="3" selected>Անշարժ գույքի ձեռք բերման վարկ</option>
+                                                    <option value="4">Կառուցապատման համար</option>
+                                                </select>
+                                            </c:when>
+                                            <c:when test="${options == 4}">
+                                                <select name="options" onchange="document.main.submit();">
+                                                    <option value="0">Բոլորը</option>
+                                                    <option value="1">Վերանորոգման վարկ</option>
+                                                    <option value="2">Վերաֆինանսավորում</option>
+                                                    <option value="3">Անշարժ գույքի ձեռք բերման վարկ</option>
+                                                    <option value="4" selected>Կառուցապատման համար</option>
+                                                </select>
+                                            </c:when>
+                                        </c:choose>
+                                    </div>
+                                </div>--%>
                         </div>
                         <div class="row-md clearfix  form-row">
                             <div class="col-12">
@@ -580,7 +580,8 @@
                                                        step="${dropDownList2.steps}"
                                                        value='<%=discountingAmount(discountAmount,percentageForDiscount)%>'
                                                        oninput="showVal(this.value)"
-                                                       onchange="showVal(this.value)" id="amount_two" inputmode="numeric">
+                                                       onchange="showVal(this.value)" id="amount_two"
+                                                       inputmode="numeric">
 
                                                 <input type="range" name="range_two"
                                                        min="<%=MinAmount(discountAmount,10)%>"
@@ -634,7 +635,8 @@
                                                        step="${dropDownList3.steps}"
                                                        value='<%=discountingAmount2(discountAmount2,percentageForDiscount2)%>'
                                                        oninput="showVal(this.value)"
-                                                       onchange="showVal(this.value)" id="amount_two" inputmode="numeric">
+                                                       onchange="showVal(this.value)" id="amount_two"
+                                                       inputmode="numeric">
 
                                                 <input type="range" name="range_two"
                                                        min="<%=discountingAmount2(discountAmount2,percentageForDiscount2)%>"
@@ -678,6 +680,8 @@
                                                 <option value="18">18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                         </c:when>
                                         <c:when test="${monthsSection == '3'}">
@@ -691,6 +695,8 @@
                                                 <option value="18">18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                         </c:when>
                                         <c:when test="${monthsSection == '6'}">
@@ -704,6 +710,8 @@
                                                 <option value="18">18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                         </c:when>
                                         <c:when test="${monthsSection == '9'}">
@@ -717,6 +725,8 @@
                                                 <option value="18">18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                         </c:when>
                                         <c:when test="${monthsSection == '12'}">
@@ -730,6 +740,8 @@
                                                 <option value="18">18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                         </c:when>
                                         <c:when test="${monthsSection == '18'}">
@@ -743,6 +755,8 @@
                                                 <option value="18" selected>18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                         </c:when>
                                         <c:when test="${monthsSection == '24'}">
@@ -756,6 +770,8 @@
                                                 <option value="18">18 ամիս</option>
                                                 <option value="24" selected>24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                         </c:when>
                                         <c:when test="${monthsSection == '36'}">
@@ -769,6 +785,38 @@
                                                 <option value="18">18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36" selected>36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
+                                            </select>
+                                        </c:when>
+                                        <c:when test="${monthsSection == '48'}">
+                                            <select name="months" id="select_month"
+                                                    onchange="document.main.submit();">
+                                                <option value="1">1 ամիս</option>
+                                                <option value="3">3 ամիս</option>
+                                                <option value="6">6 ամիս</option>
+                                                <option value="9">9 ամիս</option>
+                                                <option value="12">12 ամիս</option>
+                                                <option value="18">18 ամիս</option>
+                                                <option value="24">24 ամիս</option>
+                                                <option value="36">36 ամիս</option>
+                                                <option value="48" selected>48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
+                                            </select>
+                                        </c:when>
+                                        <c:when test="${monthsSection == '60'}">
+                                            <select name="months" id="select_month"
+                                                    onchange="document.main.submit();">
+                                                <option value="1">1 ամիս</option>
+                                                <option value="3">3 ամիս</option>
+                                                <option value="6">6 ամիս</option>
+                                                <option value="9">9 ամիս</option>
+                                                <option value="12">12 ամիս</option>
+                                                <option value="18">18 ամիս</option>
+                                                <option value="24">24 ամիս</option>
+                                                <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60" selected>60 ամիս</option>
                                             </select>
                                         </c:when>
                                         <c:otherwise>
@@ -864,7 +912,6 @@
                                                 data-speed="1739"></h2>
 
 
-
                                         </div>
                                     </div>
                                     <a class="green-link width-icon" id="myBtn">
@@ -876,8 +923,8 @@
                         </div>
                     </div>
                 </form>
-              <%--  <c:set value='${details.gotoPage}' var="isAvilable"/>
-                <c:set value='${details.sendRequest}' var="isAvilable2"/>--%>
+                    <%--  <c:set value='${details.gotoPage}' var="isAvilable"/>
+                      <c:set value='${details.sendRequest}' var="isAvilable2"/>--%>
                 <c:choose>
                     <c:when test="${details.sendRequest == 1}">
                         <form action="CreditSend">
@@ -985,9 +1032,9 @@
                 <div class="switch">
                     <label>
                         <span>Հավասար մարում</span>
-                       <%-- <input type="checkbox" id="checkbox" >
-                        <span class="lever"></span>--%>
-                      <%--  <span class="green_texts">Հավասար վարկ</span>--%>
+                        <%-- <input type="checkbox" id="checkbox" >
+                         <span class="lever"></span>--%>
+                        <%--  <span class="green_texts">Հավասար վարկ</span>--%>
                     </label>
                 </div>
             </div>
@@ -1066,8 +1113,8 @@
                                 System.out.println("powerNumber " + powerNumber);
                                 float minuesOne = (1 - powerNumber);
                                 System.out.println("minuesOne " + minuesOne);
-                                collect1 = (int) ((newAmount * percentage)/month);
-                                finalCaculat1 += (int) (newAmount * percentage)/8 ;
+                                collect1 = (int) ((newAmount * percentage) / month);
+                                finalCaculat1 += (int) (newAmount * percentage) / 8;
                                 return (int) (newAmount * percentage);
                             }
                         %>
@@ -1093,13 +1140,13 @@
                         <%!
                             int calculatSecond(int i) {
                                 int result;
-                                result =  (calculatThird() - vjarumDogosakumar(calculatVargiMnatsort2(AmountOfLoan,i), percentageOfLoan, MonthsToPay));
-                                finalCaculat2 +=result;
+                                result = (calculatThird() - vjarumDogosakumar(calculatVargiMnatsort2(AmountOfLoan, i), percentageOfLoan, MonthsToPay));
+                                finalCaculat2 += result;
                                 return result;
                             }
                         %>
                         <%!
-                            int calculatFirst(){
+                            int calculatFirst() {
                                 return calculatePercentage2(AmountOfLoan, percentageOfLoan, MonthsToPay);
                             }
                         %>
@@ -1107,18 +1154,17 @@
                             int calculatThird() {
                                 int result;
                                 result = calculatePercentage2(AmountOfLoan, percentageOfLoan, MonthsToPay);
-                                finalCaculat3 += result/2;
+                                finalCaculat3 += result / 2;
                                 return result;
                             }
                         %>
-
 
 
                         <%-- <fmt:formatNumber type="number" maxFractionDigits="3" value='<%=finalAmountCalculate(AmountOfLoan, MonthsToPay)%>'/>--%>
 
                         <% for (int i = 0; i <= MonthsToPay; i++) {%>
                         <div class="table-row">
-                            <div class="table-cell small"><span><%=i+1 %></span></div>
+                            <div class="table-cell small"><span><%=i + 1 %></span></div>
                             <div class="table-cell">
                                 <span> <fmt:formatNumber type="number" maxFractionDigits="3"
                                                          value='<%=calculatVargiMnatsort2(AmountOfLoan,i)%>'/></span>
@@ -1229,9 +1275,9 @@
                             }
                         %>
                         <%!
-                            int claculateThirdPart(){
-                                int result =calculatePercentage3(AmountOfLoan, percentageOfLoan, MonthsToPay)-vjarumDogosakumar(AmountOfLoan, percentageOfLoan, MonthsToPay);
-                                second2 += calculatePercentage3(AmountOfLoan, percentageOfLoan, MonthsToPay)-vjarumDogosakumar(AmountOfLoan, percentageOfLoan, MonthsToPay);
+                            int claculateThirdPart() {
+                                int result = calculatePercentage3(AmountOfLoan, percentageOfLoan, MonthsToPay) - vjarumDogosakumar(AmountOfLoan, percentageOfLoan, MonthsToPay);
+                                second2 += calculatePercentage3(AmountOfLoan, percentageOfLoan, MonthsToPay) - vjarumDogosakumar(AmountOfLoan, percentageOfLoan, MonthsToPay);
                                 return result;
                             }
                         %>

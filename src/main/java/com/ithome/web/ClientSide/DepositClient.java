@@ -157,12 +157,14 @@ public class DepositClient extends HttpServlet {
     private void getApperance() throws SQLException {
         searchUpList = new ArrayList<>();
         depositeAseList = new ArrayList<>();
+        MaxAmount=null;
+        getMaxAmount();
         searchUpList = searchDatabase();
         for (int i = 0; i < searchUpList.size(); i++) {
             int firstSearch = searchUpList.get(i).getDMinAmount();
             //int firstSearchMonth = searchUpList.get(i).getTimeLine();
             String firstSearchCurrancy = searchUpList.get(i).getCurrancy();
-            if (Integer.parseInt(amoutFiltered) >= firstSearch && firstSearchCurrancy.equals(pageCurrancy)) {
+            if (Integer.parseInt(amoutFiltered) >= firstSearch || Integer.parseInt(amoutFiltered) <= firstSearch && Integer.parseInt(MaxAmount) <= firstSearch && firstSearchCurrancy.equals(pageCurrancy)) {
                 int id = Integer.parseInt(String.valueOf(searchUpList.get(i).getDId()));
                 depositeAseList.addAll(FilteredList(id));
             }
@@ -592,8 +594,14 @@ public class DepositClient extends HttpServlet {
             case "AutoClient":
                 gotoPageAutoClient(request, response);
                 break;
+            case "AutoCalculate":
+                gotoPageAutoCalculate(request, response);
+                break;
             case "MicroClient":
                 gotoPageMicroClient(request, response);
+                break;
+            case "MicroCalculate":
+                gotoPageMicroCalculate(request, response);
                 break;
             case "AClient":
                 gotoPageAClient(request, response);
@@ -645,6 +653,12 @@ public class DepositClient extends HttpServlet {
         microClient.doGet(request, response);
     }
 
+    private void gotoPageMicroCalculate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CalculatMocri calculatMocri = new CalculatMocri();
+        calculatMocri.doGet(request, response);
+    }
+
+
     private void gotoPageAClient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AClient aClient = new AClient();
         aClient.doGet(request, response);
@@ -654,7 +668,11 @@ public class DepositClient extends HttpServlet {
         AutoClient autoClient = new AutoClient();
         autoClient.doGet(request, response);
     }
-
+    private void gotoPageAutoCalculate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("PageToGo","AutoCalculate");
+        AutoCalulate autoCalulate = new AutoCalulate();
+        autoCalulate.doGet(request, response);
+    }
     private void gotoPageConsumerClient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ConsumerClient consumerClient = new ConsumerClient();
         consumerClient.doGet(request, response);

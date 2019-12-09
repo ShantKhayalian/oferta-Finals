@@ -845,10 +845,13 @@ public class MortgageClient extends HttpServlet {
         depositeAseList = new ArrayList<>();
 
         searchUpList = searchDatabase();
+        MaxAmount=null;
+        getMaxAmount();
         for (int i = 0; i <searchUpList.size() ; i++) {
             int firstSearch = searchUpList.get(i).getMMinAmount();
             String firstSearchCurrancy = searchUpList.get(i).getCurrancy();
-            if (Integer.parseInt(amoutFiltered) >= firstSearch && firstSearchCurrancy.equals(pageCurrancy) ) {
+
+            if (Integer.parseInt(amoutFiltered) >= firstSearch || Integer.parseInt(amoutFiltered) <= firstSearch && Integer.parseInt(MaxAmount) <= firstSearch && firstSearchCurrancy.equals(pageCurrancy) ) {
                 int id = Integer.parseInt(String.valueOf(searchUpList.get(i).getMId()));
                 depositeAseList.addAll(FilteredList(id));
             }
@@ -863,6 +866,7 @@ public class MortgageClient extends HttpServlet {
 
 
     private void getPageRange() throws SQLException {
+        dropDownsList  = new ArrayList<>();
         dropDownsList = dropDownHelper.getPageName(getPageNameArm(pageName));
     }
 

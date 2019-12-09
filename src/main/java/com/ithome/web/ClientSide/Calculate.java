@@ -157,6 +157,7 @@ public class Calculate extends HttpServlet {
         for (int i = 0; i < depositStartFilter.size(); i++) {
             int minAmount = depositStartFilter.get(i).getDMinAmount();
             /*int maxAmountFilter = depositStartFilter.get(i).getDMinAmount();*/
+
             if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositStartFilter.get(i).getDId()));
                 depositAmountFilter.addAll(FilteredList(id));
@@ -182,7 +183,7 @@ public class Calculate extends HttpServlet {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {
             int timeLineFilter = depositCurrancyFilter.get(i).getTimeLine();
-            if (timeLineFilter <= Integer.parseInt(montheToDays)) {
+            if (timeLineFilter == Integer.parseInt(montheToDays)) {
                 continue;
             }else{
                 int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getDId()));
@@ -415,7 +416,9 @@ public class Calculate extends HttpServlet {
             int firstSearch = searchUpList.get(i).getDMinAmount();
             int firstSearchMonth = searchUpList.get(i).getTimeLine();
             String firstSearchCurrancy = searchUpList.get(i).getCurrancy();
-            if (Integer.parseInt(amoutFiltered) <= firstSearch && Integer.parseInt(months) == (firstSearchMonth/30) && firstSearchCurrancy.equals(pageCurrancy) ) {
+            MaxAmount=null;
+            getMaxAmount();
+            if (Integer.parseInt(amoutFiltered) >= firstSearch || Integer.parseInt(amoutFiltered) <= firstSearch && Integer.parseInt(MaxAmount) <= firstSearch && Integer.parseInt(months) == (firstSearchMonth/30) && firstSearchCurrancy.equals(pageCurrancy) ) {
                 int id = Integer.parseInt(String.valueOf(searchUpList.get(i).getDId()));
                 depositeAseList.addAll(FilteredList(id));
             }

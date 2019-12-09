@@ -130,7 +130,7 @@
                 <c:forEach items="${requestScope.carLoansList}" var="CLList"
                            varStatus="loop">
 
-                            <div class="col-xs-12 col-sm-3">
+                            <div class="col-xs-12 col-sm-4">
                                 <div class="card profile-card">
                                     <div class="profile-header">&nbsp;</div>
 

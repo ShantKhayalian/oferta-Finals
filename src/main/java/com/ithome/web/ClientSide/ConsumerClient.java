@@ -309,7 +309,7 @@ public class ConsumerClient extends HttpServlet {
         System.out.println(pageCurrancy);
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             int minAmount = depositAmountFilter.get(i).getCCMinAmount();
-            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+            if (Integer.parseInt(Amount) >= minAmount || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -358,7 +358,7 @@ public class ConsumerClient extends HttpServlet {
         System.out.println(pageCurrancy);
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             int minAmount = depositAmountFilter.get(i).getCCMinAmount();
-            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+            if (Integer.parseInt(Amount) >= minAmount || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -408,7 +408,7 @@ public class ConsumerClient extends HttpServlet {
         System.out.println(pageCurrancy);
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             int minAmount = depositAmountFilter.get(i).getCCMinAmount();
-            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+            if (Integer.parseInt(Amount) >= minAmount || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -458,7 +458,7 @@ public class ConsumerClient extends HttpServlet {
         System.out.println(pageCurrancy);
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             int minAmount = depositAmountFilter.get(i).getCCMinAmount();
-            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+            if (Integer.parseInt(Amount) >= minAmount || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -511,7 +511,7 @@ public class ConsumerClient extends HttpServlet {
         System.out.println(pageCurrancy);
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             int minAmount = depositAmountFilter.get(i).getCCMinAmount();
-            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+            if (Integer.parseInt(Amount) >= minAmount || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -561,7 +561,7 @@ public class ConsumerClient extends HttpServlet {
         System.out.println(pageCurrancy);
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             int minAmount = depositAmountFilter.get(i).getCCMinAmount();
-            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+            if (Integer.parseInt(Amount) >= minAmount || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -612,7 +612,7 @@ public class ConsumerClient extends HttpServlet {
         System.out.println(pageCurrancy);
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             int minAmount = depositAmountFilter.get(i).getCCMinAmount();
-            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+            if (Integer.parseInt(Amount) >= minAmount || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
 
@@ -665,7 +665,7 @@ public class ConsumerClient extends HttpServlet {
         System.out.println(pageCurrancy);
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             int minAmount = depositAmountFilter.get(i).getCCMinAmount();
-            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+            if (Integer.parseInt(Amount) >= minAmount || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getCLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
@@ -863,12 +863,14 @@ public class ConsumerClient extends HttpServlet {
 
         searchUpList = new ArrayList<>();
         depositeAseList = new ArrayList<>();
-
+        MaxAmount = null;
+        getMaxAmount();
         searchUpList = searchDatabase();
         for (int i = 0; i < searchUpList.size(); i++) {
             int firstSearch = searchUpList.get(i).getCCMinAmount();
             String firstSearchCurrancy = searchUpList.get(i).getCurrancy();
-            if (Integer.parseInt(amoutFiltered) >= firstSearch && firstSearchCurrancy.equals(pageCurrancy)) {
+            if (Integer.parseInt(amoutFiltered) >= firstSearch || Integer.parseInt(amoutFiltered) <= firstSearch && Integer.parseInt(MaxAmount) <= firstSearch &&
+            firstSearchCurrancy.equals(pageCurrancy)){
                 int id = Integer.parseInt(String.valueOf(searchUpList.get(i).getCLId()));
                 depositeAseList.addAll(FilteredList(id));
             }

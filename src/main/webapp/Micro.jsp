@@ -282,27 +282,212 @@
                              </ul>
                          </div>&ndash;%&gt;
                      </span>--%>
-                        <%-- <span class="compere-box show-for-tablet relative">
+                         <span class="compere-box show-for-tablet relative">
                       <span class="compere-icon" onclick="toggleBoxes('compareTooltipMb')">
-                         <span class="count">4</span>
-                         <i class="icon-libra"></i>
+                       <c:if test="${requestScope.comparListMicro != null}">
+                           <c:forEach var="size" items="${requestScope.comparListMicro}" varStatus="TheCount">
+                               <span class="count"><c:out value="${TheCount.count}"/></span>
+                           </c:forEach>
+                       </c:if>
+                        <i class="icon-libra"></i>
                      </span>
                      <div class="tooltip-container bottom right" id="compareTooltipMb">
-                         <div class="tooltip"> <!--Todo add 'tp-blue' class when there is no item -->
-                             <span class="tooltip-title">Համեմատության</span>
-                             <ul>
+                         <div class="tooltip">
+                            <span class="tooltip-title">Համեմատության</span>
+                            <form action="CompareDeposit" method="get" name="DepositComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListDeposit != null}">
+                            <ul>
+                                <li>
+                                    <c:forEach var="DepositCompare" items="${requestScope.comparListDeposit}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterDeposit" value="${TheCount.count}" scope="request"/>
+
+                                    </c:forEach>
+                                     <span onclick="document.DepositComparesmall.submit();">Ավանդ</span>
+                                    <span class="bold font-14">${counterDeposit}</span>
+                                     <i class="icon-delete" onclick="document.Deletesmall.submit();"></i>
+
+                                    <form action="DepositClient" method="get" name="Deletesmall">
+                                        <input type="hidden" name="pageNameToDelete" value="Ավանդ">
+                                        <input name="MaxAmounr" value="<%=request.getParameter("MaxAmounr")%>"
+                                               type="hidden">
+                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
+                                               type="hidden">
+                                        <input name="PageToGo" value="MicroClient"
+                                               type="hidden">
+                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                    </form>
+                                </li>
+                            </ul>
+
+                            </c:if>
+                            <form action="CompareMortgage" method="get" name="MortgageCompare">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListMortgage != null}">
+                            <ul>
+                                <li onclick="document.MortgageComparesmall.submit();">
+                                    <c:forEach var="MortgagCompare" items="${requestScope.comparListMortgage}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterMortgag" value="${TheCount.count}" scope="request"/>
+
+
+                                    </c:forEach>
+                                     <span onclick="document.MortgageComparesmall.submit();">Հիփոթեք</span>
+                                     <span class="bold font-14">${counterMortgag}</span>
+                                        <i type="submit" class="icon-delete"
+                                           onclick="document.DeleteHipoteksmall.submit();"></i>
+                                </li>
+                             <form action="DepositClient" method="get" name="DeleteHipoteksmall">
+                                        <input type="hidden" name="pageNameToDelete" value="Հիփոթեք">
+                                        <input name="MaxAmounr" value="<%=request.getParameter("MaxAmounr")%>"
+                                               type="hidden">
+                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
+                                               type="hidden">
+                                        <input name="PageToGo" value="MicroClient"
+                                               type="hidden">
+                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                    </form>
+                            </ul>
+                            </c:if>
+                           <form action="CompareConsumer" method="get" name="ConsumerComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                             <c:if test="${requestScope.comparListConsumer != null}">
+                            <ul>
+                                <li>
+                                    <c:forEach var="ConsumerCompare" items="${requestScope.comparListConsumer}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterCompare" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                     <span onclick="document.ConsumerComparesmall.submit();">Սպառողական</span>
+                                     <span class="bold font-14">${counterCompare}</span>
+                                        <i type="submit" class="icon-delete"
+                                           onclick="document.DeleteConsumersmall.submit();"></i>
+                                </li>
+                             <form action="DepositClient" method="get" name="DeleteConsumersmall">
+                                        <input type="hidden" name="pageNameToDelete" value="Սպարողական">
+                                        <input name="MaxAmounr" value="<%=request.getParameter("MaxAmounr")%>"
+                                               type="hidden">
+                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
+                                               type="hidden">
+                                        <input name="PageToGo" value="MicroClient"
+                                               type="hidden">
+                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                    </form>
+                            </ul>
+                             </c:if>
+                           <form action="CompareCarLoan" method="get" name="CarLoanComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListCarLoan != null}">
+                            <ul>
+                               <li>
+                                    <c:forEach var="CarLoanCompare" items="${requestScope.comparListCarLoan}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterCarLoan" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                    <span onclick="document.CarLoanComparesmall.submit();">Ավտովարկ</span>
+                                      <span class="bold font-14">${counterCarLoan}</span>
+                                        <i type="submit" class="icon-delete"
+                                           onclick="document.DeleteCarsmall.submit();"></i>
+                                </li>
+                            </ul>
+                                <form action="DepositClient" method="get" name="DeleteCarsmall">
+                                        <input type="hidden" name="pageNameToDelete" value="Ավտովարկ">
+                                        <input name="MaxAmounr" value="<%=request.getParameter("MaxAmounr")%>"
+                                               type="hidden">
+                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
+                                               type="hidden">
+                                        <input name="PageToGo" value="MicroClient"
+                                               type="hidden">
+                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                    </form>
+                            </c:if>
+                            <%-- <form action="CompareMicro" method="get" name="MicroCompare">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListMicro != null}">
+                            <ul>
+                               <li>
+                                    <c:forEach var="MicroCompare" items="${requestScope.comparListMicro}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterMicro" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                     <span onclick="document.MicroCompare.submit();">Միկրովարկ</span>
+                                     <span class="bold font-14">${counterMicro}</span>
+                                        <i type="submit" class="icon-delete"
+                                           onclick="document.DeleteMicro.submit();"></i>
+                                </li>
+                           <form action="DepositClient" method="get" name="DeleteMicro">
+                                        <input type="hidden" name="pageNameToDelete" value="ՄԻԿՐՈՎԱՐԿ">
+                                        <input name="MaxAmounr" value="<%=request.getParameter("MaxAmounr")%>"
+                                               type="hidden">
+
+                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
+                                               type="hidden">
+                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                               type="hidden">
+                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                    </form>
+                            </ul>
+                            </c:if>--%>
+                           <form action="CompareAg" method="get" name="AgComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListAg != null}">
+                            <ul>
                                  <li>
-                                     <span>Սպառողական վարկ</span>
-                                     <span class="bold font-14">4</span>
-                                     <i class="icon-delete"></i>
-                                 </li>
-                             </ul>
+                                    <c:forEach var="AgComparesmall" items="${requestScope.comparListAg}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterAg" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                     <span>Գյուղատնտեսական</span>
+                                      <span class="bold font-14">${counterAg}</span>
+                                         <i type="submit" class="icon-delete" onclick="document.DeleteAGsmall.submit();"></i>
+                                </li>
+                            <form action="DepositClient" method="get" name="DeleteAGsmall">
+                                        <input type="hidden" name="pageNameToDelete" value="Գյուղատնտեսական">
+                                        <input name="MaxAmounr" value="<%=request.getParameter("MaxAmounr")%>"
+                                               type="hidden">
+                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
+                                               type="hidden">
+                                        <input name="PageToGo" value="MicroClient"
+                                               type="hidden">
+                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
+                                    </form>
+                            </ul>
+                            </c:if>
+
+                             <%--<c:if test="${requestScope.comparListCard != null}">
+                            <ul>
+                                <li>
+                                    <c:forEach var="CardCompare" items="${requestScope.comparListCard}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterCard" value="${TheCount.count}" scope="request"/>
+
+                                    </c:forEach>
+                                     <span>Քարտեր</span>
+                                      <span class="bold font-14">${counterCard}</span>
+                                        <i class="icon-delete"></i>
+                                </li>
+                            </ul>
+                             </c:if>--%>
                              <!--Todo add when there is no item -->
                              <!--                            <span>Համեմատության էջում տեղ չկա</span>-->
-                         </div>
+
+                        </div>
                      </div>
-                 </span>--%>
-                        <%-- <span class="i-menu show-for-tablet" id="mbNavBtn"><i class="icon-menu font-20"></i></span>--%>
+                 </span>
+                         <span class="i-menu show-for-tablet" id="mbNavBtn"><i class="icon-menu font-20"></i></span>
                     </div>
                 </div>
             </div>
@@ -392,7 +577,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                        <input name="PageToGo" value="MicroClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                     </form>
@@ -424,7 +609,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                        <input name="PageToGo" value="MicroClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                     </form>
@@ -452,7 +637,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                        <input name="PageToGo" value="MicroClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                     </form>
@@ -481,12 +666,12 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                        <input name="PageToGo" value="MicroClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                     </form>
                             </c:if>
-                             <form action="CompareMicro" method="get" name="MicroCompare">
+                            <%-- <form action="CompareMicro" method="get" name="MicroCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
                             <c:if test="${requestScope.comparListMicro != null}">
@@ -514,7 +699,7 @@
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                     </form>
                             </ul>
-                            </c:if>
+                            </c:if>--%>
                            <form action="CompareAg" method="get" name="AgCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
@@ -536,7 +721,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
+                                        <input name="PageToGo" value="MicroClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                     </form>
@@ -616,7 +801,7 @@
                                                    max="${dropDownList2.maxAmount}" step="${dropDownList2.steps}"
                                                    value="${requestScope.Amountfiltered}"
                                                    oninput="showVal(this.value)"
-                                                   onchange="showVal(this.value)" id="amount">
+                                                   onchange="showVal(this.value)" id="amount" inputmode="numeric">
 
                                             <input type="range" name="range" min="${dropDownList2.minAmount}"
                                                    max="${dropDownList2.maxAmount}" step="${dropDownList2.steps}"
@@ -638,7 +823,7 @@
                                                    max="${dropDownList3.maxAmount}" step="${dropDownList3.steps}"
                                                    value="${requestScope.Amountfiltered}"
                                                    oninput="showVal(this.value)"
-                                                   onchange="showVal(this.value)" id="amount">
+                                                   onchange="showVal(this.value)" id="amount" inputmode="numeric">
 
                                             <input type="range" name="range" min="${dropDownList3.minAmount}"
                                                    max="${dropDownList3.maxAmount}" step="${dropDownList3.steps}"
@@ -830,8 +1015,8 @@
                                     <a href="CreditSend?ProductCode=${SpecialConsumer.productCode}&&Per=${SpecialConsumer.MLFatual}&&months=1&&Amount=<%=request.getAttribute("range")%>&&PageToGo=Micro&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&value_two=<%=request.getAttribute("minAmount")%>&&range_two=30"
                                        class="def-button btn-green with-shadow  margin-bottom-15">Իմանալ ավելին</a>
                                     <p>
-                                        <a href="MicroClient?id=${SpecialConsumer.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                       <%-- <a href="MicroClient?id=${SpecialConsumer.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                         </c:when>
 
                                         <c:when test="${gotoPage == 0 && sendRequest== 0 && lastLogic==1}">
@@ -839,8 +1024,8 @@
                                            class="def-button btn-green with-shadow  margin-bottom-15" target="_blank">Անցնել
                                             էջ</a>
                                     <p>
-                                        <a href="MicroClient?id=${SpecialConsumer.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                       <%-- <a href="MicroClient?id=${SpecialConsumer.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
 
                                         </c:when>
                                         </c:choose>
@@ -856,8 +1041,8 @@
                                            class="def-button btn-green with-shadow  margin-bottom-15">Իմանալ
                                             ավելին</a>
                                     <p>
-                                        <a href="MicroClient?id=${SpecialConsumer.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                       <%-- <a href="MicroClient?id=${SpecialConsumer.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                         </c:when>
                                         </c:choose>
                                         <c:choose>
@@ -866,8 +1051,8 @@
                                            class="def-button btn-green with-shadow  margin-bottom-15" target="_blank">Անցնել
                                             էջ</a>
                                     <p>
-                                        <a href="MicroClient?id=${SpecialConsumer.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                       <%-- <a href="MicroClient?id=${SpecialConsumer.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                           class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
 
                                         </c:when>
                                         </c:choose>
@@ -1087,7 +1272,7 @@
 
 
                                                         <div class="table-cell">
-                                                            <p class="font-22 bold">
+                                                            <p class="font-18 ">
                                                                     <%--<sql:setDataSource var="db"
                                                           driver="com.mysql.jdbc.Driver"
                                                           url="jdbc:mysql://localhost:3306/oferta_oferta_datat_controller?serverTimezone=UTC&useUnicode=yes&characterEncoding=UTF-8"
@@ -1120,7 +1305,7 @@
                                                             <p class="margin-bottom-20 show-for-mb text-left">
                                                                 <a class="green-link font-12 width-icon right-icon ellipsis"
                                                                    onclick="toggleSubSuggestions()">
-                                                                    <span><%--+5 առաջարկ --%></span> <i
+                                                                    <span>Ավելի Առաջարկներ</span> <i
                                                                         class="icon-arrow-down"></i>
                                                                 </a>
                                                             </p>
@@ -1132,8 +1317,8 @@
                                                                     <a href="CreditSend?ProductCode=${firstDepo.productCode}&&Per=${firstDepo.MLFatual}&&months=1&&Amount=<%=request.getAttribute("range")%>&&PageToGo=Micro&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&value_two=<%=request.getAttribute("minAmount")%>&&range_two=30"
                                                                        class="def-button btn-green with-shadow  margin-bottom-15">Իմանալ
                                                                         ավելին</a>
-                                                                    <a href="MicroClient?id=${firstDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                                                   <%-- <a href="MicroClient?id=${firstDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                                                     <%--  <p><a href="index.php?page=compare/deposit"
                                                                             class="blue-link font-12">Համեմատել</a></p>--%>
 
@@ -1143,14 +1328,14 @@
                                                                        class="def-button btn-green with-shadow  margin-bottom-15"
                                                                        target="_blank">Անցնել
                                                                         էջ</a>
-                                                                    <a href="MicroClient?id=${firstDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                                                  <%--  <a href="MicroClient?id=${firstDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                                                     <%--<p><a href="index.php?page=compare/deposit"
                                                                           class="blue-link font-12">Համեմատել</a></p>--%>
                                                                 </c:when>
                                                                 <c:otherwise>
-                                                                    <a href="MicroClient?id=${firstDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                                                   <%-- <a href="MicroClient?id=${firstDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                                                     <%-- <p><a href="index.php?page=compare/deposit"
                                                                            class="blue-link font-12">Համեմատել</a></p>--%>
                                                                 </c:otherwise>
@@ -1268,7 +1453,7 @@
                                                                                         </div>
 
                                                                                         <div class="table-cell">
-                                                                                            <p class="font-22 bold">
+                                                                                            <p class="font-18">
                                                                                                     <%--<sql:setDataSource var="db"
                                                            driver="com.mysql.jdbc.Driver"
                                                            url="jdbc:mysql://localhost:3306/oferta_oferta_datat_controller?serverTimezone=UTC&useUnicode=yes&characterEncoding=UTF-8"
@@ -1317,8 +1502,8 @@
                                                                                                     <a href="CreditSend?ProductCode=${seconDepo.productCode}&&Per=${seconDepo.MLFatual}&&months=1&&Amount=<%=request.getAttribute("range")%>&&PageToGo=Micro&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&value_two=<%=request.getAttribute("minAmount")%>&&range_two=30"
                                                                                                        class="def-button btn-green with-shadow  margin-bottom-15">Իմանալ
                                                                                                         ավելին</a>
-                                                                                                    <a href="MicroClient?id=${seconDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                                                                                    <%--<a href="MicroClient?id=${seconDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                                                                                     <%--<p>
                                                                                                         <a href="index.php?page=compare/deposit"
                                                                                                            class="blue-link font-12">Համեմատել</a>
@@ -1331,8 +1516,8 @@
                                                                                                        target="_blank">Անցնել
                                                                                                         էջ</a>
 
-                                                                                                    <a href="MicroClient?id=${seconDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                                                                                    <%--<a href="MicroClient?id=${seconDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                                                                                     <%-- <p>
                                                                                                          <a href="index.php?page=compare/deposit"
                                                                                                             class="blue-link font-12">Համեմատել</a>
@@ -1340,8 +1525,8 @@
                                                                                                 </c:when>
                                                                                                 <c:otherwise>
 
-                                                                                                    <a href="MicroClient?id=${seconDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
-                                                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>
+                                                                                                    <%--<a href="MicroClient?id=${seconDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
+                                                                                                       class="blue-link font-12 linkScrollDown">Համեմատել</a>--%>
                                                                                                     <%-- <p>
                                                                                                          <a href="index.php?page=compare/deposit"
                                                                                                             class="blue-link font-12">Համեմատել</a>
@@ -1382,7 +1567,7 @@
                     </p>
                     <div class="tab-container">
                         <div class="tab-nav flex align-items-center flex-wrap">
-						<span class="tab-link" onclick="openTabItem(event, 'deposit')" id="defaultOpen">
+						<span class="tab-link" onclick="openTabItem(event, 'deposit')" >
                            Ավանդներ</span>
                             <span class="tab-link" onclick="openTabItem(event, 'mortgage')">
                         Հիպոթեկային վարկ</span>
@@ -1390,7 +1575,7 @@
                    Սպառողական վարկ</span>
                             <span class="tab-link" onclick="openTabItem(event, 'car-loan')">
                     Ավտովարկ</span>
-                            <span class="tab-link" onclick="openTabItem(event, 'agricultural')">
+                            <span class="tab-link active" onclick="openTabItem(event, 'agricultural')" id="defaultOpen">
                     Միկրոկրեդիտ</span>
                             <span class="tab-link" onclick="openTabItem(event, 'card')">
                    Քարտեր</span>

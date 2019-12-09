@@ -317,7 +317,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CardClient"
+                                        <input name="PageToGo" value="AutoClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                          <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
@@ -349,7 +349,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CardClient"
+                                        <input name="PageToGo" value="AutoClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                  <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
@@ -378,7 +378,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CardClient"
+                                        <input name="PageToGo" value="AutoClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                         <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
@@ -408,7 +408,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CardClient"
+                                        <input name="PageToGo" value="AutoClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                      <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
@@ -463,7 +463,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CardClient"
+                                        <input name="PageToGo" value="AutoClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                  <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
@@ -576,7 +576,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CardClient"
+                                        <input name="PageToGo" value="AutoClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                          <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
@@ -608,7 +608,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CardClient"
+                                        <input name="PageToGo" value="AutoClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                  <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
@@ -637,7 +637,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CardClient"
+                                        <input name="PageToGo" value="AutoClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                   <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
@@ -667,7 +667,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CardClient"
+                                        <input name="PageToGo" value="AutoClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                      <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
@@ -722,7 +722,7 @@
                                         <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
                                                type="hidden">
-                                        <input name="PageToGo" value="CardClient"
+                                        <input name="PageToGo" value="AutoClient"
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                  <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
@@ -1043,6 +1043,8 @@
                                 <option value="18">18 ամիս</option>
                                 <option value="24">24 ամիս</option>
                                 <option value="36">36 ամիս</option>
+                                <option value="48">48 ամիս</option>
+                                <option value="60">60 ամիս</option>
                             </select>
                             <input type="hidden" name="select_value" id="select_month_value" value="1">
                             <input type="hidden" name="City" value='<%=request.getAttribute("city")%>'>

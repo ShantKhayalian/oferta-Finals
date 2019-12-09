@@ -234,11 +234,13 @@ public class MicroClient extends HttpServlet {
     private void getApperance() throws SQLException {
         searchUpList = new ArrayList<>();
         depositeAseList = new ArrayList<>();
+        MaxAmount=null;
+        getMaxAmount();
         searchUpList = searchDatabase();
         for (int i = 0; i <searchUpList.size() ; i++) {
             int firstSearch = searchUpList.get(i).getMLMinAmount();
             String firstSearchCurrancy = searchUpList.get(i).getCurrancy();
-            if(Integer.parseInt(amoutFiltered) >= firstSearch && firstSearchCurrancy.equals(pageCurrancy) ) {
+            if(Integer.parseInt(amoutFiltered) >= firstSearch || Integer.parseInt(amoutFiltered) <= firstSearch && Integer.parseInt(MaxAmount) <= firstSearch && firstSearchCurrancy.equals(pageCurrancy) ) {
                 int id = Integer.parseInt(String.valueOf(searchUpList.get(i).getMLId()));
                 depositeAseList.addAll(FilteredList(id));
             }
@@ -493,9 +495,26 @@ public class MicroClient extends HttpServlet {
                 subDepositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterOrderApperanceListSub3(subDepositCurrancyFilter);
+        FilterByRange8(subDepositCurrancyFilter);
     }
+    private void FilterByRange8(List<MicroLoans> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
 
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMLMinAmount();
+            // int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }else{
+                continue;
+            }
+        }
+        FilterOrderApperanceListSub3(depositCurrancyFilter);
+    }
     private void FilterOrderApperanceListSub3(List<MicroLoans> subDepositCurrancyFilter) throws SQLException {
         depositAllInSubRage = new ArrayList<>();
         for (int i = 0; i < subDepositCurrancyFilter.size(); i++) {
@@ -528,9 +547,26 @@ public class MicroClient extends HttpServlet {
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
         }
+        FilterByRange7(depositCurrancyFilter);
+    }
+    private void FilterByRange7(List<MicroLoans> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMLMinAmount();
+            // int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }else{
+                continue;
+            }
+        }
         FilterOrderApperanceList2(depositCurrancyFilter);
     }
-
     private void FilterOrderApperanceList2(List<MicroLoans> depositCurrancyFilter) throws SQLException {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {
@@ -565,9 +601,26 @@ public class MicroClient extends HttpServlet {
                 subDepositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterOrderApperanceListSub6(subDepositCurrancyFilter);
+        FilterByRange6(subDepositCurrancyFilter);
     }
+    private void FilterByRange6(List<MicroLoans> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
 
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMLMinAmount();
+            // int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }else{
+                continue;
+            }
+        }
+        FilterOrderApperanceListSub6(depositCurrancyFilter);
+    }
     private void FilterOrderApperanceListSub6(List<MicroLoans> subDepositCurrancyFilter) throws SQLException {
         depositAllInSubRage = new ArrayList<>();
         for (int i = 0; i < subDepositCurrancyFilter.size(); i++) {
@@ -602,9 +655,26 @@ public class MicroClient extends HttpServlet {
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
         }
+        FilterByRange5(depositCurrancyFilter);
+    }
+    private void FilterByRange5(List<MicroLoans> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMLMinAmount();
+            // int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }else{
+                continue;
+            }
+        }
         FilterOrderApperanceList5(depositCurrancyFilter);
     }
-
     private void FilterOrderApperanceList5(List<MicroLoans> depositCurrancyFilter) throws SQLException {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {
@@ -640,9 +710,26 @@ public class MicroClient extends HttpServlet {
                 subDepositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterOrderApperanceListSub4(subDepositCurrancyFilter);
+        FilterByRange4(subDepositCurrancyFilter);
     }
+    private void FilterByRange4(List<MicroLoans> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
 
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMLMinAmount();
+            // int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }else{
+                continue;
+            }
+        }
+        FilterOrderApperanceListSub4(depositCurrancyFilter);
+    }
     private void FilterOrderApperanceListSub4(List<MicroLoans> subDepositCurrancyFilter) throws SQLException {
         depositAllInSubRage = new ArrayList<>();
         for (int i = 0; i < subDepositCurrancyFilter.size(); i++) {
@@ -679,9 +766,26 @@ public class MicroClient extends HttpServlet {
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
         }
+        FilterByRange3(depositCurrancyFilter);
+    }
+    private void FilterByRange3(List<MicroLoans> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMLMinAmount();
+            // int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }else{
+                continue;
+            }
+        }
         FilterOrderApperanceList3(depositCurrancyFilter);
     }
-
     private void FilterOrderApperanceList3(List<MicroLoans> depositCurrancyFilter) throws SQLException {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {
@@ -716,9 +820,26 @@ public class MicroClient extends HttpServlet {
                 subDepositCurrancyFilter.addAll(FilteredList(id));
             }
         }
-        FilterOrderApperanceListSub(subDepositCurrancyFilter);
+        FilterByRange2(subDepositCurrancyFilter);
     }
+    private void FilterByRange2(List<MicroLoans> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
 
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMLMinAmount();
+            // int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }else{
+                continue;
+            }
+        }
+        FilterOrderApperanceListSub(depositCurrancyFilter);
+    }
     private void FilterOrderApperanceListSub(List<MicroLoans> subDepositCurrancyFilter) throws SQLException {
         depositAllInSubRage = new ArrayList<>();
         for (int i = 0; i < subDepositCurrancyFilter.size(); i++) {
@@ -750,6 +871,24 @@ public class MicroClient extends HttpServlet {
             if (CurrancyFilter.equals(pageCurrancy)) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMLId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
+            }
+        }
+        FilterByRange(depositCurrancyFilter);
+    }
+    private void FilterByRange(List<MicroLoans> depositAmountFilter) throws SQLException {
+        depositCurrancyFilter = new ArrayList<>();
+        System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
+
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            int minAmount = depositAmountFilter.get(i).getMLMinAmount();
+            // int minAmount = depositAmountFilter.get(i).getMMinAmount();
+            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMLId()));
+                depositCurrancyFilter.addAll(FilteredList(id));
+            }else{
+                continue;
             }
         }
         FilterOrderApperanceList(depositCurrancyFilter);

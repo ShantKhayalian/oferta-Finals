@@ -639,7 +639,7 @@ public class CalculateMort extends HttpServlet {
         for (int i = 0; i < depositStartFilter.size(); i++) {
             int minAamountFilter = depositStartFilter.get(i).getMMinAmount();
             /*int maxAmountFilter = depositStartFilter.get(i).getDMinAmount();*/
-            if (Integer.parseInt(amoutFiltered) >= minAamountFilter) {
+            if (Integer.parseInt(Amount) >= minAamountFilter  || Integer.parseInt(Amount) <= minAamountFilter && Integer.parseInt(MaxAmount) <= minAamountFilter) {
                 int id = Integer.parseInt(String.valueOf(depositStartFilter.get(i).getMId()));
                 depositAmountFilter.addAll(FilteredList(id));
             }
@@ -662,16 +662,14 @@ public class CalculateMort extends HttpServlet {
     }
     private void FilterByRange2(List<Mortgage> depositAmountFilter) throws SQLException {
         depositCurrancyFilter = new ArrayList<>();
-        System.out.println(pageCurrancy);
-        MaxAmount=null;
-        getMaxAmount();
-
-        for (int i = 0; i < depositAmountFilter.size(); i++) {
-            int minAmount = depositAmountFilter.get(i).getMMinAmount();
-            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
-                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
+        for (int i = 0; i < depositCurrancyFilter.size(); i++) {
+            double timeLineFilter = depositCurrancyFilter.get(i).getMFatual();
+            int monthsFromData = depositCurrancyFilter.get(i).getMMinPeriodMonth();
+            if(monthsFromData >= Integer.parseInt(months)) {
+                int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getMId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
+
         }
         FilterOptionsListSort(depositCurrancyFilter);
     }
@@ -712,10 +710,12 @@ public class CalculateMort extends HttpServlet {
     private void PercentageAsec() throws SQLException {
         depositStartFilter = mortgageDaoController.getAllMortage();
         depositAmountFilter = new ArrayList<>();
+        MaxAmount=null;
+        getMaxAmount();
         for (int i = 0; i < depositStartFilter.size(); i++) {
             int minAamountFilter = depositStartFilter.get(i).getMMinAmount();
             /*int maxAmountFilter = depositStartFilter.get(i).getDMinAmount();*/
-            if (Integer.parseInt(amoutFiltered) >= minAamountFilter) {
+            if (Integer.parseInt(Amount) >= minAamountFilter  || Integer.parseInt(Amount) <= minAamountFilter && Integer.parseInt(MaxAmount) <= minAamountFilter) {
                 int id = Integer.parseInt(String.valueOf(depositStartFilter.get(i).getMId()));
                 depositAmountFilter.addAll(FilteredList(id));
             }
@@ -738,16 +738,14 @@ public class CalculateMort extends HttpServlet {
     }
     private void FilterByRange(List<Mortgage> depositAmountFilter) throws SQLException {
         depositCurrancyFilter = new ArrayList<>();
-        System.out.println(pageCurrancy);
-        MaxAmount=null;
-        getMaxAmount();
-
-        for (int i = 0; i < depositAmountFilter.size(); i++) {
-            int minAmount = depositAmountFilter.get(i).getMMinAmount();
-            if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
-                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
+        for (int i = 0; i < depositCurrancyFilter.size(); i++) {
+            double timeLineFilter = depositCurrancyFilter.get(i).getMFatual();
+            int monthsFromData = depositCurrancyFilter.get(i).getMMinPeriodMonth();
+            if(monthsFromData >= Integer.parseInt(months)) {
+                int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getMId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
+
         }
         FilterOptionsList(depositCurrancyFilter);
     }

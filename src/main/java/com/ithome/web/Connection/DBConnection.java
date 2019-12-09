@@ -16,7 +16,7 @@ public class DBConnection {
             Class.forName("com.mysql.jdbc.Driver");
 
             //connection = DriverManager.getConnection("jdbc:mysql://204.93.169.198:3306/oferta_oferta_datat_controller?serverTimezone=UTC&useUnicode=yes&characterEncoding=UTF-8", "oferta_root", "mnbvcxz00A!");
-             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/oferta_oferta_datat_controller?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT", Constance.USERNAMEINDATA2, Constance.USERPASSWORDINDATA2);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/oferta_oferta_datat_controller?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT", Constance.USERNAMEINDATA2, Constance.USERPASSWORDINDATA2);
 
         } catch (ClassNotFoundException e) {
             //System.out.println("Where is your MySQL JDBC Driver?");
