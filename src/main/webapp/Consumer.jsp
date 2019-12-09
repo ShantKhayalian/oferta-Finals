@@ -906,6 +906,8 @@
                                     <option value="18">18 ամիս</option>
                                     <option value="24">24 ամիս</option>
                                     <option value="36">36 ամիս</option>
+                                    <option value="48">48 ամիս</option>
+                                    <option value="60">60 ամիս</option>
                                 </select>
 
                                 <%-- <input type="hidden" name="select_value" id="select_month_value" value="1">--%>

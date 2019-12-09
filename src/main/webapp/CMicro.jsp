@@ -310,7 +310,7 @@
                                                   id="startApp${TheCount.count}">
                                                 <input name="NewAmount" type="text" id="start${TheCount.count}"
                                                        value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                       onchange="doSearch();"/>
+                                                       onchange="doSearch();" maxlength="9"/>
                                                 <input type="hidden" name="idNew" value='${compare.idCheck}'>
                                                 <input type="hidden" name="Currancy"
                                                        value='<%=request.getParameter("Currancy")%>'>
@@ -322,7 +322,7 @@
                                             <form action="CompareMicro" method="get" name="amountSectionform">
                                                 <input name="NewAmount" type="text" id="start${TheCount.count}"
                                                        value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                       onchange="doSearch();"/>
+                                                       onchange="doSearch();" maxlength="9"/>
                                                 <input type="hidden" name="idNew" value='${compare.idCheck}'>
                                                 <input type="hidden" name="Currancy"
                                                        value='<%=request.getParameter("Currancy")%>'>
@@ -333,7 +333,7 @@
                                             <form action="CompareMicro" method="get" name="amountSectionform">
                                                 <input name="NewAmount" type="text" id="start${TheCount.count}"
                                                        value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                       onchange="doSearch();"/>
+                                                       onchange="doSearch();" maxlength="9"/>
                                                 <input type="hidden" name="idNew" value='${compare.idCheck}'>
                                                 <input type="hidden" name="Currancy"
                                                        value='<%=request.getParameter("Currancy")%>'>
@@ -345,7 +345,7 @@
                                             <form action="CompareMicro" method="get" name="amountSectionform">
                                                 <input name="NewAmount" type="text" id="start${TheCount.count}"
                                                        value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                       onchange="doSearch();"/>
+                                                       onchange="doSearch();" maxlength="9"/>
                                                 <input type="hidden" name="idNew" value='${compare.idCheck}'>
                                                 <input type="hidden" name="Currancy"
                                                        value='<%=request.getParameter("Currancy")%>'>

@@ -95,7 +95,7 @@
                 <div class="flex space-between align-items-center inner-content flex-wrap">
                     <jsp:include page="include/Search.jsp"/>
                     <div class="nav-content">
-                        <div class="nav-content">
+
                             <c:if test="${requestScope.dropDownsListWithCurrancy!=null}">
                                 <c:forEach items="${requestScope.dropDownsListWithCurrancy}" var="dropDownList">
                                     <ul>
@@ -243,7 +243,7 @@
                                     console.log("x = " + x);
                                     if (!$.isNumeric(x)) {
                                         alert("Խնդրում ենք մուտքագրել թվեր")
-                                    } else if(x < 0 ){
+                                    } else if (x < 0) {
                                         alert("Խնդրում ենք մուտքագրել Դրական թվեր")
                                     } else {
                                         console.log("Սխալների մուտքագրում չկա");
@@ -258,7 +258,7 @@
                                     console.log("x = " + x);
                                     if (!$.isNumeric(x)) {
                                         alert("Խնդրում ենք մուտքագրել թվեր")
-                                    }else if(x < 0 ){
+                                    } else if (x < 0) {
                                         alert("Խնդրում ենք մուտքագրել Դրական թվեր")
                                     } else {
                                         console.log("Սխալների մուտքագրում չկա");
@@ -273,7 +273,7 @@
                                     console.log("x = " + x);
                                     if (!$.isNumeric(x)) {
                                         alert("Խնդրում ենք մուտքագրել թվեր")
-                                    }else if(x < 0 ){
+                                    } else if (x < 0) {
                                         alert("Խնդրում ենք մուտքագրել Դրական թվեր")
                                     } else {
                                         console.log("Սխալների մուտքագրում չկա");
@@ -288,7 +288,7 @@
                                     console.log("x = " + x);
                                     if (!$.isNumeric(x)) {
                                         alert("Խնդրում ենք մուտքագրել թվեր")
-                                    }else if(x < 0 ){
+                                    } else if (x < 0) {
                                         alert("Խնդրում ենք մուտքագրել Դրական թվեր")
                                     } else {
                                         console.log("Սխալների մուտքագրում չկա");
@@ -313,7 +313,7 @@
                                                       name="amountSectionform" id="startApp${TheCount.count}">
                                                     <input type="text" name="NewAmount" id="start${TheCount.count}"
                                                            value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                           onchange="doSearch();"/>
+                                                           onchange="doSearch();" maxlength="9"/>
                                                     <input type="hidden" name="idNew"
                                                            value='${compare.idCheck}'>
                                                     <input type="hidden" name="Currancy"
@@ -327,7 +327,7 @@
                                                       id="startApp${TheCount.count}">
                                                     <input type="text" name="NewAmount" id="start${TheCount.count}"
                                                            value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                           onchange="doSearch();"/>
+                                                           onchange="doSearch();" maxlength="9"/>
                                                     <input type="hidden" name="idNew" value='${compare.idCheck}'>
                                                     <input type="hidden" name="Currancy"
                                                            value='<%=request.getParameter("Currancy")%>'>
@@ -341,7 +341,7 @@
                                                       id="startApp${TheCount.count}">
                                                     <input type="text" name="NewAmount" id="start${TheCount.count}"
                                                            value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                           onchange="doSearch();"/>
+                                                           onchange="doSearch();" maxlength="9"/>
                                                     <input type="hidden" name="idNew" value='${compare.idCheck}'>
                                                     <input type="hidden" name="Currancy"
                                                            value='<%=request.getParameter("Currancy")%>'>
@@ -353,7 +353,8 @@
                                                 <form action="CompareDeposit" name="CompareNewAmount" type="get"
                                                       id="startApp${TheCount.count}">
                                                     <input type="text" name="NewAmount" id="start${TheCount.count}"
-                                                           value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>
+                                                           value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
+                                                           onchange="doSearch();" maxlength="9"/>
                                                 <input type=" hidden" name="idNew" value='${compare.idCheck}'>
                                                     <input type="hidden" name="Currancy"
                                                            value='<%=request.getParameter("Currancy")%>'>
@@ -751,26 +752,26 @@
                     </c:if>
                 </div>
             </div>
-        </div>
-    </div>
+            </div>
+</div>
 
-    <footer>
-        <div class="inner-container large">
-            <div class="top flex space-between">
-                <div class="flex align-items-center">
+<footer>
+    <div class="inner-container large">
+        <div class="top flex space-between">
+            <div class="flex align-items-center">
 					<span class="logo"> <img src="../images/oferta1.jpg" alt=""/>
 					</span>
-                </div>
-                <div class="flex align-items-center">
-                    <span class="margin-right-15 hide-for-mb">Միացեք մեզ սոցիալական ցանցերում</span>
-                    <span>
+            </div>
+            <div class="flex align-items-center">
+                <span class="margin-right-15 hide-for-mb">Միացեք մեզ սոցիալական ցանցերում</span>
+                <span>
 						<ul class="social-box">
 						<jsp:include page="include/Social.jsp"/>
 						</ul>
 					</span>
-                </div>
             </div>
-            <div class="bottom flex space-between align-items-center">
+        </div>
+        <div class="bottom flex space-between align-items-center">
 				<span>
 					<ul>
 						<li><a href="About?Currancy=${requestScope.PageCurrancy}">Մեր մասին</a></li>
@@ -784,33 +785,33 @@
 					</ul>
 				</span> <span class="text-right"> 2009-2019 domain.am : նյութերը
 					օգտագործելիս, հղում դեպի domain.am պարտադիր է: </span>
-            </div>
         </div>
+    </div>
 
-    </footer>
+</footer>
 
-    <script>
-        $(function () {
-            $("#datepicker").datepicker({
-                changeMonth: true,
-                changeYear: true
-            });
+<script>
+    $(function () {
+        $("#datepicker").datepicker({
+            changeMonth: true,
+            changeYear: true
         });
-    </script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js'></script>
+    });
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js'></script>
 
-    <script src="<%=request.getContextPath()%>/js/main.js"></script>
-    <script src="<%=request.getContextPath()%>/js/search.js"></script>
-    <script src="<%=request.getContextPath()%>/js/range.js"></script>
-    <script src="<%=request.getContextPath()%>/js/modal.js"></script>
-    <script src="<%=request.getContextPath()%>/libs/owl/owl.carousel.min.js"></script>
-    <script src="<%=request.getContextPath()%>/js/carousel.js"></script>
+<script src="<%=request.getContextPath()%>/js/main.js"></script>
+<script src="<%=request.getContextPath()%>/js/search.js"></script>
+<script src="<%=request.getContextPath()%>/js/range.js"></script>
+<script src="<%=request.getContextPath()%>/js/modal.js"></script>
+<script src="<%=request.getContextPath()%>/libs/owl/owl.carousel.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/carousel.js"></script>
 
 
 </body>

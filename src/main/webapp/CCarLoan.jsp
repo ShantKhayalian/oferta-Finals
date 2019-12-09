@@ -304,11 +304,13 @@
                                                   id="startApp${TheCount.count}">
                                                 <input type="text" name="NewAmount" id="start${TheCount.count}"
                                                        value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                />
-                                                <input type="hidden" name="idNew" value='${compare.idCheck}'>
+                                                       onchange="doSearch();" maxlength="9"/>
+                                                <input type="hidden" name="idNew"
+                                                       value='${compare.idCheck}'>
                                                 <input type="hidden" name="Currancy"
                                                        value='<%=request.getParameter("Currancy")%>'>
-                                                <input type="hidden" name="clientCode" value='${compare.SID}'>
+                                                <input type="hidden" name="clientCode"
+                                                       value='${compare.SID}'>
                                             </form>
                                         </c:when>
                                         <c:when test="${currancy == 'USD'}">
@@ -316,11 +318,13 @@
                                                   id="startApp${TheCount.count}">
                                                 <input type="text" name="NewAmount" id="start${TheCount.count}"
                                                        value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                />
-                                                <input type="hidden" name="idNew" value='${compare.idCheck}'>
+                                                       onchange="doSearch();" maxlength="9"/>
+                                                <input type="hidden" name="idNew"
+                                                       value='${compare.idCheck}'>
                                                 <input type="hidden" name="Currancy"
                                                        value='<%=request.getParameter("Currancy")%>'>
-                                                <input type="hidden" name="clientCode" value='${compare.SID}'>
+                                                <input type="hidden" name="clientCode"
+                                                       value='${compare.SID}'>
                                             </form>
                                         </c:when>
                                         <c:when test="${currancy == 'EUR'}">
@@ -328,11 +332,13 @@
                                                   id="startApp${TheCount.count}">
                                                 <input type="text" name="NewAmount" id="start${TheCount.count}"
                                                        value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                />
-                                                <input type="hidden" name="idNew" value='${compare.idCheck}'>
+                                                       onchange="doSearch();" maxlength="9"/>
+                                                <input type="hidden" name="idNew"
+                                                       value='${compare.idCheck}'>
                                                 <input type="hidden" name="Currancy"
                                                        value='<%=request.getParameter("Currancy")%>'>
-                                                <input type="hidden" name="clientCode" value='${compare.SID}'>
+                                                <input type="hidden" name="clientCode"
+                                                       value='${compare.SID}'>
                                             </form>
 
                                         </c:when>
@@ -341,11 +347,13 @@
                                                   id="startApp${TheCount.count}">
                                                 <input type="text" name="NewAmount" id="start${TheCount.count}"
                                                        value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                />
-                                                <input type="hidden" name="idNew" value='${compare.idCheck}'>
+                                                       onchange="doSearch();" maxlength="9"/>
+                                                <input type="hidden" name="idNew"
+                                                       value='${compare.idCheck}'>
                                                 <input type="hidden" name="Currancy"
                                                        value='<%=request.getParameter("Currancy")%>'>
-                                                <input type="hidden" name="clientCode" value='${compare.SID}'>
+                                                <input type="hidden" name="clientCode"
+                                                       value='${compare.SID}'>
                                             </form>
                                         </c:when>
                                     </c:choose>

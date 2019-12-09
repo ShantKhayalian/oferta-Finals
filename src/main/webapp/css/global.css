@@ -2280,8 +2280,30 @@
 
   .padding-bt-60 {
     padding-top: 30px;
-    padding-bottom: 30px; } }
+    padding-bottom: 30px; }
+    .table-cell:nth-child(4) {
+        text-align: center!important;}
+}
 @media (max-width: 620px) {
+    .rigthtwo-one {
+        display: none;
+    }
+    .rigthtwo-two {
+        width: 100%!important;
+    }
+    .right-side__mobile {
+        width: 100%!important;
+        margin-top: 5%;
+    }
+    .left-side__mobile {
+        width: 100%!important;
+    }
+    .main-left-right__side {
+        flex-direction: column;
+    }
+    .item-block__image {
+        height: 55px!important;
+    }
   .font-34 {
     font-size: 22px !important; }
 
@@ -5447,8 +5469,6 @@ footer .bottom ul li a:hover {
   align-items: self-start; }
 .credit-info .item > span {
   flex: 1; }
-.credit-info .item > span:first-child {
-  max-width: 200px; }
 .credit-info .item > span:last-child {
   padding: 0 10px;
   font-weight: bold; }

@@ -687,6 +687,8 @@
                                             <option value="18">18 ամիս</option>
                                             <option value="24">24 ամիս</option>
                                             <option value="36">36 ամիս</option>
+                                            <option value="48">48 ամիս</option>
+                                            <option value="60">60 ամիս</option>
                                         </select>
                                     </c:when>
                                     <c:when test="${monthsSection == '3'}">
@@ -699,6 +701,8 @@
                                             <option value="18">18 ամիս</option>
                                             <option value="24">24 ամիս</option>
                                             <option value="36">36 ամիս</option>
+                                            <option value="48">48 ամիս</option>
+                                            <option value="60">60 ամիս</option>
                                         </select>
                                     </c:when>
                                     <c:when test="${monthsSection == '6'}">
@@ -711,6 +715,8 @@
                                             <option value="18">18 ամիս</option>
                                             <option value="24">24 ամիս</option>
                                             <option value="36">36 ամիս</option>
+                                            <option value="48">48 ամիս</option>
+                                            <option value="60">60 ամիս</option>
                                         </select>
                                     </c:when>
                                     <c:when test="${monthsSection == '9'}">
@@ -723,6 +729,8 @@
                                             <option value="18">18 ամիս</option>
                                             <option value="24">24 ամիս</option>
                                             <option value="36">36 ամիս</option>
+                                            <option value="48">48 ամիս</option>
+                                            <option value="60">60 ամիս</option>
                                         </select>
                                     </c:when>
                                     <c:when test="${monthsSection == '12'}">
@@ -735,6 +743,8 @@
                                             <option value="18">18 ամիս</option>
                                             <option value="24">24 ամիս</option>
                                             <option value="36">36 ամիս</option>
+                                            <option value="48">48 ամիս</option>
+                                            <option value="60">60 ամիս</option>
                                         </select>
                                     </c:when>
                                     <c:when test="${monthsSection == '18'}">
@@ -747,6 +757,8 @@
                                             <option value="18" selected>18 ամիս</option>
                                             <option value="24">24 ամիս</option>
                                             <option value="36">36 ամիս</option>
+                                            <option value="48">48 ամիս</option>
+                                            <option value="60">60 ամիս</option>
                                         </select>
                                     </c:when>
                                     <c:when test="${monthsSection == '24'}">
@@ -759,6 +771,8 @@
                                             <option value="18">18 ամիս</option>
                                             <option value="24" selected>24 ամիս</option>
                                             <option value="36">36 ամիս</option>
+                                            <option value="48">48 ամիս</option>
+                                            <option value="60">60 ամիս</option>
                                         </select>
                                     </c:when>
                                     <c:when test="${monthsSection == '36'}">
@@ -771,6 +785,36 @@
                                             <option value="18">18 ամիս</option>
                                             <option value="24">24 ամիս</option>
                                             <option value="36" selected>36 ամիս</option>
+                                            <option value="48">48 ամիս</option>
+                                            <option value="60">60 ամիս</option>
+                                        </select>
+                                    </c:when>
+                                    <c:when test="${monthsSection == '48'}">
+                                        <select name="months" id="select_month" onchange="document.main.submit();">
+                                            <option value="1">1 ամիս</option>
+                                            <option value="3">3 ամիս</option>
+                                            <option value="6">6 ամիս</option>
+                                            <option value="9">9 ամիս</option>
+                                            <option value="12">12 ամիս</option>
+                                            <option value="18">18 ամիս</option>
+                                            <option value="24">24 ամիս</option>
+                                            <option value="36" >36 ամիս</option>
+                                            <option value="48" selected>48 ամիս</option>
+                                            <option value="60">60 ամիս</option>
+                                        </select>
+                                    </c:when>
+                                    <c:when test="${monthsSection == '60'}">
+                                        <select name="months" id="select_month" onchange="document.main.submit();">
+                                            <option value="1">1 ամիս</option>
+                                            <option value="3">3 ամիս</option>
+                                            <option value="6">6 ամիս</option>
+                                            <option value="9">9 ամիս</option>
+                                            <option value="12">12 ամիս</option>
+                                            <option value="18">18 ամիս</option>
+                                            <option value="24">24 ամիս</option>
+                                            <option value="36" >36 ամիս</option>
+                                            <option value="48" >48 ամիս</option>
+                                            <option value="60" selected>60 ամիս</option>
                                         </select>
                                     </c:when>
                                     <c:otherwise>

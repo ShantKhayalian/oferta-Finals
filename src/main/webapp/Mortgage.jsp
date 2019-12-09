@@ -321,7 +321,7 @@
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                       <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
-                                       <input name="options" value="<%=request.getAttribute("options")%>" type="hidden">
+
                                     </form>
                             </ul>
                            </c:if>
@@ -352,7 +352,7 @@
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                       <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
-                                       <input name="options" value="<%=request.getAttribute("options")%>" type="hidden">
+
                                     </form>
                             </ul>
                             </c:if>
@@ -382,7 +382,7 @@
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                      <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
-                                       <input name="options" value="<%=request.getAttribute("options")%>" type="hidden">
+
                                     </form>
                             </ul>
                              </c:if>
@@ -413,7 +413,7 @@
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                      <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
-                                       <input name="options" value="<%=request.getAttribute("options")%>" type="hidden">
+
                                     </form>
                             </c:if>
                           <%--  &lt;%&ndash;<form action="CompareMicro" method="get" name="MicroCompare">
@@ -469,7 +469,7 @@
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                      <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
-                                       <input name="options" value="<%=request.getAttribute("options")%>" type="hidden">
+
                                     </form>
                             </ul>
                             </c:if>
@@ -589,7 +589,7 @@
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                       <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
-                                       <input name="options" value="<%=request.getAttribute("options")%>" type="hidden">
+
                                     </form>
                             </ul>
                            </c:if>
@@ -620,7 +620,7 @@
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                         <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
-                                       <input name="options" value="<%=request.getAttribute("options")%>" type="hidden">
+
                                     </form>
                             </ul>
                             </c:if>
@@ -650,7 +650,7 @@
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                      <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
-                                       <input name="options" value="<%=request.getAttribute("options")%>" type="hidden">
+
                                     </form>
                             </ul>
                              </c:if>
@@ -681,7 +681,7 @@
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                      <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
-                                       <input name="options" value="<%=request.getAttribute("options")%>" type="hidden">
+
                                     </form>
                             </c:if>
                             <%--<form action="CompareMicro" method="get" name="MicroCompare">
@@ -737,7 +737,7 @@
                                                type="hidden">
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                      <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
-                                       <input name="options" value="<%=request.getAttribute("options")%>" type="hidden">
+
                                     </form>
                             </ul>
                             </c:if>

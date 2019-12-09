@@ -300,9 +300,9 @@
                                         <c:when test="${currancy == 'AMD'}">
                                             <form action="CompareMortgage" method="get" name="amountSectionform"
                                                   id="startApp${TheCount.count}">
-                                                <input type="text" name="NewAmount" id="start${TheCount.count}"
+                                                <input name="NewAmount" type="text" id="start${TheCount.count}"
                                                        value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                />
+                                                       onchange="doSearch();" maxlength="9"/>
                                                 <input type="hidden" name="idNew" value='${compare.idCheck}'>
                                                 <input type="hidden" name="Currancy"
                                                        value='<%=request.getParameter("Currancy")%>'>
@@ -312,9 +312,9 @@
                                         <c:when test="${currancy == 'USD'}">
                                             <form action="CompareMortgage" method="get" name="amountSectionform"
                                                   id="startApp${TheCount.count}">
-                                                <input type="text" name="NewAmount" id="start${TheCount.count}"
+                                                <input name="NewAmount" type="text" id="start${TheCount.count}"
                                                        value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                />
+                                                       onchange="doSearch();" maxlength="9"/>
                                                 <input type="hidden" name="idNew" value='${compare.idCheck}'>
                                                 <input type="hidden" name="Currancy"
                                                        value='<%=request.getParameter("Currancy")%>'>
@@ -324,9 +324,9 @@
                                         <c:when test="${currancy == 'EUR'}">
                                             <form action="CompareMortgage" method="get" name="amountSectionform"
                                                   id="startApp${TheCount.count}">
-                                                <input type="text" name="NewAmount" id="start${TheCount.count}"
+                                                <input name="NewAmount" type="text" id="start${TheCount.count}"
                                                        value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                />
+                                                       onchange="doSearch();" maxlength="9"/>
                                                 <input type="hidden" name="idNew" value='${compare.idCheck}'>
                                                 <input type="hidden" name="Currancy"
                                                        value='<%=request.getParameter("Currancy")%>'>
@@ -337,9 +337,9 @@
                                         <c:when test="${currancy == 'RUB'}">
                                             <form action="CompareMortgage" method="get" name="amountSectionform"
                                                   id="startApp${TheCount.count}">
-                                                <input type="text" name="NewAmount" id="start${TheCount.count}"
+                                                <input name="NewAmount" type="text" id="start${TheCount.count}"
                                                        value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${compare.amount}"/>"
-                                                />
+                                                       onchange="doSearch();" maxlength="9"/>
                                                 <input type="hidden" name="idNew" value='${compare.idCheck}'>
                                                 <input type="hidden" name="Currancy"
                                                        value='<%=request.getParameter("Currancy")%>'>
