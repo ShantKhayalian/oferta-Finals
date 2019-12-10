@@ -159,6 +159,9 @@ public class DepositClient extends HttpServlet {
         depositeAseList = new ArrayList<>();
         MaxAmount=null;
         getMaxAmount();
+        if(Amount == null){
+            filterAmount(getMinAmount());
+        }
         searchUpList = searchDatabase();
         for (int i = 0; i < searchUpList.size(); i++) {
             int firstSearch = searchUpList.get(i).getDMinAmount();
@@ -476,11 +479,16 @@ public class DepositClient extends HttpServlet {
     private void FilterByRange(List<Deposit> depositAmountFilter) throws SQLException {
         depositCurrancyFilter = new ArrayList<>();
         System.out.println(pageCurrancy);
+        if(Amount == null ){
+            filterAmount(getMinAmount());
+        }
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             int minAmount = depositAmountFilter.get(i).getDMinAmount();
             if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getDId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
+            }else{
+                continue;
             }
         }
         FilterOrderApperanceList5(depositCurrancyFilter);
@@ -763,6 +771,7 @@ public class DepositClient extends HttpServlet {
             filterAmount(Amount);
         } else {
             Amount = getMinAmount();
+            filterAmount(Amount);
         }
 
         if(request.getParameter("bankId")!=null){

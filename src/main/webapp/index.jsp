@@ -189,7 +189,7 @@
                                         <input type="hidden" name="pageNameToDelete" value="Ավանդ">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
                                         <input name="PageToGo" value="App"  type="hidden">
-                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+
                                     </form>
                             </ul>
                             </c:if>
@@ -215,7 +215,7 @@
                                         <input type="hidden" name="pageNameToDelete" value="Հիփոթեք">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
                                         <input name="PageToGo" value="App"  type="hidden">
-                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+
                                     </form>
                             </ul>
                             </c:if>
@@ -238,7 +238,7 @@
                                         <input type="hidden" name="pageNameToDelete" value="Սպարողական">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
                                         <input name="PageToGo" value="App"  type="hidden">
-                                        <input name="Amount" value=<<%=request.getAttribute("range")%> type="hidden">
+
                                     </form>
                             </ul>
                              </c:if>
@@ -260,7 +260,7 @@
                                         <input type="hidden" name="pageNameToDelete" value="Ավտովարկ">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
                                         <input name="PageToGo" value="App"  type="hidden">
-                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+
                                     </form>
                             </ul>
                             </c:if>
@@ -304,7 +304,7 @@
                                         <input type="hidden" name="pageNameToDelete" value="Գյուղատնտեսական">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
                                         <input name="PageToGo" value="App"  type="hidden">
-                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+
                                     </form>
                             </ul>
                             </c:if>
