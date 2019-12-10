@@ -1012,7 +1012,7 @@
                                     <c:set var="lastLogic" value="${SpecialConsumer.lastlogic}"/>
                                     <c:choose>
                                     <c:when test="${gotoPage == 1 || sendRequest== 1 && lastLogic== 0}">
-                                    <a href="CreditSend?ProductCode=${SpecialConsumer.productCode}&&Per=${SpecialConsumer.MLFatual}&&months=1&&Amount=<%=request.getAttribute("range")%>&&PageToGo=Micro&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&value_two=<%=request.getAttribute("minAmount")%>&&range_two=30"
+                                    <a href="CreditSend?ProductCode=${SpecialConsumer.productCode}&&Per=${SpecialConsumer.MLFatual}&&months=7&&Amount=<%=request.getAttribute("range")%>&&PageToGo=Micro&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&value_two=<%=request.getAttribute("minAmount")%>&&range_two=30"
                                        class="def-button btn-green with-shadow  margin-bottom-15">Իմանալ ավելին</a>
                                     <p>
                                        <%-- <a href="MicroClient?id=${SpecialConsumer.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
@@ -1037,7 +1037,7 @@
                                             <c:set var="lastLogic" value="${SpecialConsumer.lastlogic}"/>
                                         <c:choose>
                                         <c:when test="${gotoPage == 1 || sendRequest== 1 && lastLogic==0}">
-                                        <a href="CreditSend?ProductCode=${SpecialConsumer.productCode}&&Per=${SpecialConsumer.MLFatual}&&months=1&&Amount=<%=request.getAttribute("range")%>&&PageToGo=Micro&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&value_two=<%=request.getAttribute("minAmount")%>&&range_two=30"
+                                        <a href="CreditSend?ProductCode=${SpecialConsumer.productCode}&&Per=${SpecialConsumer.MLFatual}&&months=7&&Amount=<%=request.getAttribute("range")%>&&PageToGo=Micro&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&value_two=<%=request.getAttribute("minAmount")%>&&range_two=30"
                                            class="def-button btn-green with-shadow  margin-bottom-15">Իմանալ
                                             ավելին</a>
                                     <p>
@@ -1314,7 +1314,7 @@
                                                             <c:set var="lastLogic" value="${firstDepo.lastlogic}"/>
                                                             <c:choose>
                                                                 <c:when test="${gotoPage == 1 || sendRequest== 1 && lastLogic == 0}">
-                                                                    <a href="CreditSend?ProductCode=${firstDepo.productCode}&&Per=${firstDepo.MLFatual}&&months=1&&Amount=<%=request.getAttribute("range")%>&&PageToGo=Micro&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&value_two=<%=request.getAttribute("minAmount")%>&&range_two=30"
+                                                                    <a href="CreditSend?ProductCode=${firstDepo.productCode}&&Per=${firstDepo.MLFatual}&&months=7&&Amount=<%=request.getAttribute("range")%>&&PageToGo=Micro&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&value_two=<%=request.getAttribute("minAmount")%>&&range_two=30"
                                                                        class="def-button btn-green with-shadow  margin-bottom-15">Իմանալ
                                                                         ավելին</a>
                                                                    <%-- <a href="MicroClient?id=${firstDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"
@@ -1499,7 +1499,7 @@
                                                                                                    value="${seconDepo.lastlogic}"/>
                                                                                             <c:choose>
                                                                                                 <c:when test="${gotoPage == 1 || sendRequest== 1 && lastLogic == 0}">
-                                                                                                    <a href="CreditSend?ProductCode=${seconDepo.productCode}&&Per=${seconDepo.MLFatual}&&months=1&&Amount=<%=request.getAttribute("range")%>&&PageToGo=Micro&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&value_two=<%=request.getAttribute("minAmount")%>&&range_two=30"
+                                                                                                    <a href="CreditSend?ProductCode=${seconDepo.productCode}&&Per=${seconDepo.MLFatual}&&months=7&&Amount=<%=request.getAttribute("range")%>&&PageToGo=Micro&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&value_two=<%=request.getAttribute("minAmount")%>&&range_two=30"
                                                                                                        class="def-button btn-green with-shadow  margin-bottom-15">Իմանալ
                                                                                                         ավելին</a>
                                                                                                     <%--<a href="MicroClient?id=${seconDepo.productCode}&&months=1MaxAmounr=<%=request.getParameter("MaxAmounr")%>&&City=<%=request.getParameter("City")%>&&Currancy=<%=request.getParameter("Currancy")%>&&PageToGo=<%=request.getParameter("PageToGo")%>&&Amount=<%=request.getAttribute("range")%>&&PageName=Deposit"

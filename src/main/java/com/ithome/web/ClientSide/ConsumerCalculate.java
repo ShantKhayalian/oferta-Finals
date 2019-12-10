@@ -274,7 +274,7 @@ public class ConsumerCalculate extends HttpServlet {
             int firstSearch = searchUpList.get(i).getCCMinAmount();
             String firstSearchCurrancy = searchUpList.get(i).getCurrancy();
             int monthsToCheck = searchUpList.get(i).getCCMinPeriodMonth();
-            if (Integer.parseInt(amoutFiltered) >= firstSearch && firstSearchCurrancy.equals(pageCurrancy) && monthsToCheck == Integer.parseInt(months) ) {
+            if (Integer.parseInt(amoutFiltered) >= firstSearch && firstSearchCurrancy.equals(pageCurrancy) && monthsToCheck >= Integer.parseInt(months) ) {
                 int id = Integer.parseInt(String.valueOf(searchUpList.get(i).getCLId()));
                 depositeAseList.addAll(FilteredList(id));
             }
@@ -359,9 +359,11 @@ public class ConsumerCalculate extends HttpServlet {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {
             double timeLineFilter = depositCurrancyFilter.get(i).getCCFactual();
-
-            int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getCLId()));
-            depositAllInRage.addAll(FilteredList(id));
+            int mothsfromdata = depositCurrancyFilter.get(i).getCCMinPeriodMonth();
+            if(mothsfromdata >= Integer.parseInt(months)) {
+                int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getCLId()));
+                depositAllInRage.addAll(FilteredList(id));
+            }
 
         }
 
@@ -427,9 +429,11 @@ public class ConsumerCalculate extends HttpServlet {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {
             double timeLineFilter = depositCurrancyFilter.get(i).getCCFactual();
-
-            int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getCLId()));
-            depositAllInRage.addAll(FilteredList(id));
+            int mothsfromdata = depositCurrancyFilter.get(i).getCCMinPeriodMonth();
+            if(mothsfromdata >= Integer.parseInt(months)) {
+                int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getCLId()));
+                depositAllInRage.addAll(FilteredList(id));
+            }
 
         }
         Collections.sort(depositAllInRage, new ComparePercentage2());

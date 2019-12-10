@@ -424,6 +424,8 @@ public class DepositClient extends HttpServlet {
     private void FilterByRange5(List<Deposit> depositAmountFilter) throws SQLException {
         depositCurrancyFilter = new ArrayList<>();
         System.out.println(pageCurrancy);
+        MaxAmount=null;
+        getMaxAmount();
         for (int i = 0; i < depositAmountFilter.size(); i++) {
             int minAmount = depositAmountFilter.get(i).getDMinAmount();
             if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
@@ -606,8 +608,14 @@ public class DepositClient extends HttpServlet {
             case "AClient":
                 gotoPageAClient(request, response);
                 break;
+            case "ACaluclate":
+                gotoPageACalculate(request, response);
+                break;
             case "App":
                 gotoPageApp(request, response);
+                break;
+            case "Cards":
+                gotoPageCads(request, response);
                 break;
             case "BankingDepo":
                 gotoBankingDeposit(request, response);
@@ -642,6 +650,11 @@ public class DepositClient extends HttpServlet {
         app.doGet(request, response);
     }
 
+    private void gotoPageCads(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CardClient cardClient = new CardClient();
+        cardClient.doGet(request, response);
+    }
+
     private void gotoBankingDeposit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("Bankid",BankIdFromData);
         DepositBanks depositBanks = new DepositBanks();
@@ -662,6 +675,11 @@ public class DepositClient extends HttpServlet {
     private void gotoPageAClient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AClient aClient = new AClient();
         aClient.doGet(request, response);
+    }
+
+    private void gotoPageACalculate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        AgCalculate agCalculate = new AgCalculate();
+        agCalculate.doGet(request, response);
     }
 
     private void gotoPageAutoClient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

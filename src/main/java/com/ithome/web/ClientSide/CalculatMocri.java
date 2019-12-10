@@ -746,7 +746,7 @@ public class CalculatMocri extends HttpServlet {
         }else{
             months ="";
         }
-       //convertToDays(months);
+        //convertToDays(months);
         city = request.getParameter("City");
 
         if(request.getParameter("PageToGo")!= null) {

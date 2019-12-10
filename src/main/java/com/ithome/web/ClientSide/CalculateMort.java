@@ -179,7 +179,11 @@ public class CalculateMort extends HttpServlet {
             request.setAttribute("Bankid",BankIdFromData);
             MortgageBanks mortgageBanks = new MortgageBanks();
             mortgageBanks.doGet(request,response);
-        }else {
+        }/*if(months.equals("0")){
+            request.getRequestDispatcher("/Mortgage.jsp").forward(request, response);
+        }*/
+
+        else {
             request.getRequestDispatcher("/CalcMortgage.jsp").forward(request, response);
         }
     }
@@ -738,15 +742,20 @@ public class CalculateMort extends HttpServlet {
     }
     private void FilterByRange(List<Mortgage> depositAmountFilter) throws SQLException {
         depositCurrancyFilter = new ArrayList<>();
-        for (int i = 0; i < depositCurrancyFilter.size(); i++) {
-            double timeLineFilter = depositCurrancyFilter.get(i).getMFatual();
-            int monthsFromData = depositCurrancyFilter.get(i).getMMinPeriodMonth();
-            if(monthsFromData >= Integer.parseInt(months)) {
-                int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getMId()));
+        int monthsOld = Integer.parseInt(months);
+        if(monthsOld == 0){
+            monthsOld= 0;
+        }
+        for (int i = 0; i < depositAmountFilter.size(); i++) {
+            double timeLineFilter = depositAmountFilter.get(i).getMFatual();
+            int monthsFromData = depositAmountFilter.get(i).getMMinPeriodMonth();
+            if(monthsFromData >= monthsOld) {
+                int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
             }
 
         }
+
         FilterOptionsList(depositCurrancyFilter);
     }
     private void FilterOptionsList(List<Mortgage> depositCurrancyFilter) throws SQLException {

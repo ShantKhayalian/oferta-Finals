@@ -33,11 +33,11 @@
                     </a>
                 </li>
                 <li>
-                    <a href="DepositRangeController">ԱՎԱՆԴՆԵՐ էջի կարգավորիչ
+                    <a href="MortgageRangeController">ԱՎԱՆԴՆԵՐ էջի կարգավորիչ
                     </a>
                 </li>
                 <li>
-                    <a href="MortgageRangeController">ՀԻՓՈԹԵՔ էջի կարգավորիչ
+                    <a href="DepositRangeController">ՀԻՓՈԹԵՔ էջի կարգավորիչ
                     </a>
                 </li>
                 <li>

@@ -64,21 +64,217 @@
                 </span>--%>
                         <span class="compere-box show-for-tablet relative">
                      <span class="compere-icon">
-                        <span class="count">4</span>
+                       <c:if test="${requestScope.comparListDeposit != null}">
+                           <c:forEach var="size" items="${requestScope.comparListCarLoan}" varStatus="TheCount">
+                               <span class="count"><c:out value="${TheCount.count}"/></span>
+                           </c:forEach>
+                       </c:if>
                         <i class="icon-libra"></i>
                     </span>
                     <div class="tooltip-container bottom right" id="compareTooltipMb">
-                        <div class="tooltip"> <!--Todo add 'tp-blue' class when there is no item -->
+                        <div class="tooltip">
                             <span class="tooltip-title">Համեմատության</span>
+                            <form action="CompareDeposit" method="get" name="DepositComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                                <input name="PageToGo" value="Deposits"  type="hidden">
+                            </form>
+
+                            <c:if test="${requestScope.comparListDeposit != null}">
+                            <ul>
+                                <li >
+                                    <c:forEach var="DepositCompare" items="${requestScope.comparListDeposit}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterDeposit" value="${TheCount.count}" scope="request"/>
+
+                                    </c:forEach>
+                                     <span onclick="document.DepositComparesmall.submit();">Ավանդ</span>
+
+                                    <span class="bold font-14">${counterDeposit}</span>
+                                     <i type="submit" class="icon-delete" onclick="document.Deletesmall.submit();"></i>
+
+                                </li>
+                                 <form action="CardClient" method="get" name="Deletesmall">
+                                        <input type="hidden" name="pageNameToDelete" value="Ավանդ">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
+                                        <input name="PageToGo" value="Cards"  type="hidden">
+                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+                                       <input name="Ruble" value=<%=request.getParameter("Ruble")%> type="hidden">
+                                        <input name="Dollar" value=<%=request.getParameter("Dollar")%> type="hidden">
+                                        <input name="Euro" value=<%=request.getParameter("Euro")%> type="hidden">
+                                        <input name="Cashback" value=<%=request.getParameter("Cashback")%> type="hidden">
+                                        <input name="Depit" value=<%=request.getParameter("Depit")%> type="hidden">
+                                        <input name="Free" value=<%=request.getParameter("Free")%> type="hidden">
+                                        <input name="Credit" value=<%=request.getParameter("Credit")%> type="hidden">
+                                       <input name="Period" value=<%=request.getParameter("Period")%> type="hidden">
+                                    </form>
+                            </ul>
+                            </c:if>
+                             <form action="CompareMortgage" method="get" name="MortgageComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+
+                            </form>
+                            <c:if test="${requestScope.comparListMortgage != null}">
+                            <ul>
+                                <li >
+                                    <c:forEach var="MortgagCompare" items="${requestScope.comparListMortgage}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterMortgag" value="${TheCount.count}" scope="request"/>
+
+
+                                    </c:forEach>
+                                     <span onclick="document.MortgageComparesmall.submit();">Հիփոթեք</span>
+                                     <input name="PageToGo" value="Mortgage"  type="hidden">
+                                     <span class="bold font-14">${counterMortgag}</span>
+                                        <i type="submit" class="icon-delete" onclick="document.DeleteHipoteksmall.submit();"></i>
+                                </li>
+                                 <form action="CardClient" method="get" name="DeleteHipoteksmall">
+                                        <input type="hidden" name="pageNameToDelete" value="Հիփոթեք">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
+                                        <input name="PageToGo" value="Cards"  type="hidden">
+                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+                                       <input name="Ruble" value=<%=request.getParameter("Ruble")%> type="hidden">
+                                        <input name="Dollar" value=<%=request.getParameter("Dollar")%> type="hidden">
+                                        <input name="Euro" value=<%=request.getParameter("Euro")%> type="hidden">
+                                        <input name="Cashback" value=<%=request.getParameter("Cashback")%> type="hidden">
+                                        <input name="Depit" value=<%=request.getParameter("Depit")%> type="hidden">
+                                        <input name="Free" value=<%=request.getParameter("Free")%> type="hidden">
+                                        <input name="Credit" value=<%=request.getParameter("Credit")%> type="hidden">
+                                       <input name="Period" value=<%=request.getParameter("Period")%> type="hidden">
+                                    </form>
+                            </ul>
+                            </c:if>
+                            <form action="CompareConsumer" method="get" name="ConsumerComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                             <c:if test="${requestScope.comparListConsumer != null}">
                             <ul>
                                 <li>
-                                    <span>Սպառողական վարկ</span>
-                                    <span class="bold font-14">4</span>
-                                    <i class="icon-delete"></i>
+                                    <c:forEach var="ConsumerCompare" items="${requestScope.comparListConsumer}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterCompare" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                     <span  onclick="document.ConsumerComparesmall.submit();">Սպառողական</span>
+                                     <input name="PageToGo" value="Consumer" type="hidden">
+                                     <span class="bold font-14">${counterCompare}</span>
+                                       <i type="submit" class="icon-delete" onclick="document.DeleteConsumersmall.submit();"></i>
+                                </li>
+                                  <form action="CardClient" method="get" name="DeleteConsumersmall">
+                                        <input type="hidden" name="pageNameToDelete" value="Սպարողական">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
+                                        <input name="PageToGo" value="Cards"  type="hidden">
+                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+                                        <input name="Ruble" value=<%=request.getParameter("Ruble")%> type="hidden">
+                                        <input name="Dollar" value=<%=request.getParameter("Dollar")%> type="hidden">
+                                        <input name="Euro" value=<%=request.getParameter("Euro")%> type="hidden">
+                                        <input name="Cashback" value=<%=request.getParameter("Cashback")%> type="hidden">
+                                        <input name="Depit" value=<%=request.getParameter("Depit")%> type="hidden">
+                                        <input name="Free" value=<%=request.getParameter("Free")%> type="hidden">
+                                        <input name="Credit" value=<%=request.getParameter("Credit")%> type="hidden">
+                                       <input name="Period" value=<%=request.getParameter("Period")%> type="hidden">
+                                    </form>
+                            </ul>
+                             </c:if>
+                            <form action="CompareCarLoan" method="get" name="CarLoanComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListCarLoan != null}">
+                            <ul>
+                                <li >
+                                    <c:forEach var="CarLoanCompare" items="${requestScope.comparListCarLoan}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterCarLoan" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                    <span onclick="document.CarLoanComparesmall.submit();">Ավտովարկ</span>
+                                      <span class="bold font-14">${counterCarLoan}</span>
+                                       <i type="submit" class="icon-delete" onclick="document.DeleteCarsmall.submit();"></i>
+                                </li>
+                                 <form action="CardClient" method="get" name="DeleteCarsmall">
+                                        <input type="hidden" name="pageNameToDelete" value="Ավտովարկ">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
+                                        <input name="PageToGo" value="Cards"  type="hidden">
+                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+                                       <input name="Ruble" value=<%=request.getParameter("Ruble")%> type="hidden">
+                                        <input name="Dollar" value=<%=request.getParameter("Dollar")%> type="hidden">
+                                        <input name="Euro" value=<%=request.getParameter("Euro")%> type="hidden">
+                                        <input name="Cashback" value=<%=request.getParameter("Cashback")%> type="hidden">
+                                        <input name="Depit" value=<%=request.getParameter("Depit")%> type="hidden">
+                                        <input name="Free" value=<%=request.getParameter("Free")%> type="hidden">
+                                        <input name="Credit" value=<%=request.getParameter("Credit")%> type="hidden">
+                                       <input name="Period" value=<%=request.getParameter("Period")%> type="hidden">
+                                    </form>
+                            </ul>
+                            </c:if>
+                           <%-- <form action="CompareMicro" method="get" name="MicroCompare">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListMicro != null}">
+                            <ul>
+                                <li>
+                                    <c:forEach var="MicroCompare" items="${requestScope.comparListMicro}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterMicro" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                    <span onclick="document.MicroCompare.submit();">Միկրովարկ</span>
+                                     <span class="bold font-14">${counterMicro}</span>
+                                       <i type="submit" class="icon-delete" onclick="document.DeleteMicro.submit();"></i>
+                                </li>
+                                   <form action="DepositClient" method="get" name="DeleteMicro">
+                                        <input type="hidden" name="pageNameToDelete" value="ՄԻԿՐՈՎԱՐԿ">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
+                                        <input name="PageToGo" value="App"  type="hidden">
+                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+                                    </form>
+                            </ul>
+                            </c:if>--%>
+                            <form action="CompareAg" method="get" name="AgComparesmall">
+                                <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                            </form>
+                            <c:if test="${requestScope.comparListAg != null}">
+                            <ul>
+                                <li >
+                                    <c:forEach var="AgCompare" items="${requestScope.comparListAg}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterAg" value="${TheCount.count}" scope="request"/>
+                                    </c:forEach>
+                                     <span onclick="document.AgComparesmall.submit();">Գյուղատնտեսական</span>
+                                      <span class="bold font-14">${counterAg}</span>
+                                        <i type="submit" class="icon-delete" onclick="document.DeleteAGsmall.submit();"></i>
+                                </li>
+                                 <form action="CardClient" method="get" name="DeleteAGsmall">
+                                        <input type="hidden" name="pageNameToDelete" value="Գյուղատնտեսական">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
+                                        <input name="PageToGo" value="Cards"  type="hidden">
+                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+                                       <input name="Dram" value=<%=request.getAttribute("Dram")%> type="hidden">
+                                       <input name="Ruble" value=<%=request.getParameter("Ruble")%> type="hidden">
+                                        <input name="Dollar" value=<%=request.getParameter("Dollar")%> type="hidden">
+                                        <input name="Euro" value=<%=request.getParameter("Euro")%> type="hidden">
+                                        <input name="Cashback" value=<%=request.getParameter("Cashback")%> type="hidden">
+                                        <input name="Depit" value=<%=request.getParameter("Depit")%> type="hidden">
+                                        <input name="Free" value=<%=request.getParameter("Free")%> type="hidden">
+                                        <input name="Credit" value=<%=request.getParameter("Credit")%> type="hidden">
+                                       <input name="Period" value=<%=request.getParameter("Period")%> type="hidden">
+                                    </form>
+                            </ul>
+                            </c:if>
+
+                             <%--<c:if test="${requestScope.comparListCard != null}">
+                            <ul>
+                                <li>
+                                    <c:forEach var="CardCompare" items="${requestScope.comparListCard}"
+                                               varStatus="TheCount">
+                                        <c:set var="counterCard" value="${TheCount.count}" scope="request"/>
+
+                                    </c:forEach>
+                                     <span>Քարտեր</span>
+                                      <span class="bold font-14">${counterCard}</span>
+                                        <i class="icon-delete"></i>
                                 </li>
                             </ul>
+                             </c:if>--%>
                             <!--Todo add when there is no item -->
                             <!--                            <span>Համեմատության էջում տեղ չկա</span>-->
+
                         </div>
                     </div>
                 </span>
@@ -159,48 +355,76 @@
                             <span class="tooltip-title">Համեմատության</span>
                             <form action="CompareDeposit" method="get" name="DepositCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+                                <input name="PageToGo" value="Deposits"  type="hidden">
                             </form>
+
                             <c:if test="${requestScope.comparListDeposit != null}">
                             <ul>
-                                <li onclick="document.DepositCompare.submit();">
+                                <li >
                                     <c:forEach var="DepositCompare" items="${requestScope.comparListDeposit}"
                                                varStatus="TheCount">
                                         <c:set var="counterDeposit" value="${TheCount.count}" scope="request"/>
 
                                     </c:forEach>
-                                     <span>Ավանդ</span>
+                                     <span onclick="document.DepositCompare.submit();">Ավանդ</span>
+
                                     <span class="bold font-14">${counterDeposit}</span>
-                                     <i class="icon-delete" onclick="document.Delete.submit();"></i>
-                                    <form action="DepositClient" method="get" name="Delete">
-                                        <input type="hidden" name="pageNameToDelete" value="Ավանդ">
-                                        <input name="MaxAmounr" value="<%=request.getParameter("MaxAmounr")%>"
-                                               type="hidden">
-                                        <input name="City" value="<%=request.getParameter("City")%>" type="hidden">
-                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>"
-                                               type="hidden">
-                                        <input name="PageToGo" value="<%=request.getParameter("PageToGo")%>"
-                                               type="hidden">
-                                        <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
-                                    </form>
+                                     <i type="submit" class="icon-delete" onclick="document.Delete.submit();"></i>
+
                                 </li>
+                                 <form action="CardClient" method="get" name="Delete">
+
+                                        <input type="hidden" name="pageNameToDelete" value="Ավանդ">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
+                                        <input name="PageToGo" value="Cards"  type="hidden">
+                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+                                         <input name="Dram" value=<%=request.getParameter("Dram")%> type="hidden">
+                                        <input name="Ruble" value=<%=request.getParameter("Ruble")%> type="hidden">
+                                        <input name="Dollar" value=<%=request.getParameter("Dollar")%> type="hidden">
+                                        <input name="Euro" value=<%=request.getParameter("Euro")%> type="hidden">
+                                        <input name="Cashback" value=<%=request.getParameter("Cashback")%> type="hidden">
+                                        <input name="Depit" value=<%=request.getParameter("Depit")%> type="hidden">
+                                        <input name="Free" value=<%=request.getParameter("Free")%> type="hidden">
+                                        <input name="Credit" value=<%=request.getParameter("Credit")%> type="hidden">
+                                        <input name="Period" value=<%=request.getParameter("Period")%> type="hidden">
+                                    </form>
+                                    </form>
                             </ul>
                             </c:if>
                              <form action="CompareMortgage" method="get" name="MortgageCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
+
                             </form>
                             <c:if test="${requestScope.comparListMortgage != null}">
                             <ul>
-                                <li onclick="document.MortgageCompare.submit();">
+                                <li >
                                     <c:forEach var="MortgagCompare" items="${requestScope.comparListMortgage}"
                                                varStatus="TheCount">
                                         <c:set var="counterMortgag" value="${TheCount.count}" scope="request"/>
 
 
                                     </c:forEach>
-                                     <span>Հիփոթեք</span>
+                                     <span onclick="document.MortgageCompare.submit();">Հիփոթեք</span>
+                                     <input name="PageToGo" value="Mortgage"  type="hidden">
                                      <span class="bold font-14">${counterMortgag}</span>
-                                        <i class="icon-delete"></i>
+                                        <i type="submit" class="icon-delete" onclick="document.DeleteHipotek.submit();"></i>
                                 </li>
+                                 <form action="CardClient" method="get" name="DeleteHipotek">
+                                        <input type="hidden" name="pageNameToDelete" value="Հիփոթեք">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
+                                        <input name="PageToGo" value="Cards"  type="hidden">
+                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+
+                                         <input name="Dram" value=<%=request.getParameter("Dram")%> type="hidden">
+                                        <input name="Ruble" value=<%=request.getParameter("Ruble")%> type="hidden">
+                                        <input name="Dollar" value=<%=request.getParameter("Dollar")%> type="hidden">
+                                        <input name="Euro" value=<%=request.getParameter("Euro")%> type="hidden">
+                                        <input name="Cashback" value=<%=request.getParameter("Cashback")%> type="hidden">
+                                        <input name="Depit" value=<%=request.getParameter("Depit")%> type="hidden">
+                                        <input name="Free" value=<%=request.getParameter("Free")%> type="hidden">
+                                        <input name="Credit" value=<%=request.getParameter("Credit")%> type="hidden">
+                                       <input name="Period" value=<%=request.getParameter("Period")%> type="hidden">
+                                    </form>
                             </ul>
                             </c:if>
                             <form action="CompareConsumer" method="get" name="ConsumerCompare">
@@ -208,15 +432,31 @@
                             </form>
                              <c:if test="${requestScope.comparListConsumer != null}">
                             <ul>
-                                <li onclick="document.ConsumerCompare.submit();">
+                                <li>
                                     <c:forEach var="ConsumerCompare" items="${requestScope.comparListConsumer}"
                                                varStatus="TheCount">
                                         <c:set var="counterCompare" value="${TheCount.count}" scope="request"/>
                                     </c:forEach>
-                                     <span>Սպառողական</span>
+                                     <span  onclick="document.ConsumerCompare.submit();">Սպառողական</span>
+                                     <input name="PageToGo" value="Consumer" type="hidden">
                                      <span class="bold font-14">${counterCompare}</span>
-                                        <i class="icon-delete"></i>
+                                       <i type="submit" class="icon-delete" onclick="document.DeleteConsumer.submit();"></i>
                                 </li>
+                                  <form action="CardClient" method="get" name="DeleteConsumer">
+                                        <input type="hidden" name="pageNameToDelete" value="Սպարողական">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
+                                        <input name="PageToGo" value="Cards"  type="hidden">
+                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+                                         <input name="Dram" value=<%=request.getParameter("Dram")%> type="hidden">
+                                        <input name="Ruble" value=<%=request.getParameter("Ruble")%> type="hidden">
+                                        <input name="Dollar" value=<%=request.getParameter("Dollar")%> type="hidden">
+                                        <input name="Euro" value=<%=request.getParameter("Euro")%> type="hidden">
+                                        <input name="Cashback" value=<%=request.getParameter("Cashback")%> type="hidden">
+                                        <input name="Depit" value=<%=request.getParameter("Depit")%> type="hidden">
+                                        <input name="Free" value=<%=request.getParameter("Free")%> type="hidden">
+                                        <input name="Credit" value=<%=request.getParameter("Credit")%> type="hidden">
+                                        <input name="Period" value=<%=request.getParameter("Period")%> type="hidden">
+                                    </form>
                             </ul>
                              </c:if>
                             <form action="CompareCarLoan" method="get" name="CarLoanCompare">
@@ -224,47 +464,83 @@
                             </form>
                             <c:if test="${requestScope.comparListCarLoan != null}">
                             <ul>
-                                <li onclick="document.CarLoanCompare.submit();">
+                                <li >
                                     <c:forEach var="CarLoanCompare" items="${requestScope.comparListCarLoan}"
                                                varStatus="TheCount">
                                         <c:set var="counterCarLoan" value="${TheCount.count}" scope="request"/>
                                     </c:forEach>
-                                    <span>Ավտովարկ</span>
+                                    <span onclick="document.CarLoanCompare.submit();">Ավտովարկ</span>
                                       <span class="bold font-14">${counterCarLoan}</span>
-                                        <i class="icon-delete"></i>
+                                       <i type="submit" class="icon-delete" onclick="document.DeleteCar.submit();"></i>
                                 </li>
+                                 <form action="CardClient" method="get" name="DeleteCar">
+                                        <input type="hidden" name="pageNameToDelete" value="Ավտովարկ">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
+                                        <input name="PageToGo" value="Cards"  type="hidden">
+                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+                                       <input name="Dram" value=<%=request.getParameter("Dram")%> type="hidden">
+                                        <input name="Ruble" value=<%=request.getParameter("Ruble")%> type="hidden">
+                                        <input name="Dollar" value=<%=request.getParameter("Dollar")%> type="hidden">
+                                        <input name="Euro" value=<%=request.getParameter("Euro")%> type="hidden">
+                                        <input name="Cashback" value=<%=request.getParameter("Cashback")%> type="hidden">
+                                        <input name="Depit" value=<%=request.getParameter("Depit")%> type="hidden">
+                                        <input name="Free" value=<%=request.getParameter("Free")%> type="hidden">
+                                        <input name="Credit" value=<%=request.getParameter("Credit")%> type="hidden">
+                                       <input name="Period" value=<%=request.getParameter("Period")%> type="hidden">
+                                    </form>
                             </ul>
                             </c:if>
-                            <form action="CompareMicro" method="get" name="MicroCompare">
+                           <%-- <form action="CompareMicro" method="get" name="MicroCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
                             <c:if test="${requestScope.comparListMicro != null}">
                             <ul>
-                                <li onclick="document.MicroCompare.submit();">
+                                <li>
                                     <c:forEach var="MicroCompare" items="${requestScope.comparListMicro}"
                                                varStatus="TheCount">
                                         <c:set var="counterMicro" value="${TheCount.count}" scope="request"/>
                                     </c:forEach>
-                                    <span>Միկրովարկ</span>
+                                    <span onclick="document.MicroCompare.submit();">Միկրովարկ</span>
                                      <span class="bold font-14">${counterMicro}</span>
-                                        <i class="icon-delete"></i>
+                                       <i type="submit" class="icon-delete" onclick="document.DeleteMicro.submit();"></i>
                                 </li>
+                                   <form action="DepositClient" method="get" name="DeleteMicro">
+                                        <input type="hidden" name="pageNameToDelete" value="ՄԻԿՐՈՎԱՐԿ">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
+                                        <input name="PageToGo" value="App"  type="hidden">
+                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+                                    </form>
                             </ul>
-                            </c:if>
+                            </c:if>--%>
                             <form action="CompareAg" method="get" name="AgCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
                             <c:if test="${requestScope.comparListAg != null}">
                             <ul>
-                                <li onclick="document.AgCompare.submit();">
+                                <li >
                                     <c:forEach var="AgCompare" items="${requestScope.comparListAg}"
                                                varStatus="TheCount">
                                         <c:set var="counterAg" value="${TheCount.count}" scope="request"/>
                                     </c:forEach>
-                                     <span>Գյուղատնտեսական</span>
+                                     <span onclick="document.AgCompare.submit();">Գյուղատնտեսական</span>
                                       <span class="bold font-14">${counterAg}</span>
-                                        <i class="icon-delete"></i>
+                                        <i type="submit" class="icon-delete" onclick="document.DeleteAG.submit();"></i>
                                 </li>
+                                 <form action="CardClient" method="get" name="DeleteAG">
+                                        <input type="hidden" name="pageNameToDelete" value="Գյուղատնտեսական">
+                                        <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
+                                        <input name="PageToGo" value="Cards"  type="hidden">
+                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+                                       <input name="Dram" value=<%=request.getParameter("Dram")%> type="hidden">
+                                        <input name="Ruble" value=<%=request.getParameter("Ruble")%> type="hidden">
+                                        <input name="Dollar" value=<%=request.getParameter("Dollar")%> type="hidden">
+                                        <input name="Euro" value=<%=request.getParameter("Euro")%> type="hidden">
+                                        <input name="Cashback" value=<%=request.getParameter("Cashback")%> type="hidden">
+                                        <input name="Depit" value=<%=request.getParameter("Depit")%> type="hidden">
+                                        <input name="Free" value=<%=request.getParameter("Free")%> type="hidden">
+                                        <input name="Credit" value=<%=request.getParameter("Credit")%> type="hidden">
+                                       <input name="Period" value=<%=request.getParameter("Period")%> type="hidden">
+                                    </form>
                             </ul>
                             </c:if>
 

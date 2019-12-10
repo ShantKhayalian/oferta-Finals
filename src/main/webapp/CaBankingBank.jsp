@@ -239,7 +239,7 @@
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                     </form>
                             </c:if>
-                            <form action="CompareMicro" method="get" name="MicroCompare">
+                            <%--<form action="CompareMicro" method="get" name="MicroCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
                             <c:if test="${requestScope.comparListMicro != null}">
@@ -254,7 +254,7 @@
                                         <i class="icon-delete"></i>
                                 </li>
                             </ul>
-                            </c:if>
+                            </c:if>--%>
                             <form action="CompareAg" method="get" name="AgCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>

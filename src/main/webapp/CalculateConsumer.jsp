@@ -859,7 +859,7 @@
                                     <img src="${SpecialConsumer.banksList}">
                                 </div>
                                 <div class="table-cell">
-                                    <p>Տոկոս</p>
+                                    <%--<p>Տոկոս</p>--%>
                                     <p class="font-24 bold">${SpecialConsumer.CCFactual}%</p>
                                     <c:set var="percentage" value="${SpecialConsumer.CCFactual}"
                                            scope="request"/>

@@ -740,8 +740,6 @@ public class MortgageClient extends HttpServlet {
             if (Integer.parseInt(Amount) >= minAmount  || Integer.parseInt(Amount) <= minAmount && Integer.parseInt(MaxAmount) <= minAmount) {
                 int id = Integer.parseInt(String.valueOf(depositAmountFilter.get(i).getMId()));
                 depositCurrancyFilter.addAll(FilteredList(id));
-            }else{
-                continue;
             }
         }
         FilterOrderApperanceList(depositCurrancyFilter);
@@ -920,6 +918,7 @@ public class MortgageClient extends HttpServlet {
     }
 
     private void GetDropDownByCurrancy(List<DropDowns> dropDownsList, String pageCurrancy) throws SQLException {
+        dropDownsListWithCurrancy =new ArrayList<>();
         dropDownsListWithCurrancy = dropDownCurrancyHelper.getDropDownWithCurrancy(dropDownsList, pageCurrancy);
     }
 

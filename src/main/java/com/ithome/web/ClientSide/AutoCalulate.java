@@ -451,15 +451,16 @@ public class AutoCalulate extends HttpServlet {
     }
 
     private void getApperance() throws SQLException {
-        String currancy= "";
+        searchUpList = new ArrayList<>();
         depositeAseList = new ArrayList<>();
-        List<CarLoans> fillAll = new ArrayList<>();
-        fillAll = searchDatabase();
-        for (int i = 0; i <fillAll.size() ; i++) {
-            currancy= fillAll.get(i).getCurrancy();
-            int monthsFromData = fillAll.get(i).getCLMinPeriodMonths();
-            if(currancy.equals(pageCurrancy) && monthsFromData <= Integer.parseInt(months)){
-                int id = Integer.parseInt(String.valueOf(fillAll.get(i).getCLId()));
+
+        searchUpList = searchDatabase();
+        for (int i = 0; i <searchUpList.size() ; i++) {
+            int firstSearch = searchUpList.get(i).getCLMinAmount();
+            String firstSearchCurrancy = searchUpList.get(i).getCurrancy();
+            int monthsToCheck = searchUpList.get(i).getCLMinPeriodMonths();
+            if (Integer.parseInt(amoutFiltered) >= firstSearch && firstSearchCurrancy.equals(pageCurrancy) && monthsToCheck >= Integer.parseInt(months) ) {
+                int id = Integer.parseInt(String.valueOf(searchUpList.get(i).getCLId()));
                 depositeAseList.addAll(FilteredList(id));
             }
         }

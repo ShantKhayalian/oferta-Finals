@@ -407,7 +407,7 @@
                                      <input name="options" value="<%=request.getParameter("options")%>" type="hidden">
                                     </form>
                             </c:if>
-                            <form action="CompareMicro" method="get" name="MicroCompare">
+                            <%--<form action="CompareMicro" method="get" name="MicroCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
                             <c:if test="${requestScope.comparListMicro != null}">
@@ -435,14 +435,14 @@
                                       <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
                                       <input name="ProductCode" value="<%=request.getAttribute("ProductCode")%>"
                                              type="hidden">
-                                   <%--  <input name="value_two" value="<%=request.getParameter("value_two")%>"
-                                            type="hidden">--%>
+                                   &lt;%&ndash;  <input name="value_two" value="<%=request.getParameter("value_two")%>"
+                                            type="hidden">&ndash;%&gt;
                                      <input name="percentageSecond"
                                             value="<%=request.getParameter("percentageSecond")%>" type="hidden">
                                      <input name="options" value="<%=request.getParameter("options")%>" type="hidden">
                                     </form>
                             </ul>
-                            </c:if>
+                            </c:if>--%>
                             <form action="CompareAg" method="get" name="AgCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
@@ -780,11 +780,11 @@
                                                 <c:set value='<%=request.getAttribute("PercentageSecond")%>'
                                                        var="percentageSecond" scope="request"/>
                                                 <%!
-                                                    static int discountAmount;
-                                                    static int percentageForDiscount;
+                                                    static long discountAmount;
+                                                    static long percentageForDiscount;
                                                 %>
                                                 <%!
-                                                    int discountingAmount(int discountAmount, int percentageForDiscount) {
+                                                    long discountingAmount(long discountAmount, long percentageForDiscount) {
                                                         if (percentageForDiscount < 10) {
                                                             return (discountAmount * 10) / 100;
                                                         }
@@ -795,21 +795,21 @@
                                                     }
                                                 %>
                                                 <%!
-                                                    int maximumAmount(int discountAmount, int percentageMax) {
-                                                        int result = discountAmount * percentageMax / 100;
+                                                    long maximumAmount(long discountAmount, long percentageMax) {
+                                                        long result = discountAmount * percentageMax / 100;
                                                         return result;
                                                     }
                                                 %>
                                                 <%!
-                                                    int MinAmount(int discountAmount, int percentageMax) {
-                                                        int result = discountAmount * percentageMax / 100;
+                                                    long MinAmount(long discountAmount, long percentageMax) {
+                                                        long result = discountAmount * percentageMax / 100;
                                                         return result;
                                                     }
                                                 %>
                                                 <%
-                                                    discountAmount = Integer.parseInt(String.valueOf(request.getAttribute("AmountDiscounted")));
+                                                    discountAmount = Long.parseLong(String.valueOf(request.getAttribute("AmountDiscounted")));
                                                     if (request.getAttribute("percentageSecond") != null) {
-                                                        percentageForDiscount = Integer.parseInt(String.valueOf(request.getAttribute("percentageSecond")));
+                                                        percentageForDiscount = Long.parseLong(String.valueOf(request.getAttribute("percentageSecond")));
                                                     } else {
                                                         percentageForDiscount = 10;
                                                     }
@@ -845,25 +845,25 @@
                                                 <c:set value='<%=request.getAttribute("PercentageSecond")%>'
                                                        var="percentageSecond2" scope="request"/>
                                                 <%!
-                                                    static int discountAmount2;
-                                                    static int percentageForDiscount2;
+                                                    static long discountAmount2;
+                                                    static long percentageForDiscount2;
                                                 %>
                                                 <%!
-                                                    int discountingAmount2(int discountAmount, int percentageForDiscount) {
-                                                        int result = (discountAmount * percentageForDiscount) / 100;
+                                                    long discountingAmount2(long discountAmount, long percentageForDiscount) {
+                                                        long result = (discountAmount * percentageForDiscount) / 100;
                                                         return result;
                                                     }
                                                 %>
                                                 <%!
-                                                    int maximumAmount2(int discountAmount) {
-                                                        int result = discountAmount * 80 / 100;
+                                                    long maximumAmount2(Long discountAmount) {
+                                                        long result = discountAmount * 80 / 100;
                                                         return result;
                                                     }
                                                 %>
                                                 <%
-                                                    discountAmount2 = Integer.parseInt(String.valueOf(request.getAttribute("AmountDiscounted2")));
+                                                    discountAmount2 = Long.parseLong(String.valueOf(request.getAttribute("AmountDiscounted2")));
                                                     if (request.getAttribute("PercentageSecond") != null) {
-                                                        percentageForDiscount2 = Integer.parseInt(String.valueOf(request.getAttribute("PercentageSecond")));
+                                                        percentageForDiscount2 = Long.parseLong(String.valueOf(request.getAttribute("PercentageSecond")));
                                                     } else {
                                                         percentageForDiscount2 = 10;
                                                     }

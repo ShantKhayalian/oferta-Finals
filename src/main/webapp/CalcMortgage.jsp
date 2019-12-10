@@ -709,34 +709,34 @@
                                         <c:set value='<%=request.getAttribute("percentageSecond")%>'
                                                var="percentageSecond" scope="request"/>
                                         <%!
-                                            static int discountAmount;
-                                            static int percentageForDiscount;
-                                            static int MainAmounts;
+                                            static long discountAmount;
+                                            static long percentageForDiscount;
+                                            static long MainAmounts;
                                         %>
                                         <%!
-                                            int discountingAmount(int discountAmount, int percentageForDiscount) {
-                                                int result = ((discountAmount * percentageForDiscount) / 100);
+                                            long discountingAmount(long discountAmount, long percentageForDiscount) {
+                                                long result = ((discountAmount * percentageForDiscount) / 100);
                                                 return result;
                                             }
                                         %>
                                         <%!
-                                            int maximumAmount(int discountAmount, int percentageMax) {
-                                                int result = discountAmount * percentageMax / 100;
+                                            long maximumAmount(long discountAmount, long percentageMax) {
+                                                long result = discountAmount * percentageMax / 100;
                                                 return result;
                                             }
                                         %>
                                         <%!
-                                            int MinAmount(int discountAmount, int percentageMax) {
-                                                int result = discountAmount * percentageMax / 100;
+                                            long MinAmount(long discountAmount, long percentageMax) {
+                                                long result = discountAmount * percentageMax / 100;
                                                 return result;
                                             }
                                         %>
 
                                         <%
                                             // MainAmounts = Integer.parseInt(String.valueOf(request.getAttribute("AmountDiscounted")));
-                                            discountAmount = Integer.parseInt(String.valueOf(request.getAttribute("AmountDiscounted")));
+                                            discountAmount = Long.parseLong(String.valueOf(request.getAttribute("AmountDiscounted")));
                                             if (request.getAttribute("percentageSecond") != null) {
-                                                percentageForDiscount = (int) request.getAttribute("percentageSecond");
+                                                percentageForDiscount = Long.parseLong(String.valueOf(request.getAttribute("percentageSecond")));
 
                                             } else {
                                                 percentageForDiscount = 10;
@@ -771,27 +771,27 @@
                                         <c:set value='<%=request.getParameter("percentageSecond")%>'
                                                var="percentageSecond" scope="request"/>
                                         <%!
-                                            int discountAmount2;
-                                            int percentageForDiscount2;
-                                            int Amount2;
+                                            long discountAmount2;
+                                            long percentageForDiscount2;
+                                            long Amount2;
                                         %>
                                         <%!
-                                            int discountingAmount2(int discountAmount, int percentageForDiscount) {
-                                                int result = (discountAmount * percentageForDiscount) / 100;
+                                            long discountingAmount2(long discountAmount, long percentageForDiscount) {
+                                                long result = (discountAmount * percentageForDiscount) / 100;
                                                 return result;
                                             }
                                         %>
                                         <%!
-                                            int maximumAmount2(int discountAmount) {
-                                                int result = discountAmount * 80 / 100;
+                                            long maximumAmount2(long discountAmount) {
+                                                long result = discountAmount * 80 / 100;
                                                 return result;
                                             }
                                         %>
                                         <%
 
-                                            discountAmount2 = Integer.parseInt(String.valueOf(request.getAttribute("AmountDiscounted")));
+                                            discountAmount2 = Long.parseLong(String.valueOf(request.getAttribute("AmountDiscounted")));
                                             if (request.getAttribute("percentageSecond") != null) {
-                                                percentageForDiscount2 = (int) request.getAttribute("percentageSecond");
+                                                percentageForDiscount2 = Long.parseLong(String.valueOf(request.getAttribute("percentageSecond")));
                                             } else {
                                                 percentageForDiscount2 = 10;
                                             }

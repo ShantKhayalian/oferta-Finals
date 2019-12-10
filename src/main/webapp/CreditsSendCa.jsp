@@ -216,7 +216,7 @@
                             </ul>
                             </c:if>
 
-                            <c:if test="${requestScope.comparListMicro != null}">
+                          <%--  <c:if test="${requestScope.comparListMicro != null}">
                             <ul>
                                 <li>
                                     <c:forEach var="MicroCompare" items="${requestScope.comparListMicro}"
@@ -228,7 +228,7 @@
                                         <i class="icon-delete"></i>
                                 </li>
                             </ul>
-                            </c:if>
+                            </c:if>--%>
 
                             <c:if test="${requestScope.comparListAg != null}">
                             <ul>

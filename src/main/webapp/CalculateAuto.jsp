@@ -750,42 +750,42 @@
                                         <c:set value='<%=request.getAttribute("percentageSecond")%>' var="percentageSecond" scope="request"/>
                                         <c:set value='${dropDownList2.steps}' var="step" scope="request"/>
                                         <%!
-                                            static int discountAmount;
-                                            static int percentageForDiscount;
-                                            static int MainAmounts;
-                                            int stepsDivid;
+                                            static long discountAmount;
+                                            static long percentageForDiscount;
+                                            static long MainAmounts;
+                                            long stepsDivid;
                                         %>
                                         <%!
-                                            int discountingAmount(int discountAmount, int percentageForDiscount) {
-                                                int result = ((discountAmount * percentageForDiscount) / 100);
+                                            long discountingAmount(long discountAmount, long percentageForDiscount) {
+                                                long result = ((discountAmount * percentageForDiscount) / 100);
                                                 return result;
                                             }
                                         %>
                                         <%!
-                                            int maximumAmount(int discountAmount, int percentageMax) {
-                                                int result = discountAmount * percentageMax / 100;
+                                            long maximumAmount(long discountAmount, long percentageMax) {
+                                                long result = discountAmount * percentageMax / 100;
                                                 return result;
                                             }
                                         %>
                                         <%!
-                                            int MinAmount(int discountAmount, int percentageMax) {
-                                                int result = discountAmount * percentageMax / 100;
+                                            long MinAmount(long discountAmount, long percentageMax) {
+                                                long result = discountAmount * percentageMax / 100;
                                                 return result;
                                             }
                                         %>
                                         <%!
-                                            int finalStep(){
-                                                int stepResult =stepsDivid/5;
+                                            long finalStep(){
+                                                long stepResult =stepsDivid/5;
                                                 return stepResult;
                                             }
                                         %>
 
                                         <%
-                                            stepsDivid = Integer.parseInt(String.valueOf(request.getAttribute("step")));
+                                            stepsDivid = Long.parseLong(String.valueOf(request.getAttribute("step")));
                                             // MainAmounts = Integer.parseInt(String.valueOf(request.getAttribute("AmountDiscounted")));
-                                            discountAmount = Integer.parseInt(String.valueOf(request.getAttribute("AmountDiscounted")));
+                                            discountAmount = Long.parseLong(String.valueOf(request.getAttribute("AmountDiscounted")));
                                             if (request.getAttribute("percentageSecond") != null) {
-                                                percentageForDiscount = Integer.parseInt(String.valueOf(request.getAttribute("percentageSecond")));
+                                                percentageForDiscount = Long.parseLong(String.valueOf(request.getAttribute("percentageSecond")));
 
                                             } else {
                                                 percentageForDiscount = 10;
@@ -821,32 +821,32 @@
                                                var="percentageSecond" scope="request"/>
                                         <c:set value='${dropDownList2.steps}' var="step2" scope="request"/>
                                         <%!
-                                            int discountAmount2;
-                                            int percentageForDiscount2;
-                                            int Amount2;
-                                            int stepsDivid2;
+                                            long discountAmount2;
+                                            long percentageForDiscount2;
+                                            long Amount2;
+                                            long stepsDivid2;
                                         %>
                                         <%!
-                                            int discountingAmount2(int discountAmount, int percentageForDiscount) {
-                                                int result = (discountAmount * percentageForDiscount) / 100;
+                                            long discountingAmount2(long discountAmount, long percentageForDiscount) {
+                                                long result = (discountAmount * percentageForDiscount) / 100;
                                                 return result;
                                             }
                                         %>
                                         <%!
-                                            int maximumAmount2(int discountAmount) {
-                                                int result = discountAmount * 80 / 100;
+                                            long maximumAmount2(long discountAmount) {
+                                                long result = discountAmount * 80 / 100;
                                                 return result;
                                             }
                                         %>
                                         <%!
-                                            int finalStep2(){
-                                                int stepResult =stepsDivid2/5;
+                                            long finalStep2(){
+                                                long stepResult =stepsDivid2/5;
                                                 return stepResult;
                                             }
                                         %>
                                         <%
-                                            stepsDivid2 = Integer.parseInt(String.valueOf(request.getAttribute("step2")));
-                                            discountAmount2 = Integer.parseInt(String.valueOf(request.getAttribute("AmountDiscounted")));
+                                            stepsDivid2 = Long.parseLong(String.valueOf(request.getAttribute("step2")));
+                                            discountAmount2 = Long.parseLong(String.valueOf(request.getAttribute("AmountDiscounted")));
                                             if (request.getAttribute("percentageSecond") != null) {
                                                 percentageForDiscount2 = (int) request.getAttribute("percentageSecond");
                                             } else {
@@ -1415,23 +1415,23 @@
                                                             <c:set value='<%=request.getParameter("Currancy")%>' var="currancy"/>
                                                             <c:choose>
                                                                 <c:when test="${currancy == 'AMD'}">
-                                                                    <h2 class="timer count-title count-number bold blue"
+                                                                    <h2 class="timer count-title count-number font-28 bold"
                                                                         data-to="<%=calculatePercentage(Amount, percent, month) %>"
                                                                         data-speed="1739"></h2>
 
                                                                 </c:when>
                                                                 <c:when test="${currancy == 'USD'}">
-                                                                    <h2 class="timer count-title count-number bold blue"
+                                                                    <h2 class="timer count-title count-number font-28 bold"
                                                                         data-to="<%=calculatePercentage(Amount, percent, month) %>"
                                                                         data-speed="1739"></h2>
                                                                 </c:when>
                                                                 <c:when test="${currancy == 'RUB'}">
-                                                                    <h2 class="timer count-title count-number bold blue"
+                                                                    <h2 class="timer count-title count-number font-28 bold"
                                                                         data-to="<%=calculatePercentage(Amount, percent, month) %>"
                                                                         data-speed="1739"></h2>
                                                                 </c:when>
                                                                 <c:when test="${currancy == 'EUR'}">
-                                                                    <h2 class="timer count-title count-number bold blue"
+                                                                    <h2 class="timer count-title count-number font-28 bold"
                                                                         data-to="<%=calculatePercentage(Amount, percent, month) %>"
                                                                         data-speed="1739"></h2>
                                                                 </c:when>

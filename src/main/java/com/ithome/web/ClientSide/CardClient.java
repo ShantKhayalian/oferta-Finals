@@ -186,7 +186,7 @@ public class CardClient extends HttpServlet {
 
     }
 
-    private void getParameters(HttpServletRequest request) {
+    private void getParameters(HttpServletRequest request) throws SQLException {
         Ruble = request.getParameter("Ruble");
         Dollar = request.getParameter("Dollar");
         Euro = request.getParameter("Euro");
@@ -196,8 +196,40 @@ public class CardClient extends HttpServlet {
         Period = request.getParameter("Period");
         Free = request.getParameter("Free");
         Depit = request.getParameter("Depit");
+        if (request.getParameter("pageNameToDelete") != null) {
+            PageNameToDelete = request.getParameter("pageNameToDelete");
+            deleteList(PageNameToDelete);
+        } else {
+            PageNameToDelete = "";
+        }
 
+    }
 
+    private void deleteList(String pageNameToDelete) throws SQLException {
+        switch (pageNameToDelete) {
+            case "Ավանդ":
+                CompareHelper.DeleteDepositList(sessionId);
+
+                break;
+            case "Հիփոթեք":
+                CompareHelper.DeleteMortgag(sessionId);
+                break;
+            case "Ավտովարկ":
+                CompareHelper.DeleteCarLoan(sessionId);
+                break;
+            case "ՄԻԿՐՈՎԱՐԿ":
+                CompareHelper.DeleteMicro(sessionId);
+                break;
+            case "Գյուղատնտեսական":
+                CompareHelper.DeleteAg(sessionId);
+                break;
+            case "Սպարողական":
+                CompareHelper.DeleteConsumer(sessionId);
+                break;
+            case "Քարտեր":
+                CompareHelper.DeleteCard();
+                break;
+        }
     }
 
 

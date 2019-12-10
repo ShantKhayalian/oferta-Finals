@@ -225,7 +225,7 @@
                             </ul>
                             </c:if>
 
-                            <c:if test="${requestScope.comparListMicro != null}">
+                           <%-- <c:if test="${requestScope.comparListMicro != null}">
                             <ul>
                                 <li>
                                     <c:forEach var="MicroCompare" items="${requestScope.comparListMicro}"
@@ -237,7 +237,7 @@
                                         <i class="icon-delete"></i>
                                 </li>
                             </ul>
-                            </c:if>
+                            </c:if>--%>
 
                             <c:if test="${requestScope.comparListAg != null}">
                             <ul>
@@ -418,6 +418,17 @@
                                 <span class="label">Մուտքագրեք վարկի գումարը</span>
                                 <div class="range-group">
                                     <div class="def-range int-outline">
+                                        <script language="javascript" type="text/javascript">
+                                            var delayTimer;
+                                            function doSearch(text) {
+                                                clearTimeout(delayTimer);
+                                                delayTimer = setTimeout(function () {
+                                                    document.main.submit()
+                                                }, 2000); // Will do the ajax stuff after 1000 ms, or 1 s
+                                            }
+
+                                        </script>
+
                                         <c:if test="${requestScope.range!=null}">
                                             <c:forEach items="${requestScope.dropDownsListWithCurrancy}"
                                                        var="dropDownList2"
@@ -440,7 +451,7 @@
                                                        data-rangeslider=""
                                                        id="amount_range"
                                                        style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0;"
-                                                       onchange="document.main.submit();">
+                                                       onchange="doSearch();">
 
                                             </c:forEach>
                                         </c:if>
@@ -463,7 +474,7 @@
                                                        max="${dropDownList3.maxAmount}"
                                                        step="${dropDownList3.steps}"
                                                        value="${requestScope.Amountfiltered}" data-rangeslider
-                                                       id="amount_range" onchange="document.main.submit();">
+                                                       id="amount_range" onchange="doSearch();">
 
 
                                                 <input type="hidden" name="value_url" id="value_amount_url">
@@ -543,31 +554,31 @@
                                                 <c:set value='<%=request.getAttribute("PercentageSecond")%>'
                                                        var="percentageSecond" scope="request"/>
                                                 <%!
-                                                    static int discountAmount;
-                                                    static int percentageForDiscount;
+                                                    static long discountAmount;
+                                                    static long percentageForDiscount;
                                                 %>
                                                 <%!
-                                                    int discountingAmount(int discountAmount, int percentageForDiscount) {
-                                                        int result = (discountAmount * percentageForDiscount) / 100;
+                                                    long discountingAmount(long discountAmount, long percentageForDiscount) {
+                                                        long result = (discountAmount * percentageForDiscount) / 100;
                                                         return result;
                                                     }
                                                 %>
                                                 <%!
-                                                    int maximumAmount(int discountAmount, int percentageMax) {
-                                                        int result = discountAmount * percentageMax / 100;
+                                                    long maximumAmount(long discountAmount, long percentageMax) {
+                                                        long result = discountAmount * percentageMax / 100;
                                                         return result;
                                                     }
                                                 %>
                                                 <%!
-                                                    int MinAmount(int discountAmount, int percentageMax) {
-                                                        int result = discountAmount * percentageMax / 100;
+                                                    long MinAmount(long discountAmount, long percentageMax) {
+                                                        long result = discountAmount * percentageMax / 100;
                                                         return result;
                                                     }
                                                 %>
                                                 <%
-                                                    discountAmount = Integer.parseInt(String.valueOf(request.getAttribute("AmountDiscounted")));
+                                                    discountAmount = Long.parseLong(String.valueOf(request.getAttribute("AmountDiscounted")));
                                                     if (request.getAttribute("percentageSecond") != null) {
-                                                        percentageForDiscount = Integer.parseInt(String.valueOf(request.getAttribute("percentageSecond")));
+                                                        percentageForDiscount = Long.parseLong(String.valueOf(request.getAttribute("percentageSecond")));
                                                     } else {
                                                         percentageForDiscount = 10;
                                                     }
@@ -591,7 +602,7 @@
                                                        data-rangeslider=""
                                                        id="amount_range_two"
                                                        style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0;"
-                                                       onchange="document.main.submit();">
+                                                       onchange="doSearch();">
 
                                             </c:forEach>
                                         </c:if>
@@ -604,25 +615,25 @@
                                                 <c:set value='<%=request.getAttribute("PercentageSecond")%>'
                                                        var="percentageSecond2" scope="request"/>
                                                 <%!
-                                                    static int discountAmount2;
-                                                    static int percentageForDiscount2;
+                                                    static long discountAmount2;
+                                                    static long percentageForDiscount2;
                                                 %>
                                                 <%!
-                                                    int discountingAmount2(int discountAmount, int percentageForDiscount) {
-                                                        int result = (discountAmount * percentageForDiscount) / 100;
+                                                    long discountingAmount2(long discountAmount, long percentageForDiscount) {
+                                                        long result = (discountAmount * percentageForDiscount) / 100;
                                                         return result;
                                                     }
                                                 %>
                                                 <%!
-                                                    int maximumAmount2(int discountAmount) {
-                                                        int result = discountAmount * 80 / 100;
+                                                    long maximumAmount2(long discountAmount) {
+                                                        long result = discountAmount * 80 / 100;
                                                         return result;
                                                     }
                                                 %>
                                                 <%
-                                                    discountAmount2 = Integer.parseInt(String.valueOf(request.getAttribute("AmountDiscounted2")));
+                                                    discountAmount2 = Long.parseLong(String.valueOf(request.getAttribute("AmountDiscounted2")));
                                                     if (request.getAttribute("PercentageSecond") != null) {
-                                                        percentageForDiscount2 = Integer.parseInt(String.valueOf(request.getAttribute("PercentageSecond")));
+                                                        percentageForDiscount2 = Long.parseLong(String.valueOf(request.getAttribute("PercentageSecond")));
                                                     } else {
                                                         percentageForDiscount2 = 10;
                                                     }

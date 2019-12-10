@@ -427,6 +427,8 @@
                                                 <option value="18">18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                             <input type="hidden" name="Currancy"
                                                    value='<%=request.getParameter("Currancy")%>'>
@@ -438,7 +440,7 @@
                                         <c:when test='<%=convertToMonths == 3%>'>
                                             <select name="months${TheCount.count}" id="select_month"
                                                     onchange="document.compareNewAmount.submit();">
-                                                <option value="1">1 ամիս</option>
+                                                <option value="1" >1 ամիս</option>
                                                 <option value="3" selected>3 ամիս</option>
                                                 <option value="6">6 ամիս</option>
                                                 <option value="9">9 ամիս</option>
@@ -446,6 +448,8 @@
                                                 <option value="18">18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                             <input type="hidden" name="Currancy"
                                                    value='<%=request.getParameter("Currancy")%>'>
@@ -457,14 +461,16 @@
                                         <c:when test='<%=convertToMonths == 6%>'>
                                             <select name="months${TheCount.count}" id="select_month"
                                                     onchange="document.compareNewAmount.submit();">
-                                                <option value="1">1 ամիս</option>
-                                                <option value="3">3 ամիս</option>
+                                                <option value="1" >1 ամիս</option>
+                                                <option value="3" >3 ամիս</option>
                                                 <option value="6" selected>6 ամիս</option>
                                                 <option value="9">9 ամիս</option>
                                                 <option value="12">12 ամիս</option>
                                                 <option value="18">18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                             <input type="hidden" name="Currancy"
                                                    value='<%=request.getParameter("Currancy")%>'>
@@ -476,14 +482,16 @@
                                         <c:when test='<%=convertToMonths == 9%>'>
                                             <select name="months${TheCount.count}" id="select_month"
                                                     onchange="document.compareNewAmount.submit();">
-                                                <option value="1">1 ամիս</option>
-                                                <option value="3">3 ամիս</option>
-                                                <option value="6">6 ամիս</option>
+                                                <option value="1" >1 ամիս</option>
+                                                <option value="3" >3 ամիս</option>
+                                                <option value="6" >6 ամիս</option>
                                                 <option value="9" selected>9 ամիս</option>
                                                 <option value="12">12 ամիս</option>
                                                 <option value="18">18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                             <input type="hidden" name="Currancy"
                                                    value='<%=request.getParameter("Currancy")%>'>
@@ -495,14 +503,16 @@
                                         <c:when test='<%=convertToMonths == 12 %>'>
                                             <select name="months${TheCount.count}" id="select_month"
                                                     onchange="document.compareNewAmount.submit();">
-                                                <option value="1">1 ամիս</option>
-                                                <option value="3">3 ամիս</option>
-                                                <option value="6">6 ամիս</option>
-                                                <option value="9">9 ամիս</option>
+                                                <option value="1" >1 ամիս</option>
+                                                <option value="3" >3 ամիս</option>
+                                                <option value="6" >6 ամիս</option>
+                                                <option value="9" >9 ամիս</option>
                                                 <option value="12" selected>12 ամիս</option>
                                                 <option value="18">18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                             <input type="hidden" name="Currancy"
                                                    value='<%=request.getParameter("Currancy")%>'>
@@ -514,14 +524,16 @@
                                         <c:when test='<%=convertToMonths == 18%>'>
                                             <select name="months${TheCount.count}" id="select_month"
                                                     onchange="document.compareNewAmount.submit();">
-                                                <option value="1">1 ամիս</option>
-                                                <option value="3">3 ամիս</option>
-                                                <option value="6">6 ամիս</option>
-                                                <option value="9">9 ամիս</option>
-                                                <option value="12">12 ամիս</option>
+                                                <option value="1" >1 ամիս</option>
+                                                <option value="3" >3 ամիս</option>
+                                                <option value="6" >6 ամիս</option>
+                                                <option value="9" >9 ամիս</option>
+                                                <option value="12" >12 ամիս</option>
                                                 <option value="18" selected>18 ամիս</option>
                                                 <option value="24">24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                             <input type="hidden" name="Currancy"
                                                    value='<%=request.getParameter("Currancy")%>'>
@@ -533,14 +545,16 @@
                                         <c:when test='<%=convertToMonths == 24%>'>
                                             <select name="months${TheCount.count}" id="select_month"
                                                     onchange="document.compareNewAmount.submit();">
-                                                <option value="1">1 ամիս</option>
-                                                <option value="3">3 ամիս</option>
-                                                <option value="6">6 ամիս</option>
-                                                <option value="9">9 ամիս</option>
-                                                <option value="12">12 ամիս</option>
-                                                <option value="18">18 ամիս</option>
+                                                <option value="1" >1 ամիս</option>
+                                                <option value="3" >3 ամիս</option>
+                                                <option value="6" >6 ամիս</option>
+                                                <option value="9" >9 ամիս</option>
+                                                <option value="12" >12 ամիս</option>
+                                                <option value="18" >18 ամիս</option>
                                                 <option value="24" selected>24 ամիս</option>
                                                 <option value="36">36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
                                             </select>
                                             <input type="hidden" name="Currancy"
                                                    value='<%=request.getParameter("Currancy")%>'>
@@ -552,14 +566,58 @@
                                         <c:when test='<%=convertToMonths == 36%>'>
                                             <select name="months${TheCount.count}" id="select_month"
                                                     onchange="document.compareNewAmount.submit();">
-                                                <option value="1">1 ամիս</option>
-                                                <option value="3">3 ամիս</option>
-                                                <option value="6">6 ամիս</option>
-                                                <option value="9">9 ամիս</option>
-                                                <option value="12">12 ամիս</option>
-                                                <option value="18">18 ամիս</option>
-                                                <option value="24">24 ամիս</option>
+                                                <option value="1" >1 ամիս</option>
+                                                <option value="3" >3 ամիս</option>
+                                                <option value="6" >6 ամիս</option>
+                                                <option value="9" >9 ամիս</option>
+                                                <option value="12" >12 ամիս</option>
+                                                <option value="18" >18 ամիս</option>
+                                                <option value="24" >24 ամիս</option>
                                                 <option value="36" selected>36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
+                                            </select>
+                                            <input type="hidden" name="Currancy"
+                                                   value='<%=request.getParameter("Currancy")%>'>
+                                            <input type="hidden" name="clientCode"
+                                                   value='${compare.SID}'>
+                                            <input type="hidden" name="idCheck${TheCount.count}"
+                                                   value='${compare.idCheck}'>
+                                        </c:when>
+                                        <c:when test='<%=convertToMonths == 48%>'>
+                                            <select name="months${TheCount.count}" id="select_month"
+                                                    onchange="document.compareNewAmount.submit();">
+                                                <option value="1" >1 ամիս</option>
+                                                <option value="3" >3 ամիս</option>
+                                                <option value="6" >6 ամիս</option>
+                                                <option value="9" >9 ամիս</option>
+                                                <option value="12" >12 ամիս</option>
+                                                <option value="18" >18 ամիս</option>
+                                                <option value="24" >24 ամիս</option>
+                                                <option value="36" >36 ամիս</option>
+                                                <option value="48" selected>48 ամիս</option>
+                                                <option value="60">60 ամիս</option>
+                                            </select>
+                                            <input type="hidden" name="Currancy"
+                                                   value='<%=request.getParameter("Currancy")%>'>
+                                            <input type="hidden" name="clientCode"
+                                                   value='${compare.SID}'>
+                                            <input type="hidden" name="idCheck${TheCount.count}"
+                                                   value='${compare.idCheck}'>
+                                        </c:when>
+                                        <c:when test='<%=convertToMonths == 60%>'>
+                                            <select name="months${TheCount.count}" id="select_month"
+                                                    onchange="document.compareNewAmount.submit();">
+                                                <option value="1" >1 ամիս</option>
+                                                <option value="3" >3 ամիս</option>
+                                                <option value="6" >6 ամիս</option>
+                                                <option value="9" >9 ամիս</option>
+                                                <option value="12" >12 ամիս</option>
+                                                <option value="18" >18 ամիս</option>
+                                                <option value="24" >24 ամիս</option>
+                                                <option value="36" >36 ամիս</option>
+                                                <option value="48">48 ամիս</option>
+                                                <option value="60" selected>60 ամիս</option>
                                             </select>
                                             <input type="hidden" name="Currancy"
                                                    value='<%=request.getParameter("Currancy")%>'>

@@ -267,7 +267,7 @@
                                      <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
                                     </form>
                             </c:if>
-                            <form action="CompareMicro" method="get" name="MicroCompare">
+                            <%--<form action="CompareMicro" method="get" name="MicroCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
                             <c:if test="${requestScope.comparListMicro != null}">
@@ -295,7 +295,7 @@
                                      <input name="months" value="<%=request.getAttribute("months")%>" type="hidden">
                                     </form>
                             </ul>
-                            </c:if>
+                            </c:if>--%>
                             <form action="CompareAg" method="get" name="AgCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>

@@ -263,7 +263,7 @@
                                         <input name="Amount" value="<%=request.getAttribute("range")%>" type="hidden">
                                     </form>
                             </c:if>
-                             <form action="CompareMicro" method="get" name="MicroCompare">
+                            <%-- <form action="CompareMicro" method="get" name="MicroCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
                             <c:if test="${requestScope.comparListMicro != null}">
@@ -277,7 +277,7 @@
                                      <span class="bold font-14">${counterMicro}</span>
                                         <i type="submit" class="icon-delete"
                                            onclick="document.DeleteMicro.submit();"></i>
-                                </li>
+                                </li>--%>
                            <form action="DepositClient" method="get" name="DeleteMicro">
                                         <input type="hidden" name="pageNameToDelete" value="ՄԻԿՐՈՎԱՐԿ">
                                         <input name="MaxAmounr" value="<%=request.getParameter("MaxAmounr")%>" type="hidden">

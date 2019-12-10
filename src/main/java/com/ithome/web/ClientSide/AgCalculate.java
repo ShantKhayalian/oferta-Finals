@@ -198,10 +198,12 @@ public class AgCalculate extends HttpServlet {
     private void PercentageAsecSorted() throws SQLException {
         depositStartFilter = agriculturalCreditDao.getAllAgriculturalCreditList();
         depositAmountFilter = new ArrayList<>();
+        MaxAmount=null;
+        getMaxAmount();
         for (int i = 0; i < depositStartFilter.size(); i++) {
             int minAamountFilter = depositStartFilter.get(i).getACMinAmount();
             /*int maxAmountFilter = depositStartFilter.get(i).getDMinAmount();*/
-            if (Integer.parseInt(amoutFiltered) >= minAamountFilter) {
+            if (Integer.parseInt(Amount) >= minAamountFilter  || Integer.parseInt(Amount) <= minAamountFilter && Integer.parseInt(MaxAmount) <= minAamountFilter) {
                 int id = Integer.parseInt(String.valueOf(depositStartFilter.get(i).getACId()));
                 depositAmountFilter.addAll(FilteredList(id));
             }
@@ -227,9 +229,11 @@ public class AgCalculate extends HttpServlet {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {
             double timeLineFilter = depositCurrancyFilter.get(i).getACFactual();
-
+            int monthsFromData = depositCurrancyFilter.get(i).getACMinPeriodMonth();
+            if(monthsFromData >= Integer.parseInt(months)) {
                 int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getACId()));
                 depositAllInRage.addAll(FilteredList(id));
+            }
 
         }
 
@@ -251,10 +255,12 @@ public class AgCalculate extends HttpServlet {
     private void PercentageAsec() throws SQLException {
         depositStartFilter = agriculturalCreditDao.getAllAgriculturalCreditList();
         depositAmountFilter = new ArrayList<>();
+        MaxAmount=null;
+        getMaxAmount();
         for (int i = 0; i < depositStartFilter.size(); i++) {
             int minAamountFilter = depositStartFilter.get(i).getACMinAmount();
             /*int maxAmountFilter = depositStartFilter.get(i).getDMinAmount();*/
-            if (Integer.parseInt(amoutFiltered) >= minAamountFilter) {
+            if (Integer.parseInt(Amount) >= minAamountFilter  || Integer.parseInt(Amount) <= minAamountFilter && Integer.parseInt(MaxAmount) <= minAamountFilter) {
                 int id = Integer.parseInt(String.valueOf(depositStartFilter.get(i).getACId()));
                 depositAmountFilter.addAll(FilteredList(id));
             }
@@ -280,9 +286,11 @@ public class AgCalculate extends HttpServlet {
         depositAllInRage = new ArrayList<>();
         for (int i = 0; i < depositCurrancyFilter.size(); i++) {
             double timeLineFilter = depositCurrancyFilter.get(i).getACFactual();
-
+            int monthsFromData = depositCurrancyFilter.get(i).getACMinPeriodMonth();
+            if(monthsFromData >= Integer.parseInt(months)) {
                 int id = Integer.parseInt(String.valueOf(depositCurrancyFilter.get(i).getACId()));
                 depositAllInRage.addAll(FilteredList(id));
+            }
 
         }
         Collections.sort(depositAllInRage, new ComparePercentage2());
@@ -403,13 +411,14 @@ public class AgCalculate extends HttpServlet {
     private void getApperance() throws SQLException {
         searchUpList = new ArrayList<>();
         depositeAseList = new ArrayList<>();
-
+        MaxAmount=null;
+        getMaxAmount();
         searchUpList = searchDatabase();
         for (int i = 0; i <searchUpList.size() ; i++) {
             int firstSearch = searchUpList.get(i).getACMinAmount();
             String firstSearchCurrancy = searchUpList.get(i).getCurrancy();
-            int monthsToCheck = searchUpList.get(i).getACMinPeriodMonth();
-            if (Integer.parseInt(amoutFiltered) >= firstSearch && firstSearchCurrancy.equals(pageCurrancy) && monthsToCheck == Integer.parseInt(months)) {
+            int days = searchUpList.get(i).getACMaxPeriodMonth();
+            if (Integer.parseInt(amoutFiltered) >= firstSearch || Integer.parseInt(amoutFiltered) <= firstSearch && Integer.parseInt(MaxAmount) <= firstSearch && Integer.parseInt(months) == (days) && firstSearchCurrancy.equals(pageCurrancy) ) {
                 int id = Integer.parseInt(String.valueOf(searchUpList.get(i).getACId()));
                 depositeAseList.addAll(FilteredList(id));
             }
