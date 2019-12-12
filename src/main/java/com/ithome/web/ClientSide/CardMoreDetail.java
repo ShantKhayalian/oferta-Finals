@@ -204,9 +204,42 @@ public class CardMoreDetail extends HttpServlet {
         depositListOffer = depositSpecialOfferHelper.getStarted();
     }
 
-    private void getParameters(HttpServletRequest request) {
+    private void getParameters(HttpServletRequest request) throws SQLException {
         CardId = Integer.parseInt(request.getParameter("CardId"));
         Currancy = request.getParameter("Currancy");
+        if (request.getParameter("pageNameToDelete") != null) {
+            PageNameToDelete = request.getParameter("pageNameToDelete");
+            deleteList(PageNameToDelete);
+        } else {
+            PageNameToDelete = "";
+        }
+    }
+
+
+    private void deleteList(String pageNameToDelete) throws SQLException {
+        switch (pageNameToDelete){
+            case "Ավանդ":
+                CompareHelper.DeleteDepositList(sessionId);
+                break;
+            case "Հիփոթեք":
+                CompareHelper.DeleteMortgag(sessionId);
+                break;
+            case "Ավտովարկ":
+                CompareHelper.DeleteCarLoan(sessionId);
+                break;
+            case "ՄԻԿՐՈՎԱՐԿ":
+                CompareHelper.DeleteMicro(sessionId);
+                break;
+            case "Գյուղատնտեսական":
+                CompareHelper.DeleteAg(sessionId);
+                break;
+            case "Սպարողական":
+                CompareHelper.DeleteConsumer(sessionId);
+                break;
+            case "Քարտեր":
+                CompareHelper.DeleteCard();
+                break;
+        }
     }
 
     private void getPageLanguage(String language) {

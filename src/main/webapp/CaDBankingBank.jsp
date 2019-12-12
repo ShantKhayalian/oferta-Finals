@@ -147,7 +147,7 @@
                         <i class="icon-libra"></i>
                     </span>
                     <div class="tooltip-container bottom right" id="compareTooltipWeb">
-                        <div class="tooltip">
+                         <div class="tooltip">
                             <span class="tooltip-title">Համեմատության</span>
                             <form action="CompareDeposit" method="get" name="DepositCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
@@ -168,11 +168,11 @@
                                      <i type="submit" class="icon-delete" onclick="document.Delete.submit();"></i>
 
                                 </li>
-                                 <form action="DepositClient" method="get" name="Delete">
+                                 <form action="CardBanks" method="get" name="Delete">
                                         <input type="hidden" name="pageNameToDelete" value="Ավանդ">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
                                         <input name="PageToGo" value="App"  type="hidden">
-                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+
                                     </form>
                             </ul>
                             </c:if>
@@ -194,11 +194,11 @@
                                      <span class="bold font-14">${counterMortgag}</span>
                                         <i type="submit" class="icon-delete" onclick="document.DeleteHipotek.submit();"></i>
                                 </li>
-                                 <form action="DepositClient" method="get" name="DeleteHipotek">
+                                 <form action="CardBanks" method="get" name="DeleteHipotek">
                                         <input type="hidden" name="pageNameToDelete" value="Հիփոթեք">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
                                         <input name="PageToGo" value="App"  type="hidden">
-                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+
                                     </form>
                             </ul>
                             </c:if>
@@ -217,11 +217,11 @@
                                      <span class="bold font-14">${counterCompare}</span>
                                        <i type="submit" class="icon-delete" onclick="document.DeleteConsumer.submit();"></i>
                                 </li>
-                                  <form action="DepositClient" method="get" name="DeleteConsumer">
+                                  <form action="CardBanks" method="get" name="DeleteConsumer">
                                         <input type="hidden" name="pageNameToDelete" value="Սպարողական">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
                                         <input name="PageToGo" value="App"  type="hidden">
-                                        <input name="Amount" value=<<%=request.getAttribute("range")%> type="hidden">
+
                                     </form>
                             </ul>
                              </c:if>
@@ -239,15 +239,15 @@
                                       <span class="bold font-14">${counterCarLoan}</span>
                                        <i type="submit" class="icon-delete" onclick="document.DeleteCar.submit();"></i>
                                 </li>
-                                 <form action="DepositClient" method="get" name="DeleteCar">
+                                 <form action="CardBanks" method="get" name="DeleteCar">
                                         <input type="hidden" name="pageNameToDelete" value="Ավտովարկ">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
                                         <input name="PageToGo" value="App"  type="hidden">
-                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+
                                     </form>
                             </ul>
                             </c:if>
-                          <%--  <form action="CompareMicro" method="get" name="MicroCompare">
+                           <%-- <form action="CompareMicro" method="get" name="MicroCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
                             <c:if test="${requestScope.comparListMicro != null}">
@@ -283,11 +283,11 @@
                                       <span class="bold font-14">${counterAg}</span>
                                         <i type="submit" class="icon-delete" onclick="document.DeleteAG.submit();"></i>
                                 </li>
-                                 <form action="DepositClient" method="get" name="DeleteAG">
+                                 <form action="CardBanks" method="get" name="DeleteAG">
                                         <input type="hidden" name="pageNameToDelete" value="Գյուղատնտեսական">
                                         <input name="Currancy" value="<%=request.getParameter("Currancy")%>" type="hidden">
                                         <input name="PageToGo" value="App"  type="hidden">
-                                        <input name="Amount" value=<%=request.getAttribute("range")%> type="hidden">
+
                                     </form>
                             </ul>
                             </c:if>
@@ -306,8 +306,8 @@
                                 </li>
                             </ul>
                              </c:if>--%>
-                            <!--Todo add when there is no item -->
-                            <!--                            <span>Համեմատության էջում տեղ չկա</span>-->
+                             <!--Todo add when there is no item -->
+                             <!--                            <span>Համեմատության էջում տեղ չկա</span>-->
 
                         </div>
                     </div>

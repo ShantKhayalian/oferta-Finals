@@ -87,6 +87,8 @@ public class MortgageBanks extends HttpServlet {
     private int  arrow = 0;
     private int arrow2 = 0;
     private int MinAmount = 0;
+    private String PageNameToDelete=null;
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -297,8 +299,14 @@ public class MortgageBanks extends HttpServlet {
 
 
 
-    private void getParameters(HttpServletRequest request) {
+    private void getParameters(HttpServletRequest request) throws SQLException {
         Bankid = Integer.parseInt(request.getParameter("bankId"));
+        if (request.getParameter("pageNameToDelete") != null) {
+            PageNameToDelete = request.getParameter("pageNameToDelete");
+            deleteList(PageNameToDelete);
+        } else {
+            PageNameToDelete = "";
+        }
 
         if (request.getParameter("sorting") != null) {
             Sorting = request.getParameter("sorting");
@@ -316,6 +324,31 @@ public class MortgageBanks extends HttpServlet {
                 e.printStackTrace();
                 System.out.println(e);
             }
+        }
+    }
+    private void deleteList(String pageNameToDelete) throws SQLException {
+        switch (pageNameToDelete){
+            case "Ավանդ":
+                CompareHelper.DeleteDepositList(sessionId);
+                break;
+            case "Հիփոթեք":
+                CompareHelper.DeleteMortgag(sessionId);
+                break;
+            case "Ավտովարկ":
+                CompareHelper.DeleteCarLoan(sessionId);
+                break;
+            case "ՄԻԿՐՈՎԱՐԿ":
+                CompareHelper.DeleteMicro(sessionId);
+                break;
+            case "Գյուղատնտեսական":
+                CompareHelper.DeleteAg(sessionId);
+                break;
+            case "Սպարողական":
+                CompareHelper.DeleteConsumer(sessionId);
+                break;
+            case "Քարտեր":
+                CompareHelper.DeleteCard();
+                break;
         }
     }
     private void sessionControlling(HttpServletRequest request, HttpServletResponse response) {

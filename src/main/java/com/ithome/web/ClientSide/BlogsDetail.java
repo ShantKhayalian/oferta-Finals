@@ -52,6 +52,7 @@ public class BlogsDetail extends HttpServlet {
     private DropDownCurrancyHelper dropDownCurrancyHelper = new DropDownCurrancyHelper();
     private List<DropDowns> dropDownsList = new ArrayList<>();
     private DropDownHelper dropDownHelper = new DropDownHelper();
+    private String PageNameToDelete=null;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -83,6 +84,7 @@ public class BlogsDetail extends HttpServlet {
         getPageName(request);
         getPageLanguage(language);
         getMainPageRange();
+        getparameters(request);
         checkForCompareList();
         GetDropDownByCurrancy(dropDownsList, pageCurrancy);
         getPageLabguageName(language);
@@ -91,6 +93,39 @@ public class BlogsDetail extends HttpServlet {
         setRequestToPage(request);
         gotoPage(request,response);
 
+    }
+    private void getparameters(HttpServletRequest request) throws SQLException {
+        if (request.getParameter("pageNameToDelete") != null) {
+            PageNameToDelete = request.getParameter("pageNameToDelete");
+            deleteList(PageNameToDelete);
+        } else {
+            PageNameToDelete = "";
+        }
+    }
+    private void deleteList(String pageNameToDelete) throws SQLException {
+        switch (pageNameToDelete){
+            case "Ավանդ":
+                CompareHelper.DeleteDepositList(sessionId);
+                break;
+            case "Հիփոթեք":
+                CompareHelper.DeleteMortgag(sessionId);
+                break;
+            case "Ավտովարկ":
+                CompareHelper.DeleteCarLoan(sessionId);
+                break;
+            case "ՄԻԿՐՈՎԱՐԿ":
+                CompareHelper.DeleteMicro(sessionId);
+                break;
+            case "Գյուղատնտեսական":
+                CompareHelper.DeleteAg(sessionId);
+                break;
+            case "Սպարողական":
+                CompareHelper.DeleteConsumer(sessionId);
+                break;
+            case "Քարտեր":
+                CompareHelper.DeleteCard();
+                break;
+        }
     }
 
     private void gotoPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

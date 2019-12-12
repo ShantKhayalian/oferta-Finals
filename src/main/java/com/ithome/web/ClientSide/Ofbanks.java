@@ -70,7 +70,7 @@ public class Ofbanks extends HttpServlet {
     private List<DropDowns> dropDownsListWithCurrancy = new ArrayList<>();
     private DropDownCurrancyHelper dropDownCurrancyHelper = new DropDownCurrancyHelper();
     private List<DropDowns> dropDownsList = new ArrayList<>();
-
+    private String PageNameToDelete=null;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -101,6 +101,7 @@ public class Ofbanks extends HttpServlet {
         getPageLabguageName(language);
         countHit();
         getMainPageRange();
+        getparameters(request);
         checkForCompareList();
         GetDropDownByCurrancy(dropDownsList, pageCurrancy);
         getBanks();
@@ -114,7 +115,39 @@ public class Ofbanks extends HttpServlet {
         setRequestes(request);
         gotoBanksPage(request,response);
     }
-
+    private void getparameters(HttpServletRequest request) throws SQLException {
+        if (request.getParameter("pageNameToDelete") != null) {
+            PageNameToDelete = request.getParameter("pageNameToDelete");
+            deleteList(PageNameToDelete);
+        } else {
+            PageNameToDelete = "";
+        }
+    }
+    private void deleteList(String pageNameToDelete) throws SQLException {
+        switch (pageNameToDelete){
+            case "Ավանդ":
+                CompareHelper.DeleteDepositList(sessionId);
+                break;
+            case "Հիփոթեք":
+                CompareHelper.DeleteMortgag(sessionId);
+                break;
+            case "Ավտովարկ":
+                CompareHelper.DeleteCarLoan(sessionId);
+                break;
+            case "ՄԻԿՐՈՎԱՐԿ":
+                CompareHelper.DeleteMicro(sessionId);
+                break;
+            case "Գյուղատնտեսական":
+                CompareHelper.DeleteAg(sessionId);
+                break;
+            case "Սպարողական":
+                CompareHelper.DeleteConsumer(sessionId);
+                break;
+            case "Քարտեր":
+                CompareHelper.DeleteCard();
+                break;
+        }
+    }
     private void checkForCompareList() {
         comparListDeposit = CompareHelper.getDepositList(sessionId);
         comparListMortgage = CompareHelper.getMortgageList(sessionId);

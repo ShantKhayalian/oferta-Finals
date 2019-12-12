@@ -111,15 +111,15 @@
                 <span class="compere-box">
 
                     <span class="compere-icon" onclick="toggleBoxes('compareTooltipWeb')">
-                        <c:if test="${requestScope.comparListMicro != null}">
+                       <%-- <c:if test="${requestScope.comparListMicro != null}">
                             <c:forEach var="size" items="${requestScope.comparListMicro}" varStatus="TheCount">
                                 <span class="count"><c:out value="${TheCount.count}"/></span>
                             </c:forEach>
                         </c:if>
-                        <i class="icon-libra"></i>
+                        <i class="icon-libra"></i>--%>
                     </span>
                     <div class="tooltip-container bottom right" id="compareTooltipWeb">
-                        <div class="tooltip">
+                        <%--<div class="tooltip">
                             <span class="tooltip-title">Համեմատության</span>
                             <form action="CompareDeposit" method="get" name="DepositCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
@@ -199,7 +199,7 @@
                                 </li>
                             </ul>
                             </c:if>
-                           <%-- <form action="CompareMicro" method="get" name="MicroCompare">
+                           &lt;%&ndash; <form action="CompareMicro" method="get" name="MicroCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
                             <c:if test="${requestScope.comparListMicro != null}">
@@ -214,7 +214,7 @@
                                         <i class="icon-delete"></i>
                                 </li>
                             </ul>
-                            </c:if>--%>
+                            </c:if>&ndash;%&gt;
                             <form action="CompareAg" method="get" name="AgCompare">
                                 <input type="hidden" name="Currancy" value="<%=request.getParameter("Currancy")%>">
                             </form>
@@ -232,7 +232,7 @@
                             </ul>
                             </c:if>
 
-                             <%--<c:if test="${requestScope.comparListCard != null}">
+                             &lt;%&ndash;<c:if test="${requestScope.comparListCard != null}">
                             <ul>
                                 <li>
                                     <c:forEach var="CardCompare" items="${requestScope.comparListCard}"
@@ -245,11 +245,11 @@
                                         <i class="icon-delete"></i>
                                 </li>
                             </ul>
-                             </c:if>--%>
+                             </c:if>&ndash;%&gt;
                             <!--Todo add when there is no item -->
                             <!--                            <span>Համեմատության էջում տեղ չկա</span>-->
 
-                        </div>
+                        </div>--%>
                     </div>
                 </span>
             </span>

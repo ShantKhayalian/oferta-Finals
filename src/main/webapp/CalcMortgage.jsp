@@ -250,7 +250,8 @@
                                     </c:forEach>
                                       <span onclick="document.AgComparesmall.submit();">Գյուղատնտեսական</span>
                                       <span class="bold font-14">${counterAg}</span>
-                                        <i type="submit" class="icon-delete" onclick="document.DeleteAGsmall.submit();"></i>
+                                        <i type="submit" class="icon-delete"
+                                           onclick="document.DeleteAGsmall.submit();"></i>
                                 </li>
                                 <form action="DepositClient" method="get" name="DeleteAGsmall">
                                         <input type="hidden" name="pageNameToDelete" value="Գյուղատնտեսական">
@@ -602,7 +603,7 @@
                                                    max="${dropDownList2.maxAmount}" step="${dropDownList2.steps}"
                                                    value="${requestScope.Amountfiltered}"
                                                    oninput="showVal(this.value)"
-                                                   onchange="showVal(this.value)" id="amount"   inputmode="numeric">>
+                                                   onchange="showVal(this.value)" id="amount" inputmode="numeric">>
 
                                             <input type="range" name="range" min="${dropDownList2.minAmount}"
                                                    max="${dropDownList2.maxAmount}" step="${dropDownList2.steps}"
@@ -816,7 +817,6 @@
                                         <input type="hidden" name="value_url" id="value_amount_url">
 
 
-
                                     </c:forEach>
                                 </c:if>
                             </div>
@@ -947,7 +947,7 @@
                                 <c:when test="${monthsSection == '2'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
+                                        <option value="1">1 Տարի</option>
                                         <option value="2" selected>2 Տարի</option>
                                         <option value="3">3 Տարի</option>
                                         <option value="4">4 Տարի</option>
@@ -967,8 +967,8 @@
                                 <c:when test="${monthsSection == '3'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
                                         <option value="3" selected>3 Տարի</option>
                                         <option value="4">4 Տարի</option>
                                         <option value="5">5 Տարի</option>
@@ -987,9 +987,9 @@
                                 <c:when test="${monthsSection == '4'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
                                         <option value="4" selected>4 Տարի</option>
                                         <option value="5">5 Տարի</option>
                                         <option value="6">6 Տարի</option>
@@ -1007,10 +1007,10 @@
                                 <c:when test="${monthsSection == '5'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
-                                        <option value="4" >4 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
+                                        <option value="4">4 Տարի</option>
                                         <option value="5" selected>5 Տարի</option>
                                         <option value="6">6 Տարի</option>
                                         <option value="7">7 Տարի</option>
@@ -1027,11 +1027,11 @@
                                 <c:when test="${monthsSection == '6'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
-                                        <option value="4" >4 Տարի</option>
-                                        <option value="5" >5 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
+                                        <option value="4">4 Տարի</option>
+                                        <option value="5">5 Տարի</option>
                                         <option value="6" selected>6 Տարի</option>
                                         <option value="7">7 Տարի</option>
                                         <option value="8">8 Տարի</option>
@@ -1047,12 +1047,12 @@
                                 <c:when test="${monthsSection == '7'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
-                                        <option value="4" >4 Տարի</option>
-                                        <option value="5" >5 Տարի</option>
-                                        <option value="6" >6 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
+                                        <option value="4">4 Տարի</option>
+                                        <option value="5">5 Տարի</option>
+                                        <option value="6">6 Տարի</option>
                                         <option value="7" selected>7 Տարի</option>
                                         <option value="8">8 Տարի</option>
                                         <option value="9">9 Տարի</option>
@@ -1067,13 +1067,13 @@
                                 <c:when test="${monthsSection == '8'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
-                                        <option value="4" >4 Տարի</option>
-                                        <option value="5" >5 Տարի</option>
-                                        <option value="6" >6 Տարի</option>
-                                        <option value="7" >7 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
+                                        <option value="4">4 Տարի</option>
+                                        <option value="5">5 Տարի</option>
+                                        <option value="6">6 Տարի</option>
+                                        <option value="7">7 Տարի</option>
                                         <option value="8" selected>8 Տարի</option>
                                         <option value="9">9 Տարի</option>
                                         <option value="10">10 Տարի</option>
@@ -1087,14 +1087,14 @@
                                 <c:when test="${monthsSection == '9'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
-                                        <option value="4" >4 Տարի</option>
-                                        <option value="5" >5 Տարի</option>
-                                        <option value="6" >6 Տարի</option>
-                                        <option value="7" >7 Տարի</option>
-                                        <option value="8" >8 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
+                                        <option value="4">4 Տարի</option>
+                                        <option value="5">5 Տարի</option>
+                                        <option value="6">6 Տարի</option>
+                                        <option value="7">7 Տարի</option>
+                                        <option value="8">8 Տարի</option>
                                         <option value="9" selected>9 Տարի</option>
                                         <option value="10">10 Տարի</option>
                                         <option value="12">12 Տարի</option>
@@ -1107,15 +1107,15 @@
                                 <c:when test="${monthsSection == '10'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
-                                        <option value="4" >4 Տարի</option>
-                                        <option value="5" >5 Տարի</option>
-                                        <option value="6" >6 Տարի</option>
-                                        <option value="7" >7 Տարի</option>
-                                        <option value="8" >8 Տարի</option>
-                                        <option value="9" >9 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
+                                        <option value="4">4 Տարի</option>
+                                        <option value="5">5 Տարի</option>
+                                        <option value="6">6 Տարի</option>
+                                        <option value="7">7 Տարի</option>
+                                        <option value="8">8 Տարի</option>
+                                        <option value="9">9 Տարի</option>
                                         <option value="10" selected>10 Տարի</option>
                                         <option value="12">12 Տարի</option>
                                         <option value="15">15 Տարի</option>
@@ -1127,16 +1127,16 @@
                                 <c:when test="${monthsSection == '12'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
-                                        <option value="4" >4 Տարի</option>
-                                        <option value="5" >5 Տարի</option>
-                                        <option value="6" >6 Տարի</option>
-                                        <option value="7" >7 Տարի</option>
-                                        <option value="8" >8 Տարի</option>
-                                        <option value="9" >9 Տարի</option>
-                                        <option value="10" >10 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
+                                        <option value="4">4 Տարի</option>
+                                        <option value="5">5 Տարի</option>
+                                        <option value="6">6 Տարի</option>
+                                        <option value="7">7 Տարի</option>
+                                        <option value="8">8 Տարի</option>
+                                        <option value="9">9 Տարի</option>
+                                        <option value="10">10 Տարի</option>
                                         <option value="12" selected>12 Տարի</option>
                                         <option value="15">15 Տարի</option>
                                         <option value="20">20 Տարի</option>
@@ -1147,17 +1147,17 @@
                                 <c:when test="${monthsSection == '15'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
-                                        <option value="4" >4 Տարի</option>
-                                        <option value="5" >5 Տարի</option>
-                                        <option value="6" >6 Տարի</option>
-                                        <option value="7" >7 Տարի</option>
-                                        <option value="8" >8 Տարի</option>
-                                        <option value="9" >9 Տարի</option>
-                                        <option value="10" >10 Տարի</option>
-                                        <option value="12" >12 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
+                                        <option value="4">4 Տարի</option>
+                                        <option value="5">5 Տարի</option>
+                                        <option value="6">6 Տարի</option>
+                                        <option value="7">7 Տարի</option>
+                                        <option value="8">8 Տարի</option>
+                                        <option value="9">9 Տարի</option>
+                                        <option value="10">10 Տարի</option>
+                                        <option value="12">12 Տարի</option>
                                         <option value="15" selected>15 Տարի</option>
                                         <option value="20">20 Տարի</option>
                                         <option value="25">25 Տարի</option>
@@ -1167,18 +1167,18 @@
                                 <c:when test="${monthsSection == '20'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
-                                        <option value="4" >4 Տարի</option>
-                                        <option value="5" >5 Տարի</option>
-                                        <option value="6" >6 Տարի</option>
-                                        <option value="7" >7 Տարի</option>
-                                        <option value="8" >8 Տարի</option>
-                                        <option value="9" >9 Տարի</option>
-                                        <option value="10" >10 Տարի</option>
-                                        <option value="12" >12 Տարի</option>
-                                        <option value="15" >15 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
+                                        <option value="4">4 Տարի</option>
+                                        <option value="5">5 Տարի</option>
+                                        <option value="6">6 Տարի</option>
+                                        <option value="7">7 Տարի</option>
+                                        <option value="8">8 Տարի</option>
+                                        <option value="9">9 Տարի</option>
+                                        <option value="10">10 Տարի</option>
+                                        <option value="12">12 Տարի</option>
+                                        <option value="15">15 Տարի</option>
                                         <option value="20" selected>20 Տարի</option>
                                         <option value="25">25 Տարի</option>
                                         <option value="30">30 Տարի</option>
@@ -1187,19 +1187,19 @@
                                 <c:when test="${monthsSection == '25'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
-                                        <option value="4" >4 Տարի</option>
-                                        <option value="5" >5 Տարի</option>
-                                        <option value="6" >6 Տարի</option>
-                                        <option value="7" >7 Տարի</option>
-                                        <option value="8" >8 Տարի</option>
-                                        <option value="9" >9 Տարի</option>
-                                        <option value="10" >10 Տարի</option>
-                                        <option value="12" >12 Տարի</option>
-                                        <option value="15" >15 Տարի</option>
-                                        <option value="20" >20 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
+                                        <option value="4">4 Տարի</option>
+                                        <option value="5">5 Տարի</option>
+                                        <option value="6">6 Տարի</option>
+                                        <option value="7">7 Տարի</option>
+                                        <option value="8">8 Տարի</option>
+                                        <option value="9">9 Տարի</option>
+                                        <option value="10">10 Տարի</option>
+                                        <option value="12">12 Տարի</option>
+                                        <option value="15">15 Տարի</option>
+                                        <option value="20">20 Տարի</option>
                                         <option value="25" selected>25 Տարի</option>
                                         <option value="30">30 Տարի</option>
                                     </select>
@@ -1207,40 +1207,40 @@
                                 <c:when test="${monthsSection == '30'}">
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0">Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
-                                        <option value="4" >4 Տարի</option>
-                                        <option value="5" >5 Տարի</option>
-                                        <option value="6" >6 Տարի</option>
-                                        <option value="7" >7 Տարի</option>
-                                        <option value="8" >8 Տարի</option>
-                                        <option value="9" >9 Տարի</option>
-                                        <option value="10" >10 Տարի</option>
-                                        <option value="12" >12 Տարի</option>
-                                        <option value="15" >15 Տարի</option>
-                                        <option value="20" >20 Տարի</option>
-                                        <option value="25" >25 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
+                                        <option value="4">4 Տարի</option>
+                                        <option value="5">5 Տարի</option>
+                                        <option value="6">6 Տարի</option>
+                                        <option value="7">7 Տարի</option>
+                                        <option value="8">8 Տարի</option>
+                                        <option value="9">9 Տարի</option>
+                                        <option value="10">10 Տարի</option>
+                                        <option value="12">12 Տարի</option>
+                                        <option value="15">15 Տարի</option>
+                                        <option value="20">20 Տարի</option>
+                                        <option value="25">25 Տարի</option>
                                         <option value="30" selected>30 Տարի</option>
                                     </select>
                                 </c:when>
                                 <c:otherwise>
                                     <select name="months" id="select_month" onchange="document.main.submit();">
                                         <option value="0" selected>Բոլորը</option>
-                                        <option value="1" >1 Տարի</option>
-                                        <option value="2" >2 Տարի</option>
-                                        <option value="3" >3 Տարի</option>
-                                        <option value="4" >4 Տարի</option>
-                                        <option value="5" >5 Տարի</option>
-                                        <option value="6" >6 Տարի</option>
-                                        <option value="7" >7 Տարի</option>
-                                        <option value="8" >8 Տարի</option>
-                                        <option value="9" >9 Տարի</option>
-                                        <option value="10" >10 Տարի</option>
-                                        <option value="12" >12 Տարի</option>
-                                        <option value="15" >15 Տարի</option>
-                                        <option value="20" >20 Տարի</option>
-                                        <option value="25" >25 Տարի</option>
+                                        <option value="1">1 Տարի</option>
+                                        <option value="2">2 Տարի</option>
+                                        <option value="3">3 Տարի</option>
+                                        <option value="4">4 Տարի</option>
+                                        <option value="5">5 Տարի</option>
+                                        <option value="6">6 Տարի</option>
+                                        <option value="7">7 Տարի</option>
+                                        <option value="8">8 Տարի</option>
+                                        <option value="9">9 Տարի</option>
+                                        <option value="10">10 Տարի</option>
+                                        <option value="12">12 Տարի</option>
+                                        <option value="15">15 Տարի</option>
+                                        <option value="20">20 Տարի</option>
+                                        <option value="25">25 Տարի</option>
                                         <option value="30">30 Տարի</option>
                                     </select>
                                 </c:otherwise>
@@ -1301,7 +1301,27 @@
                                     %>
                                     <%!
                                         int calculatePercentageMain(float Amount, double Percentage, int month) {
-                                            int newAmount = (int) (Amount - (Amount * percentageForDiscount / 100));
+                                           /* double percentageYears = Percentage / 100;
+                                            int result = 0;
+                                            double P = Amount;
+                                            double n = month * 12;
+                                            double r = percentageYears / 12;
+                                            double Result = P * r;
+                                            double ddd = Math.pow(1 + r, n);
+                                            double result2 = 1 / ddd;
+                                            double result3 = (1 - result2);
+                                            result = (int) (Result / result3);
+                                            return result;*/
+
+                                            double percentageYears = Percentage / 100;
+                                            int result = 0;
+                                            double P = Amount;
+                                            double n = month;
+                                            double r = percentageYears / 12;
+                                            result = (int) (Amount * r);
+                                            return result;
+
+                                           /* int newAmount = (int) (Amount - (Amount * percentageForDiscount / 100));
                                             double percentage = (Percentage / 100) / 12;// dogosi pajanum
                                             System.out.println("percentage " + percentage);
                                             float addNumber1 = (float) (percentage + 1); // Avelatsnel +1
@@ -1314,7 +1334,7 @@
                                             System.out.println("AmountToPay " + AmountToPay);
 
                                             float result = (int) (AmountToPay / minuesOne);
-                                            return (int) AmountToPay;
+                                            return (int) AmountToPay;*/
                                         }
                                     %>
 
@@ -1595,7 +1615,15 @@
                                                                 <%--  <p>Ձեր եկամուտը</p>--%>
                                                             <%!
                                                                 int calculatePercentage(float Amount, double Percentage, int month) {
-                                                                    int newAmount = (int) (Amount - (Amount * percentageForDiscount / 100));
+                                                                    double percentageYears = Percentage / 100;
+                                                                    int result = 0;
+                                                                    double P = Amount;
+                                                                    double n = month;
+                                                                    double r = percentageYears / 12;
+                                                                    result = (int) (Amount * r);
+                                                                    return result;
+
+                                                                 /*   int newAmount = (int) (Amount - (Amount * percentageForDiscount / 100));
                                                                     double percentage = (Percentage / 100) / 12;// dogosi pajanum
                                                                     System.out.println("percentage " + percentage);
                                                                     float addNumber1 = (float) (percentage + 1); // Avelatsnel +1
@@ -1608,7 +1636,7 @@
                                                                     System.out.println("AmountToPay " + AmountToPay);
 
                                                                     float result = (int) (AmountToPay / minuesOne);
-                                                                    return (int) AmountToPay;
+                                                                    return (int) AmountToPay;*/
                                                                 }
                                                             %>
 
@@ -1750,7 +1778,7 @@
                         </p>
                         <div class="tab-container">
                             <div class="tab-nav flex align-items-center flex-wrap">
-						<span class="tab-link" onclick="openTabItem(event, 'deposit')" >
+						<span class="tab-link" onclick="openTabItem(event, 'deposit')">
                            Ավանդներ</span>
                                 <span class="tab-link active" onclick="openTabItem(event, 'mortgage')" id="defaultOpen">
                         Հիպոթեկային վարկ</span>

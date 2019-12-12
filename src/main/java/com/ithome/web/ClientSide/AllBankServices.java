@@ -66,6 +66,7 @@ public class AllBankServices extends HttpServlet {
     private static List<Integer> comparListMicro = new ArrayList<>();
     private static List<Integer> comparListAg = new ArrayList<>();
     private static List<Integer> comparListCard = new ArrayList<>();
+    private String PageNameToDelete=null;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -95,10 +96,44 @@ public class AllBankServices extends HttpServlet {
         getPageLabguageName(language);
         countHit();
         getBanksById();
+        getparameters(request);
         checkForCompareList();
         setRequestes(request);
         gotoBanksPage(request, response);
 
+    }
+    private void getparameters(HttpServletRequest request) throws SQLException {
+        if (request.getParameter("pageNameToDelete") != null) {
+            PageNameToDelete = request.getParameter("pageNameToDelete");
+            deleteList(PageNameToDelete);
+        } else {
+            PageNameToDelete = "";
+        }
+    }
+    private void deleteList(String pageNameToDelete) throws SQLException {
+        switch (pageNameToDelete){
+            case "Ավանդ":
+                CompareHelper.DeleteDepositList(sessionId);
+                break;
+            case "Հիփոթեք":
+                CompareHelper.DeleteMortgag(sessionId);
+                break;
+            case "Ավտովարկ":
+                CompareHelper.DeleteCarLoan(sessionId);
+                break;
+            case "ՄԻԿՐՈՎԱՐԿ":
+                CompareHelper.DeleteMicro(sessionId);
+                break;
+            case "Գյուղատնտեսական":
+                CompareHelper.DeleteAg(sessionId);
+                break;
+            case "Սպարողական":
+                CompareHelper.DeleteConsumer(sessionId);
+                break;
+            case "Քարտեր":
+                CompareHelper.DeleteCard();
+                break;
+        }
     }
 
     private void getParameters(HttpServletRequest request) {

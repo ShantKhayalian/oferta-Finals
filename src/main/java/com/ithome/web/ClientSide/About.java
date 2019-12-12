@@ -54,6 +54,7 @@ public class About extends HttpServlet {
     private List<DropDowns> dropDownsList = new ArrayList<>();
     private DropDownHelper dropDownHelper = new DropDownHelper();
 
+    private String PageNameToDelete=null;
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -83,11 +84,46 @@ public class About extends HttpServlet {
         getPageLabguageName(language);
         countHit();
         getMainPageRange();
+        getparameters(request);
         checkForCompareList();
         GetDropDownByCurrancy(dropDownsList, pageCurrancy);
         getAboutUS();
         setRequestes(request);
         gotoAboutUsPage(request,response);
+    }
+
+    private void getparameters(HttpServletRequest request) throws SQLException {
+        if (request.getParameter("pageNameToDelete") != null) {
+            PageNameToDelete = request.getParameter("pageNameToDelete");
+            deleteList(PageNameToDelete);
+        } else {
+            PageNameToDelete = "";
+        }
+    }
+    private void deleteList(String pageNameToDelete) throws SQLException {
+        switch (pageNameToDelete){
+            case "Ավանդ":
+                CompareHelper.DeleteDepositList(sessionId);
+                break;
+            case "Հիփոթեք":
+                CompareHelper.DeleteMortgag(sessionId);
+                break;
+            case "Ավտովարկ":
+                CompareHelper.DeleteCarLoan(sessionId);
+                break;
+            case "ՄԻԿՐՈՎԱՐԿ":
+                CompareHelper.DeleteMicro(sessionId);
+                break;
+            case "Գյուղատնտեսական":
+                CompareHelper.DeleteAg(sessionId);
+                break;
+            case "Սպարողական":
+                CompareHelper.DeleteConsumer(sessionId);
+                break;
+            case "Քարտեր":
+                CompareHelper.DeleteCard();
+                break;
+        }
     }
 
     private void GetDropDownByCurrancy(List<DropDowns> dropDownsList, String pageCurrancy) throws SQLException {
