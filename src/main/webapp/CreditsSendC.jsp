@@ -864,27 +864,22 @@
                                             <c:set value="${details.CCFactual}" var="CCFactual"
                                                    scope="request"/>
                                             <%!
-                                                int CaluclalateMonthlypayment(int AmountSecond, double Percentage, int Months) {
-                                                    double percentage = (Percentage / 100) / 12;// dogosi pajanum
-                                                    System.out.println("percentage " + percentage);
-                                                    float addNumber1 = (float) (percentage + 1); // Avelatsnel +1
-                                                    System.out.println("addNumber1 " + addNumber1);
-                                                    float powerNumber = (float) Math.pow(addNumber1, -Months);//enthanur avelatsadz himnagan kumari dogose
-                                                    System.out.println("powerNumber " + powerNumber);
-                                                    float minuesOne = (1 - powerNumber);
-                                                    System.out.println("minuesOne " + minuesOne);
-                                                    float AmountToPay = (float) (AmountSecond * percentage);
-                                                    System.out.println("AmountToPay " + AmountToPay);
-
-                                                    float result = (int) (AmountToPay / minuesOne);
-                                                    return (int) AmountToPay;
+                                                long CaluclalateMonthlypayment(long Amount, double Percentage, long month) {
+                                                    double percentageYears = Percentage / 100;
+                                                    long result = 0;
+                                                    double P = Amount;
+                                                    double n = month;
+                                                    double r = percentageYears / 12;
+                                                    result = (long) (Amount * r);
+                                                    return result;
                                                 }
                                             %>
 
                                             <%!
-                                                int AmountSecond;
-                                                int MonthsSet;
-                                                double percent;
+                                                static long AmountSecond;
+                                                static long MonthsSet;
+                                                static double percent;
+                                                static long percentageSecond;
                                             %>
                                             <%
                                                 percent = Double.parseDouble(String.valueOf(request.getAttribute("percent")));
@@ -1030,17 +1025,16 @@
             <div class="switch">
                 <label>
                     <span>Հավասար մարում</span>
-                    <%-- <input type="checkbox" >
-                     <span class="lever"></span>
-                     <span class="green_texts">Հավասար վարկ</span>--%>
+                    <input type="checkbox" id="checkbox">
+                    <span class="lever"></span>
+                    <span class="green_texts">Հավասար վարկ</span>
                 </label>
             </div>
-
         </div>
 
-        <div class="modal-body scroll" id="menu2">
+        <div class="modal-body scroll" id="menu1">
             <div class="clone-pdf">
-                <div class="payment-graphic-table table table-style-two">
+                <div class="payment-graphic-table table table-style-two menu2-payment__graphic">
                     <div class="table-row head">
                         <div class="table-cell small"><span>Ամիս</span></div>
                         <div class="table-cell"><span>Վարկի մնացորդ</span></div>
@@ -1050,135 +1044,238 @@
                     </div>
 
                     <c:set value='<%=request.getParameter("Amount")%>' var="AmountStart" scope="request"/>
+                    <c:set value='<%=request.getParameter("range_two")%>' var="AmountStartrange_two" scope="request"/>
 
                     <%!
 
-                        static int AmountOfLoan;
-                        static int MonthsToPay;
+                        static long AmountOfLoan;
+                        static long MonthsToPay;
                         static double percentageOfLoan;
-                        static int AmountToPaycalc;
-                        static int MainAmount;
-                        static int loanWithMainAMount;
+                        static long NewAmountCalculated;
+                        static long MainAmount;
+                        static long vjarumDogosakumar;
+                        static long marumVargits;
+                        static long AmountStartrange_two;
 
                     %>
 
                     <%
+                        percentageOfLoan=0;
+                        MonthsToPay=0;
+                        NewAmountCalculated=0;
+                        AmountOfLoan=0;
                         percentageOfLoan = percent;
                         MonthsToPay = MonthsSet;
-                        AmountOfLoan = AmountSecond;
+                        AmountOfLoan=0;
+                        if (request.getParameter("Amount") != null) {
+                            AmountOfLoan = Long.parseLong(request.getParameter("Amount"));
+                        } else if (request.getParameter("range") != null) {
+                            AmountOfLoan = Long.parseLong(request.getParameter("range"));
+                        } else if (request.getAttribute("range") != null) {
+                            AmountOfLoan = Long.parseLong(String.valueOf(request.getAttribute("range")));
+                        } else {
+                            AmountOfLoan = Long.parseLong(String.valueOf(request.getAttribute("Amount")));
+                        }
+                        // AmountOfLoan = Long.parseLong(String.valueOf(request.getAttribute("AmountStart")));
+                        NewAmountCalculated = AmountOfLoan;
+                        AmountStartrange_two = Integer.parseInt(String.valueOf(request.getAttribute("AmountStartrange_two")));
 
                     %>
 
                     <%!
-                        int calculatePercentage(float Amount, double Percentage, int month) {
-                            MainAmount = (int) Amount;
-                            double percentage = (Percentage / 100) / 12;// dogosi pajanum
-                            System.out.println("percentage " + percentage);
-                            float addNumber1 = (float) (percentage + 1); // Avelatsnel +1
-                            System.out.println("addNumber1 " + addNumber1);
-                            float powerNumber = (float) Math.pow(addNumber1, -month);//enthanur avelatsadz himnagan kumari dogose
-                            System.out.println("powerNumber " + powerNumber);
-                            float minuesOne = (1 - powerNumber);
-                            System.out.println("minuesOne " + minuesOne);
-                            AmountToPaycalc = (int) (Amount * percentage);
-                            System.out.println("AmountToPay " + AmountToPaycalc);
-
-                            float result = (int) (AmountToPaycalc / minuesOne);
-                            loanWithMainAMount = (int) (AmountToPaycalc / minuesOne);
-                            return (int) result;
-
+                        long vjarumDogosakumar(long Amount, long Months, double percentage){
+                            long result = 0;
+                            double P = Amount;
+                            double n = Months *12;
+                            double r = (percentage / 12 );
+                            result = (long) (Amount * r);
+                            vjarumDogosakumar = result;
+                            return  result;
                         }
                     %>
 
+                    <%!
+                        long VargiMnatsort(long Amount){
+                            long newAmount = Amount - entameneVjarumforAmount();
+                            NewAmountCalculated= newAmount;
+                            return NewAmountCalculated;
+                        }
+                    %>
+                    <%!
+                        long MarumVargits(long Amount, long Months, double percentage) {
+
+                            long result = 0;
+                            double P = Amount;
+                            double n = Months *12;
+                            double r = (percentage / 12 ) ;
+                            double Result = P * r;
+                            double ddd = Math.pow(1 + r, n);
+                            double result2 = 1 / ddd;
+                            double result3 = (1 - result2);
+                            result  = (long) (Result / result3);
+                            marumVargits = result;
+                            return result;
+                        }
+
+                    %>
 
                     <%!
-                        int calculatVargiMnatsort(int Amount, int i) {
-                            int resul3 = 0;
-                            resul3 = Amount - (calculatePercentage(AmountOfLoan, percentageOfLoan, MonthsToPay) - vjarumDogosakumar(AmountOfLoan, percentageOfLoan, MonthsToPay)) * i;
-                            return resul3;
+                        long entameneVjarumforAmount() {
+                            return marumVargits - vjarumDogosakumar ;
                         }
+
                     %>
+
                     <%!
-                        int vjarumDogosakumar(float Amount, double Percentage, int month) {
-                            double percentage = (Percentage / 100) / 12;// dogosi pajanum
-                            System.out.println("percentage " + percentage);
-                            float addNumber1 = (float) (percentage + 1); // Avelatsnel +1
-                            System.out.println("addNumber1 " + addNumber1);
-                            float powerNumber = (float) Math.pow(addNumber1, -month);//enthanur avelatsadz himnagan kumari dogose
-                            System.out.println("powerNumber " + powerNumber);
-                            float minuesOne = (1 - powerNumber);
-                            System.out.println("minuesOne " + minuesOne);
-                            return (int) (Amount * percentage);
+                        long entameneVjarum(long Amount, long Months, double percentage,long NewAmount ) {
+                            return MarumVargits(Amount, Months, percentage) - vjarumDogosakumar(NewAmount,  Months,  percentage) ;
                         }
-                    %>
-                    <%!
-                        int finalAmountCalculate(int Amount) {
-                            int FinalAmountresult = 0;
-                            FinalAmountresult += calculatVargiMnatsort(Amount, 0);
-                            return FinalAmountresult;
-                        }
-                    %>
-                    <%!
-                        int finalInterest(int months) {
-                            int FinalInterestresult = 0;
-                            FinalInterestresult += vjarumDogosakumar(AmountOfLoan, percentageOfLoan, MonthsToPay) * months;
-                            return FinalInterestresult;
-                        }
-                    %>
-                    <%!
-                        int finalAMountMain(int months) {
-                            int FinalInterestresult = 0;
-                            FinalInterestresult += calculatePercentage(AmountOfLoan, percentageOfLoan, MonthsToPay) * months;
-                            return FinalInterestresult;
-                        }
-                    %>
-                    <%!
-                        int finalAMountPayment(int months) {
-                            int FinalInterestresult = 0;
-                            int fullPaymentwithintrest = calculatePercentage(AmountOfLoan, percentageOfLoan, MonthsToPay) + vjarumDogosakumar(AmountOfLoan, percentageOfLoan, MonthsToPay);
-                            FinalInterestresult += fullPaymentwithintrest * months;
-                            return FinalInterestresult;
-                        }
+
                     %>
 
 
                     <%-- <fmt:formatNumber type="number" maxFractionDigits="3" value='<%=finalAmountCalculate(AmountOfLoan, MonthsToPay)%>'/>--%>
 
-                    <% for (int i = 0; i < MonthsToPay; i++) {%>
+                    <% for (int i = 0; i <= MonthsToPay * 12 - 1; i++) {%>
                     <div class="table-row">
-                        <div class="table-cell small"><span><%=i + 1%></span></div>
+                        <div class="table-cell small"><span><%=i + 1 %></span></div>
                         <div class="table-cell">
                                 <span> <fmt:formatNumber type="number" maxFractionDigits="3"
-                                                         value='<%=calculatVargiMnatsort(AmountOfLoan,i)%>'/></span>
+                                                         value='<%=VargiMnatsortHavasar(AmountOfLoan,MonthsToPay,i)%>'/></span>
                         </div>
                         <div class="table-cell large">
                                 <span> <fmt:formatNumber type="number" maxFractionDigits="3"
-                                                         value='<%=vjarumDogosakumar(AmountOfLoan, percentageOfLoan, MonthsToPay) %>'/></span>
+                                                         value='<%=vjarumDogosakumar(NewAmountCalculated,MonthsToPay,(percentageOfLoan/100)) %>'/></span>
                         </div>
                         <div class="table-cell">
                                 <span><fmt:formatNumber type="number" maxFractionDigits="3"
-                                                        value='<%=calculatePercentage(AmountOfLoan, percentageOfLoan, MonthsToPay)-vjarumDogosakumar(AmountOfLoan, percentageOfLoan, MonthsToPay) %>'/></span>
+                                                        value='<%=entameneVjarum(AmountOfLoan,MonthsToPay,(percentageOfLoan/100),NewAmountCalculated)%>'/></span>
                         </div>
                         <div class="table-cell">
                                 <span><fmt:formatNumber type="number" maxFractionDigits="3"
-                                                        value='<%=calculatePercentage(AmountOfLoan, percentageOfLoan, MonthsToPay)%>'/></span>
+                                                        value='<%=MarumVargits(AmountOfLoan,MonthsToPay,(percentageOfLoan/100))%>'/></span>
                         </div>
 
                     </div>
                     <% }%>
                     <div class="table-row bottom">
                         <div class="table-cell small"><span></span></div>
-                        <div class="table-cell"><span> <fmt:formatNumber type="number" maxFractionDigits="3"
-                                                                         value='<%=finalAmountCalculate(AmountOfLoan)%>'/></span>
+                        <div class="table-cell"><span> <%--<fmt:formatNumber type="number" maxFractionDigits="3"
+                                                                             value='<%=finalAmountCalculate2(AmountOfLoan)%>'/></span>--%>
                         </div>
                         <div class="table-cell large"><span><fmt:formatNumber type="number" maxFractionDigits="3"
-                                                                              value='<%=finalInterest(MonthsToPay)%>'/></span>
+                                                                              value=''/></span>
                         </div>
                         <div class="table-cell"><span><fmt:formatNumber type="number" maxFractionDigits="3"
-                                                                        value='<%=finalAMountMain(MonthsToPay)%>'/></span>
+                                                                        value=''/></span>
                         </div>
                         <div class="table-cell"><span><fmt:formatNumber type="number" maxFractionDigits="3"
-                                                                        value='<%=finalAMountPayment(MonthsToPay)%>'/></span>
+                                                                        value=''/></span>
+                        </div>
+                    </div>
+                    <div class="table-row head">
+                        <div class="table-cell small"><span>Ամիս</span></div>
+                        <div class="table-cell"><span>Վարկի մնացորդ</span></div>
+                        <div class="table-cell large"><span>Վճարվող տոկոսագումար2</span></div>
+                        <div class="table-cell"><span>Մարում վարկից</span></div>
+                        <div class="table-cell"><span>Ընդամենը վճարում</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal-body scroll" id="menu1">
+            <div class="clone-pdf">
+                <div class="payment-graphic-table table table-style-two menu1-payment__graphic">
+                    <div class="table-row head">
+                        <div class="table-cell small"><span>Ամիս</span></div>
+                        <div class="table-cell"><span>Վարկի մնացորդ</span></div>
+                        <div class="table-cell large"><span>Վճարվող տոկոսագումար</span></div>
+                        <div class="table-cell"><span>Մարում վարկից</span></div>
+                        <div class="table-cell"><span>Ընդամենը վճարում</span></div>
+                    </div>
+
+
+
+                    <%!
+                        static int first2;
+                        static int second2;
+                        static int third2;
+                        static long NewAmountCalculatedHavasar;
+                        static long marumVargitsHavasar;
+                        static long vjarumDogosakumarHavasar;
+                    %>
+
+                    <%!
+                        long VargyKumariMarumHavasar(long Amount, long Months){
+                            long result  = Amount/Months;
+                            vjarumDogosakumarHavasar= result;
+                            return result;
+                        }
+                    %>
+
+                    <%! long dogosakumarHavasar(long Amount, long Months,double percentage){
+                        long result=0;
+                        double P = Amount;
+                        double n = Months;
+                        double r = percentage / 12;
+                        result = (long) (Amount * r);
+                        return result;
+                        //System.out.println(varkiGumar * r);
+                    }
+                    %>
+
+                    <%!
+                        long entamenVjarumHavasar(long Amount, long Months,double percentage, long newAmount){
+                            long result = dogosakumarHavasar(newAmount,Months,percentage)+ VargyKumariMarumHavasar(Amount,Months);
+                            return result;
+                        }
+
+                    %>
+
+                    <%! long VargiMnatsortHavasar(long Amount, long Months, int i){
+                        long newAmount = Amount - VargyKumariMarumHavasar(Amount,Months)*i;
+                        NewAmountCalculatedHavasar= newAmount;
+                        return NewAmountCalculatedHavasar;
+                    }
+                    %>
+
+                    <% for (int i = 0; i < MonthsToPay * 12; i++) {%>
+                    <div class="table-row">
+                        <div class="table-cell small"><span><%=i + 1%></span></div>
+                        <div class="table-cell">
+                                <span> <fmt:formatNumber type="number" maxFractionDigits="3"
+                                                         value='<%=VargiMnatsortHavasar(AmountOfLoan,MonthsToPay*12,i)%>'/></span>
+                        </div>
+                        <div class="table-cell large">
+                                <span> <fmt:formatNumber type="number" maxFractionDigits="3"
+                                                         value='<%=dogosakumarHavasar(NewAmountCalculatedHavasar,MonthsToPay*12,(percentageOfLoan/100))%>'/></span>
+                        </div>
+                        <div class="table-cell">
+                                <span><fmt:formatNumber type="number" maxFractionDigits="3"
+                                                        value='<%=VargyKumariMarumHavasar(AmountOfLoan,MonthsToPay*12) %>'/></span>
+                        </div>
+                        <div class="table-cell">
+                                <span><fmt:formatNumber type="number" maxFractionDigits="3"
+                                                        value='<%=entamenVjarumHavasar(AmountOfLoan,MonthsToPay*12,(percentageOfLoan/100),NewAmountCalculatedHavasar) %>'/></span>
+                        </div>
+
+                    </div>
+                    <% }%>
+                    <div class="table-row bottom">
+                        <div class="table-cell small"><span></span></div>
+                        <div class="table-cell"><span> <%--<fmt:formatNumber type="number" maxFractionDigits="3"
+                                                                             value='<%=finalAmountCalculate2(AmountOfLoan)%>'/>--%></span>
+                        </div>
+                        <div class="table-cell large"><span><fmt:formatNumber type="number" maxFractionDigits="3"
+                                                                              value=''/></span>
+                        </div>
+                        <div class="table-cell"><span><fmt:formatNumber type="number" maxFractionDigits="3"
+                                                                        value=''/></span>
+                        </div>
+                        <div class="table-cell"><span><fmt:formatNumber type="number" maxFractionDigits="3"
+                                                                        value=''/></span>
                         </div>
                     </div>
                     <div class="table-row head">
@@ -1191,8 +1288,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
     <div class="html-content"></div>
 </div>
@@ -1248,12 +1343,12 @@
                 $("#menu1").show();
                 $("#menu2").hide();
             }
-            else {
+           /* else {
                 $(".menu2-payment__graphic").css("display", "table");
                 $(".menu1-payment__graphic").css("display", "none");
                 $("#menu1").hide();
                 $("#menu2").show();
-            }
+            }*/
         })
     });
 </script>--%>

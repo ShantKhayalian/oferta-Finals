@@ -649,6 +649,7 @@
                                     <div class="def-range int-outline">
                                         <script language="javascript" type="text/javascript">
                                             var delayTimer;
+
                                             function doSearch(text) {
                                                 clearTimeout(delayTimer);
                                                 delayTimer = setTimeout(function () {
@@ -824,7 +825,8 @@
                                                        step="${dropDownList2.steps}"
                                                        value='<%=discountingAmount(discountAmount,percentageForDiscount)%>'
                                                        oninput="showVal(this.value)"
-                                                       onchange="showVal(this.value)" id="amount_two" inputmode="numeric">
+                                                       onchange="showVal(this.value)" id="amount_two"
+                                                       inputmode="numeric">
 
                                                 <input type="range" name="range_two"
                                                        min="<%=MinAmount(discountAmount,10)%>"
@@ -878,7 +880,8 @@
                                                        step="${dropDownList3.steps}"
                                                        value='<%=discountingAmount2(discountAmount2,percentageForDiscount2)%>'
                                                        oninput="showVal(this.value)"
-                                                       onchange="showVal(this.value)" id="amount_two" inputmode="numeric">
+                                                       onchange="showVal(this.value)" id="amount_two"
+                                                       inputmode="numeric">
 
                                                 <input type="range" name="range_two"
                                                        min="<%=discountingAmount2(discountAmount2,percentageForDiscount2)%>"
@@ -1318,7 +1321,7 @@
                                                 } else {
                                                     MonthsSet = Integer.parseInt(String.valueOf(request.getAttribute("months")));
                                                 }
-                                                AmountSecond=0;
+                                                AmountSecond = 0;
                                                 if (request.getParameter("Amount") != null) {
                                                     AmountSecond = Integer.parseInt(request.getParameter("Amount"));
                                                 } else if (request.getParameter("range") != null) {
@@ -1472,11 +1475,13 @@
                         </div>
 
                         <c:set value='<%=request.getParameter("Amount")%>' var="AmountStart" scope="request"/>
-                        <c:set value='<%=request.getParameter("range_two")%>' var="AmountStartrange_two" scope="request"/>
+                        <c:set value='<%=request.getParameter("range_two")%>' var="AmountStartrange_two"
+                               scope="request"/>
 
                         <%!
 
                             static long AmountOfLoan;
+                            static long AmountOfLoanmain;
                             static long MonthsToPay;
                             static double percentageOfLoan;
                             static long NewAmountCalculated;
@@ -1484,94 +1489,208 @@
                             static long vjarumDogosakumar;
                             static long marumVargits;
                             static long AmountStartrange_two;
+                            static long hashiv;
 
                         %>
 
                         <%
-                            percentageOfLoan=0;
-                            MonthsToPay=0;
-                            NewAmountCalculated=0;
-                            AmountOfLoan=0;
+                            percentageOfLoan = 0;
+                            MonthsToPay = 0;
+                            NewAmountCalculated = 0;
+
                             percentageOfLoan = percent;
                             MonthsToPay = MonthsSet;
-                            AmountOfLoan = AmountSecond;
+
+                            AmountOfLoanmain = 0;
+                            if (request.getParameter("Amount") != null) {
+                                AmountOfLoan = Long.parseLong(request.getParameter("Amount"));
+                                AmountOfLoanmain = Long.parseLong(request.getParameter("Amount"));
+                            } else if (request.getParameter("range") != null) {
+                                AmountOfLoan = Long.parseLong(request.getParameter("range"));
+                                AmountOfLoanmain = Long.parseLong(request.getParameter("range"));
+                            } else if (request.getAttribute("range") != null) {
+                                AmountOfLoan = Long.parseLong(String.valueOf(request.getAttribute("range")));
+                                AmountOfLoanmain = Long.parseLong(String.valueOf(request.getAttribute("range")));
+                            } else {
+                                AmountOfLoan = Long.parseLong(String.valueOf(request.getAttribute("Amount")));
+                                AmountOfLoanmain = Long.parseLong(String.valueOf(request.getAttribute("Amount")));
+                            }
+                            // AmountOfLoan = Long.parseLong(String.valueOf(request.getAttribute("AmountStart")));
                             NewAmountCalculated = AmountOfLoan;
                             AmountStartrange_two = Integer.parseInt(String.valueOf(request.getAttribute("AmountStartrange_two")));
 
                         %>
 
+                        <%-- <%!
+                             long vjarumDogosakumar(long Amount, long Months, double percentage, int i) {
+                                 //Amount = VargiMnatsort(Amount, Months, percentage, i);
+                                 long result = 0;
+                                 double P = Amount;
+                                 double n = Months * 12;
+                                 double r = (percentage /  100);
+                                 result = (long) (Amount * r);
+                                 vjarumDogosakumar = result;
+                                 return result;
+                             }
+                         %>
+
+                         <%!
+                             long VargiMnatsort(long Amount, long Months, double percentage, int i) {
+                                 long newAmount = 0;
+                                 newAmount = Amount - VargyKumariMarumHavasar2(Amount, Months, percentage) * i;
+                                 NewAmountCalculated = 0;
+                                 NewAmountCalculated = newAmount;
+                                 return newAmount;
+                             }
+                         %>
+
+                         <%!
+                             long VargyKumariMarumHavasar2(long Amount, long Months, double percentage) {
+                                 long result = 0;
+                                 result = MarumVargits(Amount, Months, percentage) - vjarumDogosakumar;
+                                 return result;
+                             }
+                         %>
+
+                         <%!
+                             long MarumVargits(long Amount, long Months, double percentage) {
+                                 long result = 0;
+                                 double P = Amount;
+                                 double n = Months * 12;
+                                 double r = (percentage / 100);
+                                 double Result = P * r;
+                                 double ddd = Math.pow(1 + r, n);
+                                 double result2 = 1 / ddd;
+                                 double result3 = (1 - result2);
+                                 result = (long) (Result / result3);
+                                 marumVargits = result;
+                                 return result;
+                             }
+
+                         %>--%>
+                        <%-- <%!
+                             long vjarumDogosakumar(long Amount, long Months, double percentage, int i) {
+                                 //Amount = VargiMnatsort(Amount, Months, percentage, i);
+                                 long result = 0;
+                                 double P = Amount;
+                                 double n = Months * 12;
+                                 double r = (percentage / n / 100);
+                                 result = (long) (Amount * r);
+                                 vjarumDogosakumar = result;
+                                 return result;
+                             }
+                         %>
+
+                         <%!
+                             long VargiMnatsort(long Amount, long Months, double percentage, int i) {
+                                 long newAmount = 0;
+                                 newAmount = Amount - VargyKumariMarumHavasar2(Amount, Months, percentage) * i;
+                                 NewAmountCalculated = 0;
+                                 NewAmountCalculated = newAmount;
+                                 return NewAmountCalculated;
+                             }
+                         %>
+
+                         <%!
+                             long VargyKumariMarumHavasar2(long Amount, long Months, double percentage) {
+                                 long result = 0;
+                                 result = MarumVargits(Amount, Months, percentage) - vjarumDogosakumar;
+                                 return result;
+                             }
+                         %>
+
+                         <%!
+                             long MarumVargits(long Amount, long Months, double percentage) {
+                                 long result = 0;
+                                 double P = Amount;
+                                 double n = Months * 12;
+                                 double r = (percentage / n / 100);
+                                 double Result = P * r;
+                                 double ddd = Math.pow(1 + r, n);
+                                 double result2 = 1 / ddd;
+                                 double result3 = (1 - result2);
+                                 result = (long) (Result / result3);
+                                 marumVargits = result;
+                                 return result;
+                             }
+
+                         %>--%>
                         <%!
-                            long vjarumDogosakumar(long Amount, long Months, double percentage){
-                                long result = 0;
-                                double P = Amount;
-                                double n = Months *12;
-                                double r = (percentage / 12 );
-                                result = (long) (Amount * r);
-                                vjarumDogosakumar = result;
-                                return  result;
+                            static long addingBalanceShow;
+                            static long addingSubstruc;
+                        %>
+                        <%!
+                            private double calculateMonthlyPayment(long loanAmount, long termInYears, double interestRate) {
+                                interestRate /= 100.0;
+                                double monthlyRate = interestRate / 12.0;
+                                long termInMonths = termInYears * 12;
+                                double monthlyPayment = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -termInMonths));
+                                return monthlyPayment;
+                            }
+                        %>
+                        <%!
+                            private long displayMonthlyBalance(long AmountOfLoan, long termInYears, double interestRate, int i) {
+
+                                // monthlyPayment = calculateMonthlyPayment(loanAmount, termInYears, interestRate);
+                                if(i == 0){
+                                    i=i;
+                                }
+                                interestRate /= 100.0;
+                                double monthlyRate = interestRate / 12.0;
+                                long termInMonths = termInYears * 12;
+                                double monthlyPayment = calculateMonthlyPayment(AmountOfLoan,termInYears,interestRate)*i;
+                                long balance = AmountOfLoan;
+                                System.out.println("balance1 " + balance);
+                                double addingBalance =  balance * monthlyRate;
+
+                                balance += addingBalance;
+                                System.out.println("balance2 " + balance);
+                                if(monthlyPayment==0){
+                                    balance = AmountOfLoan;
+                                }else {
+                                    balance -= monthlyPayment;
+                                }
+
+                                long balanceMonth = (long) (balance * monthlyRate);
+                                addingBalanceShow = balanceMonth;
+                                long substracing = (long) (calculateMonthlyPaymentSpecial(AmountOfLoan,termInYears,interestRate) - addingBalanceShow );
+                                addingSubstruc = substracing;
+                                System.out.println("balance3 " + balance);
+                                return balance;
                             }
                         %>
 
                         <%!
-                            long VargiMnatsort(long Amount){
-                                long newAmount = Amount - entameneVjarumforAmount();
-                                NewAmountCalculated= newAmount;
-                                return NewAmountCalculated;
+                            private long calculateMonthlyPaymentSpecial(long loanAmount, long termInYears, double interestRate) {
+                                interestRate /= 100.0;
+                                double monthlyRate = interestRate / 12.0;
+                                long termInMonths = termInYears * 12;
+                                double monthlyPayment = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -termInMonths));
+                                return (long) monthlyPayment;
                             }
                         %>
-                        <%!
-                            long MarumVargits(long Amount, long Months, double percentage) {
-
-                                long result = 0;
-                                double P = Amount;
-                                double n = Months *12;
-                                double r = (percentage / 12 ) ;
-                                double Result = P * r;
-                                double ddd = Math.pow(1 + r, n);
-                                double result2 = 1 / ddd;
-                                double result3 = (1 - result2);
-                                result  = (long) (Result / result3);
-                                marumVargits = result;
-                                return result;
-                            }
-
-                        %>
-
-                        <%!
-                            long entameneVjarumforAmount() {
-                                return marumVargits - vjarumDogosakumar ;
-                            }
-
-                        %>
-
-                        <%!
-                            long entameneVjarum(long Amount, long Months, double percentage,long NewAmount ) {
-                                return MarumVargits(Amount, Months, percentage) - vjarumDogosakumar(NewAmount,  Months,  percentage) ;
-                            }
-
-                        %>
-
 
                         <%-- <fmt:formatNumber type="number" maxFractionDigits="3" value='<%=finalAmountCalculate(AmountOfLoan, MonthsToPay)%>'/>--%>
 
                         <% for (int i = 0; i <= MonthsToPay * 12 - 1; i++) {%>
+
                         <div class="table-row">
                             <div class="table-cell small"><span><%=i + 1 %></span></div>
                             <div class="table-cell">
                                 <span> <fmt:formatNumber type="number" maxFractionDigits="3"
-                                                         value='<%=VargiMnatsortHavasar(AmountOfLoan,MonthsToPay*12,i)%>'/></span>
+                                                         value='<%=displayMonthlyBalance(AmountOfLoan,MonthsToPay,percentageOfLoan,i)%>'/></span>
                             </div>
                             <div class="table-cell large">
                                 <span> <fmt:formatNumber type="number" maxFractionDigits="3"
-                                                         value='<%=vjarumDogosakumar(NewAmountCalculated,MonthsToPay,(percentageOfLoan/100)) %>'/></span>
+                                                         value='<%=addingBalanceShow%>'/></span>
                             </div>
                             <div class="table-cell">
                                 <span><fmt:formatNumber type="number" maxFractionDigits="3"
-                                                        value='<%=entameneVjarum(AmountOfLoan,MonthsToPay,(percentageOfLoan/100),NewAmountCalculated)%>'/></span>
+                                                        value='<%=addingSubstruc%>'/></span>
                             </div>
                             <div class="table-cell">
                                 <span><fmt:formatNumber type="number" maxFractionDigits="3"
-                                                        value='<%=MarumVargits(AmountOfLoan,MonthsToPay,(percentageOfLoan/100))%>'/></span>
+                                                        value='<%=calculateMonthlyPaymentSpecial(AmountOfLoan,MonthsToPay,percentageOfLoan)%>'/></span>
                             </div>
 
                         </div>
@@ -1614,7 +1733,6 @@
                         </div>
 
 
-
                         <%!
                             static int first2;
                             static int second2;
@@ -1625,15 +1743,15 @@
                         %>
 
                         <%!
-                           long VargyKumariMarumHavasar(long Amount, long Months){
-                               long result  = Amount/Months;
-                               vjarumDogosakumarHavasar= result;
-                               return result;
-                           }
+                            long VargyKumariMarumHavasar(long Amount, long Months) {
+                                long result = Amount / Months;
+                                vjarumDogosakumarHavasar = result;
+                                return result;
+                            }
                         %>
 
-                        <%! long dogosakumarHavasar(long Amount, long Months,double percentage){
-                            long result=0;
+                        <%! long dogosakumarHavasar(long Amount, long Months, double percentage) {
+                            long result = 0;
                             double P = Amount;
                             double n = Months;
                             double r = percentage / 12;
@@ -1644,16 +1762,16 @@
                         %>
 
                         <%!
-                            long entamenVjarumHavasar(long Amount, long Months,double percentage, long newAmount){
-                                long result = dogosakumarHavasar(newAmount,Months,percentage)+ VargyKumariMarumHavasar(Amount,Months);
+                            long entamenVjarumHavasar(long Amount, long Months, double percentage, long newAmount) {
+                                long result = dogosakumarHavasar(newAmount, Months, percentage) + VargyKumariMarumHavasar(Amount, Months);
                                 return result;
                             }
 
                         %>
 
-                        <%! long VargiMnatsortHavasar(long Amount, long Months, int i){
-                            long newAmount = Amount - VargyKumariMarumHavasar(Amount,Months)*i;
-                            NewAmountCalculatedHavasar= newAmount;
+                        <%! long VargiMnatsortHavasar(long Amount, long Months, int i) {
+                            long newAmount = Amount - VargyKumariMarumHavasar(Amount, Months) * i;
+                            NewAmountCalculatedHavasar = newAmount;
                             return NewAmountCalculatedHavasar;
                         }
                         %>
