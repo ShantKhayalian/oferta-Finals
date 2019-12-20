@@ -13,8 +13,8 @@ public class Constance {
     //public static final String USERNAMEINDATA = "oferta_root";
     public static final String USERNAMEINDATA2 = "root";
     //public static final String USERPASSWORDINDATA = "^Z~&mmGmLft?";
-    public static final String USERPASSWORDINDATA2 = "YLf{}cJ,Kvd%";
-    //public static final String USERPASSWORDINDATA2 = "root";
+    //public static final String USERPASSWORDINDATA2 = "YLf{}cJ,Kvd%";
+    public static final String USERPASSWORDINDATA2 = "root";
 
     //public static final String USERPASSWORDINDATA = "root";
 
