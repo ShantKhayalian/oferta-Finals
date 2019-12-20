@@ -148,6 +148,7 @@
                         <h2>
                             ֆայլի վերբեռնուման համար, քաշեք եւ թողեք նկարը այստեղ կամ սեղմեք եւ ընտրեք այն։
                         </h2>
+                        <small>Քաշ բաք</small>
                         <h2><%
                             if (request.getAttribute("message") != null) {
                         %>
@@ -161,8 +162,9 @@
                         </ul>
                     </div>
                     <div class="body">
-                        <form action="AddNewCardImage?productcode=<%=request.getAttribute("productcode")%>" class="dropzone"
-                              method="post"
+
+                        <form action="<%=request.getContextPath()%>/UpdateCardPDFInData?cardId=<%=request.getAttribute("cardId")%>"
+                              id="frmFileUpload" class="dropzone" method="post"
                               enctype="multipart/form-data">
                             <div class="dz-message">
                                 <div class="drag-icon-cph">
@@ -172,42 +174,57 @@
 
                             </div>
                             <div class="fallback">
-                                <input name="file" type="file"/>
+                                <input name="file" type="file" />
                                 <%-- <input type="hidden" name="bankId" value="<%=request.getAttribute("newBankId")%>"/>--%>
                             </div>
                         </form>
                     </div>
+                    <%--<div class="col-xs-12 col-sm-3">
+                        <div class="card profile-card">
+                            <div class="profile-header">&nbsp;</div>
 
+                            <div class="profile-body">
+                                <div class="image-area">
+                                    <c:if test="${requestScope.CardFullListById != null}">
+                                    <c:forEach items="${requestScope.CardFullListById}" var="CardInfo">
+                                    <img src="${CardInfo.PDF}"
+                                         alt="<c:out value="${CardInfo.productCode}"/>" height="250" width="250"/>
+                                </div>
+
+                                </c:forEach>
+                                </c:if>
+                            </div>
+                        </div>
+                    </div>--%>
                 </div>
             </div>
         </div>
+        <!-- #END# File Upload | Drag & Drop OR With Click & Choose -->
         <div class="body">
             <div class="demo-masked-input">
                 <div class="row clearfix">
                     <div class="col-md-3">
-
-                        <form action="AddNewCardPDF" method="post">
-                            <button type="submit" class="btn bg-orange btn-block btn-lg waves-effect">Ավելացնել Քեշ բեք
-                                <input type="hidden" name="productcode" value="<%=request.getAttribute("productcode")%>">
+                        <form action="CardResultPage" method="post">
+                            <button type="submit" class="btn btn-success m-t-15 waves-effect">Շարունակել
                             </button>
+                            <input type="hidden" name="cardId" value="<%=request.getAttribute("cardId")%>">
                         </form>
                     </div>
                 </div>
 
             </div>
         </div>
-        <!-- #END# File Upload | Drag & Drop OR With Click & Choose -->
         </form>
 
         <!-- #END# Masked Input -->
     </div>
-</section><section class="content">
+</section>
+<!-- #END# File Upload | Drag & Drop OR With Click & Choose -->
+<section class="content">
     <div class="container-fluid">
 
     </div>
 </section>
-<!-- #END# File Upload | Drag & Drop OR With Click & Choose -->
-
 <!-- Jquery Core Js -->
 <script src="<%=request.getContextPath()%>/admin/plugins/jquery/jquery.min.js"></script>
 

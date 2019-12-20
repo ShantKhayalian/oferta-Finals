@@ -63,7 +63,7 @@
                         </ul>
                     </div>&ndash;%&gt;
                 </span>--%>
-                       <%-- <span class="compere-box show-for-tablet relative">
+                       <span class="compere-box show-for-tablet relative">
                      <span class="compere-icon" onclick="toggleBoxes('compareTooltipMb')">
                         <span class="count">4</span>
                         <i class="icon-libra"></i>
@@ -81,7 +81,7 @@
                             <!--Todo add when there is no item -->
                             <!--                            <span>Համեմատության էջում տեղ չկա</span>-->
                         </div>
-                    </div>--%>
+                    </div>
                 </span>
                         <span class="i-menu show-for-tablet" id="mbNavBtn"><i class="icon-menu font-20"></i></span>
                     </div>

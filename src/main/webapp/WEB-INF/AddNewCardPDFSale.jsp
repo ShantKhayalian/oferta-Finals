@@ -161,14 +161,14 @@
                         </ul>
                     </div>
                     <div class="body">
-                        <form action="AddNewCardImage?productcode=<%=request.getAttribute("productcode")%>" class="dropzone"
+                        <form action="AddNewPDFSale?productcode=<%=request.getAttribute("productcode")%>" class="dropzone"
                               method="post"
                               enctype="multipart/form-data">
                             <div class="dz-message">
                                 <div class="drag-icon-cph">
                                     <i class="material-icons">touch_app</i>
                                 </div>
-                                <h3>Թողնել ֆայլեր այստեղ կամ սեղմեք վերբեռնելու համար:</h3>
+                                <h3>Թողնել ֆայլեր այստեղ կամ սեղմեք վերբեռնելու համար: ${requestScope.productcode}</h3>
 
                             </div>
                             <div class="fallback">
@@ -186,11 +186,16 @@
                 <div class="row clearfix">
                     <div class="col-md-3">
 
-                        <form action="AddNewCardPDF" method="post">
-                            <button type="submit" class="btn bg-orange btn-block btn-lg waves-effect">Ավելացնել Քեշ բեք
-                                <input type="hidden" name="productcode" value="<%=request.getAttribute("productcode")%>">
+                        <form action="CardResultPage" method="post">
+                            <button type="submit" class="btn bg-orange btn-block btn-lg waves-effect">Ավարտել
+                               <!-- <input type="hidden" name="productcode" value="<%=request.getAttribute("productcode")%>">-->
                             </button>
                         </form>
+                        <%--<form action="AddNewCardPDFSale" method="post">
+                            <button type="submit" class="btn bg-orange btn-block btn-lg waves-effect">Ավելացնել Զեղչ խանութներում
+                                <input type="hidden" name="productcode" value="<%=request.getAttribute("productcode")%>">
+                            </button>
+                        </form>--%>
                     </div>
                 </div>
 
@@ -202,7 +207,7 @@
         <!-- #END# Masked Input -->
     </div>
 </section><section class="content">
-    <div class="container-fluid">
+    <div style="height: 600px">
 
     </div>
 </section>

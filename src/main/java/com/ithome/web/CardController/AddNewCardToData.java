@@ -67,9 +67,16 @@ public class AddNewCardToData extends HttpServlet {
 
     private String ProductNameEn = null;
     private String ProductNameRu = null;
-    private int bankCode =0;
-    private String bankLink =null;
-    private String Details =null;
+    private int bankCode = 0;
+    private String bankLink = null;
+    private String Details = null;
+
+    private String Cashback = null;
+    private String Timer = null;
+    private String Free = null;
+    private String Debit = null;
+    private String Credit = null;
+    private String CardInfo = null;
 
     private ProductNameDaoController productNameDaoController = new ProductNameDaoController();
 
@@ -104,9 +111,9 @@ public class AddNewCardToData extends HttpServlet {
     }
 
     private void createProductCode() {
-       Random random = new Random();
-        bankCode =getBankCode();
-       ProductCode = Integer.parseInt("" + bankCode + (random.nextInt(10000)+1000));
+        Random random = new Random();
+        bankCode = getBankCode();
+        ProductCode = Integer.parseInt("" + bankCode + (random.nextInt(10000) + 1000));
     }
 
     private void checkIfProductNameAdded(int productNameInData, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -193,8 +200,8 @@ public class AddNewCardToData extends HttpServlet {
     }
 
     private int getBankCode() {
-        for (int i = 0; i <banksList.size() ; i++) {
-            bankCode=  banksList.get(i).getBankCode();
+        for (int i = 0; i < banksList.size(); i++) {
+            bankCode = banksList.get(i).getBankCode();
         }
         return bankCode;
     }
@@ -209,11 +216,10 @@ public class AddNewCardToData extends HttpServlet {
 
     private Cards createDaoToDatabase() {
         return new Cards(ProductCode, cardName, BankId, BankName, BankWebAddress, typeId, cardType, cardMinServiceFee, cardMaxServiceFee, cardPerMinCashBack, cardPerMaxCashBack, cardPerMaxDiscount, cardPerMaxDiscount
-                , cardMinCreditLimit, cardMaxCreditLimit, cardPerCreditLimit, cardPerFactual, cardGracePeriod, currancy, minAge, maxAge, cardPerOnCreditStanding,minCashBack,maxCashBack,bankLink,Details);
+                , cardMinCreditLimit, cardMaxCreditLimit, cardPerCreditLimit, cardPerFactual, cardGracePeriod, currancy, minAge, maxAge, cardPerOnCreditStanding, minCashBack, maxCashBack, bankLink, Details,Cashback,Timer,Free,Debit,Credit,CardInfo);
     }
-
     private void getParameters(HttpServletRequest request) {
-        cardType = request.getParameter("cardType");
+        //cardType = request.getParameter("cardType");
         currancy = request.getParameter("currancy");
         /*ProductCode = Integer.parseInt(request.getParameter("productCode"));*/
         BankName = request.getParameter("BankName");
@@ -245,6 +251,14 @@ public class AddNewCardToData extends HttpServlet {
         cardPerOnCreditStanding = Integer.parseInt(request.getParameter("cardPerOnCreditStanding"));
         Details = request.getParameter("cardDetails");
         bankLink = request.getParameter("BankLink");
+
+        Cashback = request.getParameter("Cashback");
+        Timer = request.getParameter("Timer");
+        Free = request.getParameter("Free");
+        Debit = request.getParameter("Debit");
+        Credit = request.getParameter("Credit");
+
+       CardInfo = request.getParameter("cardInfo");
     }
 
     /**

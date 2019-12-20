@@ -1,11 +1,7 @@
 package com.ithome.web.CardController;
 
-import com.ithome.web.AdminDao.BanksDaoController;
-import com.ithome.web.AdminDao.CardTypeDao;
 import com.ithome.web.AdminDao.CardsDao;
 import com.ithome.web.Bean.Admin;
-import com.ithome.web.Bean.Banks;
-import com.ithome.web.Bean.CardTypes;
 import com.ithome.web.Bean.Cards;
 import com.ithome.web.Helpers.AdminChecker;
 import com.ithome.web.Helpers.SessionChecker;
@@ -20,11 +16,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/AddNewCardImage")
+@WebServlet("/AddNewPDFSale")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10,      // 10MB
         maxRequestSize = 1024 * 1024 * 50)   // 50MB
-public class AddNewCardImage extends HttpServlet {
+public class AddNewPDFSale extends HttpServlet {
     private SessionChecker checker = new SessionChecker();
     private String username = null;
     private AdminChecker adminChecker = new AdminChecker();
@@ -40,7 +36,7 @@ public class AddNewCardImage extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            addNewCardImage(request, response);
+            addNewPDFSalee(request,response);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -48,13 +44,13 @@ public class AddNewCardImage extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            addNewCardImage(request, response);
+            addNewPDFSalee(request,response);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private void addNewCardImage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+    private void addNewPDFSalee(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
         request.setCharacterEncoding("UTF-8");
         sessionControlling(request, response);
         getAdminInfo(request, response);
@@ -117,7 +113,7 @@ public class AddNewCardImage extends HttpServlet {
     private void AddCartImageToData(HttpServletRequest request, HttpServletResponse response, String filepat, int productCode) throws ServletException, IOException, SQLException {
         String linkToSave =  "http://www.oferta.am/" +filepat;
         Cards cards = new Cards(linkToSave);
-        int UpdateImageInData = cardsDao.UpdateCardImageInData(cards, productCode);
+        int UpdateImageInData = cardsDao.UpdateCardPDFInDataSales(cards, productCode);
         if (UpdateImageInData == 0) {
             String message = "Ինչ-որ սխալ տեղի ունեցավ, կրկին փորձեք";
             setRequestToPage(request);
@@ -132,16 +128,15 @@ public class AddNewCardImage extends HttpServlet {
     }
 
     private void goBackTofinalPage(HttpServletRequest request, HttpServletResponse response, String message) throws ServletException, IOException {
+        request.setAttribute("message", message);
         request.setAttribute("productcode", productCode);
-        request.getRequestDispatcher("/WEB-INF/AddNewCardImage.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/Results.jsp").forward(request, response);
     }
 
     private void setRequestToPage(HttpServletRequest request) {
         request.setAttribute("username", username);
         request.setAttribute("adminId", adminId);
         request.setAttribute("adminFullInfo", adminList);
-        request.setAttribute("productcode", productCode);
-
 
     }
 
@@ -200,3 +195,4 @@ public class AddNewCardImage extends HttpServlet {
         }
     }
 }
+

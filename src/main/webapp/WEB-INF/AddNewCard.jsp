@@ -626,7 +626,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group form-float">
+                                   <%-- <div class="form-group form-float">
                                         <div class="form-line">
                                             <select class="form-control show-tick" id="cardType" name="cardType" required>
                                                 <c:if test="${requestScope.CardTypeFullList != null}">
@@ -634,6 +634,50 @@
                                                         <option name="bankName">${CardList.cardType}</option>
                                                     </c:forEach>
                                                 </c:if>
+                                            </select>
+                                        </div>
+                                    </div>--%>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <select class="form-control show-tick"  name="Cashback" required>
+                                                <option value="0">Ոչ - Cashback</option>
+                                                <option value="Cashback">Cashback</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <select class="form-control show-tick"  name="Timer" required>
+                                                <option value="0">Ոչ - Արտոնյալ ժամանակաշրջան</option>
+                                                <option value="Grace period">Արտոնյալ ժամանակաշրջան</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <select class="form-control show-tick"  name="Free" required>
+                                                <option value="0">Ոչ - Անվճար</option>
+                                                <option value="Free">Անվճար</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <select class="form-control show-tick"  name="Debit" required>
+                                                <option value="0">Ոչ - Դեբիտ</option>
+                                                <option value="Debit">Դեբիտ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <select class="form-control show-tick"  name="Credit" required>
+                                                <option value="0">Ոչ - Քրեդիտ</option>
+                                                <option value="Credit">Քրեդիտ</option>
                                             </select>
                                         </div>
                                     </div>
@@ -774,6 +818,13 @@
                                         <div class="form-line">
                                             <input type="text" name="cardDetails" class="form-control" required/>
                                             <label class="form-label" required>Մանրամասնություններ</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" name="cardInfo" class="form-control" required/>
+                                            <label class="form-label" required>Տեղեկատվական բաժին</label>
                                         </div>
                                     </div>
 

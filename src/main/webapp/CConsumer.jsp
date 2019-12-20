@@ -250,8 +250,7 @@
                                         $("#startApp1").submit();
                                         console.log("Ներկայացվեց հաջողությամբ1")
                                     }
-                                };
-
+                                }
                                 function SendInfoToBack2() {
                                     var x = $("#start2").val();
                                     x = x.replace(/,/g, '');
@@ -265,8 +264,7 @@
                                         $("#startApp2").submit();
                                         console.log("Ներկայացվեց հաջողությամբ2")
                                     }
-                                };
-
+                                }
                                 function SendInfoToBack3() {
                                     var x = $("#start3").val();
                                     x = x.replace(/,/g, '');
@@ -280,8 +278,7 @@
                                         $("#startApp3").submit();
                                         console.log("Ներկայացվեց հաջողությամբ3")
                                     }
-                                };
-
+                                }
                                 function SendInfoToBack4() {
                                     var x = $("#start4").val();
                                     x = x.replace(/,/g, '');
@@ -295,7 +292,7 @@
                                         $("#startApp4").submit();
                                         console.log("Ներկայացվեց հաջողությամբ4")
                                     }
-                                };
+                                }
                             });
 
                         </script>

@@ -2033,7 +2033,7 @@
                                                 System.out.println("firstStep " + firstStep);
                                                 float secondStep = (float) (firstStep / 365);
                                                 System.out.println("secondStep " + secondStep);
-                                                float finalStep = (float) (secondStep * 30);
+                                                float finalStep = (secondStep * 30);
                                                 System.out.println("finalStep " + finalStep);
                                                 float TheTen = (float) (finalStep * 0.10);
                                                 System.out.println("TheTen " + TheTen);
@@ -2087,7 +2087,7 @@
                                                 System.out.println("firstStep " + firstStep);
                                                 float secondStep = (float) (firstStep / 365);
                                                 System.out.println("secondStep " + secondStep);
-                                                float finalStep = (float) (secondStep * 30);
+                                                float finalStep = (secondStep * 30);
                                                 System.out.println("finalStep " + finalStep);
                                                 float TheTen = (float) (finalStep * 0.10);
                                                 System.out.println("TheTen " + TheTen);

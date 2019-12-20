@@ -774,10 +774,7 @@
                             <div class="range-group">
                                 <div class="def-range">
                                     <script language="javascript" type="text/javascript">
-
-
                                         var delayTimer;
-
                                         function doSearch(text) {
                                             clearTimeout(delayTimer);
                                             delayTimer = setTimeout(function () {

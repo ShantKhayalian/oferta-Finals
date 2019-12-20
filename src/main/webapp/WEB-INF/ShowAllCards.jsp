@@ -241,6 +241,36 @@
                                     </button>
                                     <input type="hidden" name="cardId" value="${cardinfo.cardId}">
                                 </form>
+
+                                <c:set value="${cardinfo.PDF}" var="cashback"/>
+                                <c:choose>
+                                <c:when test="${cashback != null}">
+                                    <form action="UpdateCardPDF" method="post">
+                                        <button class="btn btn-info btn-lg waves-effect btn-block">
+                                            Թարմացնել քարդի Քաշ բաքը
+                                        </button>
+                                        <input type="hidden" name="cardId" value="${cardinfo.cardId}">
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
+
+                                </c:otherwise>
+                                </c:choose>
+
+                                <c:set value="${cardinfo.PDFSale}" var="sales"/>
+                                <c:choose>
+                                    <c:when test="${sales != null}">
+                                        <form action="UpdateCardPDFSales" method="post">
+                                            <button class="btn btn-info btn-lg waves-effect btn-block">
+                                                Թարմացնել քարդի Զեղչ խանութներում
+                                            </button>
+                                            <input type="hidden" name="cardId" value="${cardinfo.cardId}">
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+
+                                    </c:otherwise>
+                                </c:choose>
                                 <form action="DeleteCard" method="post">
                                     <button class="btn bg-orange btn-block btn-lg waves-effect">
                                         Ջնջել

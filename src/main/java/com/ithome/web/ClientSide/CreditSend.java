@@ -570,7 +570,7 @@ public class CreditSend extends HttpServlet {
         }
     }
 
-    private void getCityFromUser(HttpServletRequest request) throws IOException {
+    private void getCityFromUser(HttpServletRequest request) {
     /*    if (request.getParameter("city") == null) {
             city = lookUpProgram.start(request);
         } else {

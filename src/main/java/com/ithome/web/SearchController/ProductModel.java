@@ -127,7 +127,7 @@ public class ProductModel {
         }
     }
 
-    public List<String> search(String keyword, HttpServletRequest request , HttpServletResponse response) throws UnsupportedEncodingException {
+    public List<String> search(String keyword, HttpServletRequest request , HttpServletResponse response) {
         response.setCharacterEncoding("UTF-8");
         List<String> names = new ArrayList<String>();
         List<String> namesId = new ArrayList<>();
@@ -159,7 +159,7 @@ public class ProductModel {
         return names;
     }
 
-    public List<String> search2(String keyword, HttpServletRequest request , HttpServletResponse response) throws UnsupportedEncodingException {
+    public List<String> search2(String keyword, HttpServletRequest request , HttpServletResponse response) {
         response.setCharacterEncoding("UTF-8");
         List<String> names = new ArrayList<String>();
         List<String> namesId = new ArrayList<>();

@@ -50,7 +50,7 @@
     js = d.createElement(s); js.id = id;
     js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
     fjs.parentNode.insertBefore(js, fjs);
-}
+};
 (document, 'script', 'facebook-jssdk'));
 </script>
 
@@ -373,7 +373,7 @@
                         <li>
                             <a href="https://telegram.me/share/url?url=onclick='window.open(&apos;https://telegram.me/share/url?url==&apos;+encodeURIComponent(location.href)+&apos;&amp;bodytext=&amp;tags=&amp;text=&apos;+encodeURIComponent(document.title));return false;' rel='nofollow' style='text-decoration:none;'"
                                class="telegram" target="_blank"><i class="icon-telegram"></i></a></li>
-                        <script src="http://platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                        <script src="http://platform.linkedin.com/in.js" type="text/javascript"> en_US</script>
                         <script type="IN/Share" data-url="myLinkedinFunction()" id="linkedShare" ></script>
                        <%-- <li><a href="https://www.linkedin.com/company/ofertaam" class="linkedin" target="_blank"><i
                                 class="icon-linkedin"></i></a></li>--%>
@@ -409,7 +409,7 @@
                         <li>
                             <a href="https://telegram.me/share/url?url=onclick='window.open(&apos;https://telegram.me/share/url?url==&apos;+encodeURIComponent(location.href)+&apos;&amp;bodytext=&amp;tags=&amp;text=&apos;+encodeURIComponent(document.title));return false;' rel='nofollow' style='text-decoration:none;'"
                                class="telegram" target="_blank"><i class="icon-telegram"></i></a></li>
-                        <script src="http://platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                        <script src="http://platform.linkedin.com/in.js" type="text/javascript"> en_US</script>
                         <script type="IN/Share" data-url="myLinkedinFunction()" id="linkedShare" ></script>
                     </ul>
                 </div>
@@ -439,7 +439,7 @@
                             <li>
                                 <a href="https://telegram.me/share/url?url=onclick='window.open(&apos;https://telegram.me/share/url?url==&apos;+encodeURIComponent(location.href)+&apos;&amp;bodytext=&amp;tags=&amp;text=&apos;+encodeURIComponent(document.title));return false;' rel='nofollow' style='text-decoration:none;'"
                                    class="telegram" target="_blank"><i class="icon-telegram"></i></a></li>
-                            <script src="http://platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                            <script src="http://platform.linkedin.com/in.js" type="text/javascript"> en_US</script>
                             <script type="IN/Share" data-url="myLinkedinFunction()" id="linkedShare" ></script>
                         </ul>
                     </div>
@@ -469,7 +469,7 @@
                                 <li>
                                     <a href="https://telegram.me/share/url?url=onclick='window.open(&apos;https://telegram.me/share/url?url==&apos;+encodeURIComponent(location.href)+&apos;&amp;bodytext=&amp;tags=&amp;text=&apos;+encodeURIComponent(document.title));return false;' rel='nofollow' style='text-decoration:none;'"
                                        class="telegram" target="_blank"><i class="icon-telegram"></i></a></li>
-                                <script src="http://platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                                <script src="http://platform.linkedin.com/in.js" type="text/javascript"> en_US</script>
                                 <script type="IN/Share" data-url="myLinkedinFunction()" id="linkedShare" ></script>
                                     <%-- <li><a href="https://www.linkedin.com/company/ofertaam" class="linkedin" target="_blank"><i
                                              class="icon-linkedin"></i></a></li>--%>

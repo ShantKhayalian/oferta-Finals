@@ -12,6 +12,8 @@ public class Cards extends PojoHelper {
     private long cardTypeId;
     private String cardType;
     private String cardImage;
+    private String PDF;
+    private String PDFSale;
     private int cardMinServiceFee;
     private int cardMaxServiceFee;
     private double cardPerMinCashBack;
@@ -29,6 +31,12 @@ public class Cards extends PojoHelper {
     private double maxCashBack;
     private String Details;
     private String bankLink;
+    private String Cashback;
+    private String Timer;
+    private String Free;
+    private String Debit;
+    private String Credit;
+    private String CardInfo;
 
 
     private List<Cards> cardsList;
@@ -128,7 +136,7 @@ public class Cards extends PojoHelper {
     public Cards(int productCode, String cardName, int bankId, String bankName, String bankWebSite, int cardTypeId, String cardType, int cardMinServiceFee,
                  int cardMaxServiceFee, double cardPerMinCashBack, double cardPerMaxCashBack, double cardPerMaxDiscount,
                  double cardPerMinDiscount, int cardMinCreditLimit, int cardMaxCreditLimit, double cardPerCreditLimit,
-                 double cardPerFactual, int cardGracePeriod, String currancy, int minAge, int maxAge, double cardPerOnCreditStanding,double minCashBack,double maxCashBack,String bankLink,String details) {
+                 double cardPerFactual, int cardGracePeriod, String currancy, int minAge, int maxAge, double cardPerOnCreditStanding,double minCashBack,double maxCashBack,String bankLink,String details,String cashback, String timer, String free, String debit, String credit,String cardInfo) {
         super(productCode, bankId, bankName, bankWebSite, minAge, maxAge, currancy);
 
         this.cardName = cardName;
@@ -150,6 +158,12 @@ public class Cards extends PojoHelper {
         this.maxCashBack=maxCashBack;
         this.bankLink =bankLink;
         this.Details=details;
+        this.Cashback= cashback;
+        this.Timer=timer;
+        this.Free = free;
+        this.Debit  = debit;
+        this.Credit=credit;
+        this.CardInfo=cardInfo;
     }
 
 
@@ -171,6 +185,30 @@ public class Cards extends PojoHelper {
 
     }
 
+    public String getPDF() {
+        return PDF;
+    }
+
+    public void setPDF(String PDF) {
+        this.PDF = PDF;
+    }
+
+    public String getPDFSale() {
+        return PDFSale;
+    }
+
+    public void setPDFSale(String PDFSale) {
+        this.PDFSale = PDFSale;
+    }
+
+    public String getCardInfo() {
+        return CardInfo;
+    }
+
+    public void setCardInfo(String cardInfo) {
+        CardInfo = cardInfo;
+    }
+
     public String getBanksList() throws SQLException {
         return banksDaoController.getBankImageById(super.getBankId());
 
@@ -184,6 +222,46 @@ public class Cards extends PojoHelper {
             bankImage = banksDaoController.getBankImageById(bankid);
         }
         return bankImage;
+    }
+
+    public String getCashback() {
+        return Cashback;
+    }
+
+    public void setCashback(String cashback) {
+        Cashback = cashback;
+    }
+
+    public String getTimer() {
+        return Timer;
+    }
+
+    public void setTimer(String timer) {
+        Timer = timer;
+    }
+
+    public String getFree() {
+        return Free;
+    }
+
+    public void setFree(String free) {
+        Free = free;
+    }
+
+    public String getDebit() {
+        return Debit;
+    }
+
+    public void setDebit(String debit) {
+        Debit = debit;
+    }
+
+    public String getCredit() {
+        return Credit;
+    }
+
+    public void setCredit(String credit) {
+        Credit = credit;
     }
 
     public String getDetails() {

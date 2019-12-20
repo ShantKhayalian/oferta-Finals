@@ -169,7 +169,7 @@ public class CompareCarLoan extends HttpServlet {
 
     private void getCityFromUser(HttpServletRequest request) throws IOException {
         if (request.getParameter("city") == null) {
-            city = lookUpProgram.start(request);
+            city = LookUpProgram.start(request);
         } else {
             city = request.getParameter("city");
         }

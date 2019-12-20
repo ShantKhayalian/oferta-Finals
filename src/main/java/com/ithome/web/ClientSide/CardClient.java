@@ -138,14 +138,16 @@ public class CardClient extends HttpServlet {
     }
 
     private void getCards(HttpServletRequest request) throws SQLException {
+        int cardIdCheck=0;
         List<Cards> firstCardList = new ArrayList<>();
         firstCardList = cardsDao.getAllCardsList();
         filterByCurancy = new ArrayList<>();
         for (int i = 0; i < firstCardList.size(); i++) {
             String currancy = firstCardList.get(i).getCurrancy();
-            String cardType = firstCardList.get(i).getCardType();
+            String GracePeriod = firstCardList.get(i).getTimer();
             if (currancy.equals("AMD") && !Dram.equals("OFF")) {
                 int cardId = Integer.parseInt(String.valueOf(firstCardList.get(i).getCardId()));
+                cardIdCheck=cardId;
                 filterByCurancy.addAll(cardsDao.getCardsById(cardId));
             }
             if (currancy.equals("EUR") && !Euro.equals("OFF")) {
@@ -161,30 +163,46 @@ public class CardClient extends HttpServlet {
                 filterByCurancy.addAll(cardsDao.getCardsById(cardId));
             }
             if (Cashback.equals("Cash") && !Cashback.equals("OFF")) {
+
                 int cardId = Integer.parseInt(String.valueOf(firstCardList.get(i).getCardId()));
-                filterByCurancy.addAll(cardsDao.getCardsById(cardId));
+                if (IsEqualId(cardIdCheck, cardId)) {
+                    filterByCurancy.addAll(cardsDao.getCardsById(cardId));
+                }
             }
-            if (Period.equals("Periods") || cardType.equals("Grace period") && !Period.equals("OFF")) {
+            if (Period.equals("Periods") && !Period.equals("OFF")) {
                 int cardId = Integer.parseInt(String.valueOf(firstCardList.get(i).getCardId()));
+                if (IsEqualId(cardIdCheck, cardId)) {
                 filterByCurancy.addAll(cardsDao.getCardsById(cardId));
+                }
             }
             if (Free.equals("free") && !Free.equals("OFF")) {
                 int cardId = Integer.parseInt(String.valueOf(firstCardList.get(i).getCardId()));
+                if (IsEqualId(cardIdCheck, cardId)) {
                 filterByCurancy.addAll(cardsDao.getCardsById(cardId));
+                }
             }
             if (Depit.equals("Depit") && !Depit.equals("OFF")) {
                 int cardId = Integer.parseInt(String.valueOf(firstCardList.get(i).getCardId()));
+                if (IsEqualId(cardIdCheck, cardId)) {
                 filterByCurancy.addAll(cardsDao.getCardsById(cardId));
+                }
             }
             if (Credit.equals("credit") && !Credit.equals("OFF")) {
                 int cardId = Integer.parseInt(String.valueOf(firstCardList.get(i).getCardId()));
-                filterByCurancy.addAll(cardsDao.getCardsById(cardId));
+                if (IsEqualId(cardIdCheck, cardId)) {
+                    filterByCurancy.addAll(cardsDao.getCardsById(cardId));
+                }
             }
 
 
         }
 
     }
+
+    private boolean IsEqualId(int cardIdCheck, int cardId) {
+        return cardIdCheck != cardId;
+    }
+
 
     private void getParameters(HttpServletRequest request) throws SQLException {
         Ruble = request.getParameter("Ruble");

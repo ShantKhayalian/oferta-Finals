@@ -951,12 +951,12 @@ public class CardsDao {
         try {
             connection = connectToData();
             String insertQuery = "INSERT INTO `cardcontroller`" +
-                    "(`id`, `productcode`, `bankid`, `bankname`,`bankwebsite`,`cardname`,`cardtypeid`,`cardtype`," +
+                    "(`id`, `productcode`, `bankid`, `bankname`,`bankwebsite`,`cardname`," +
                     "`cardimage`,`cardminservicefee`, `cardmaxservicefee`, `cardpermincashback`,`cardpermaxcashback`," +
                     "`cardpermindiscount`,`cardpermaxdiscount`,`cardmincreditlimit`, `cardmaxcreditlimit`,`cardpercreditlimit`," +
                     "`cardperfactual`,`cardgraceperiod`,`currancy`, `minage`,`maxage`,`cardperoncreditstanding`," +
-                    "`orderonappearance`, `specialofferid`,`Searchpositionid`,`sendrequest`,`LastLogic`,`mincashback`,`maxcashback`,`BankLink`,`details`) "
-                    + "VALUES (Default,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    "`orderonappearance`, `specialofferid`,`Searchpositionid`,`sendrequest`,`LastLogic`,`mincashback`,`maxcashback`,`BankLink`,`details`,`cardtypecashback`,`cardtypegrace`,`cardTypefree`,`cardtypedebit`,`cardtypecredit`,cardinfo) "
+                    + "VALUES (Default,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             statment = connection.prepareStatement(insertQuery);
             setStatment(cards, statment);
             rowsAffected = statment.executeUpdate();
@@ -990,33 +990,37 @@ public class CardsDao {
         statement.setString(3, cards.getBankName());
         statement.setString(4, cards.getBankWebSite());
         statement.setString(5, cards.getCardName());
-        statement.setLong(6, cards.getCardTypeId());
-        statement.setString(7, cards.getCardType());
-        statement.setString(8, cards.getCardImage());
-        statement.setInt(9, cards.getCardMinServiceFee());
-        statement.setInt(10, cards.getCardMaxServiceFee());
-        statement.setDouble(11, cards.getCardPerMinCashBack());
-        statement.setDouble(12, cards.getCardPerMaxCashBack());
-        statement.setDouble(13, cards.getCardPerMinDiscount());
-        statement.setDouble(14, cards.getCardPerMaxDiscount());
-        statement.setInt(15, cards.getCardMinCreditLimit());
-        statement.setInt(16, cards.getCardMaxCreditLimit());
-        statement.setDouble(17, cards.getCardPerCreditLimit());
-        statement.setDouble(18, cards.getCardPerFactual());
-        statement.setInt(19, cards.getCardGracePeriod());
-        statement.setString(20, cards.getCurrancy());
-        statement.setInt(21, cards.getMinAge());
-        statement.setInt(22, cards.getMaxAge());
-        statement.setDouble(23, cards.getCardPerOnCreditStanding());
-        statement.setInt(24, cards.getOrderOfAppearance());
-        statement.setInt(25, cards.getSpecialOffer());
-        statement.setInt(26, cards.getFirstSearchList());
-        statement.setInt(27, cards.getSendRequest());
-        statement.setInt(28, cards.getLastlogic());
-        statement.setDouble(29, cards.getMinCashBack());
-        statement.setDouble(30, cards.getMaxCashBack());
-        statement.setString(31, cards.getBankLink());
-        statement.setString(32, cards.getDetails());
+        statement.setString(6, cards.getCardImage());
+        statement.setInt(7, cards.getCardMinServiceFee());
+        statement.setInt(8, cards.getCardMaxServiceFee());
+        statement.setDouble(9, cards.getCardPerMinCashBack());
+        statement.setDouble(10, cards.getCardPerMaxCashBack());
+        statement.setDouble(11, cards.getCardPerMinDiscount());
+        statement.setDouble(12, cards.getCardPerMaxDiscount());
+        statement.setInt(13, cards.getCardMinCreditLimit());
+        statement.setInt(14, cards.getCardMaxCreditLimit());
+        statement.setDouble(15, cards.getCardPerCreditLimit());
+        statement.setDouble(16, cards.getCardPerFactual());
+        statement.setInt(17, cards.getCardGracePeriod());
+        statement.setString(18, cards.getCurrancy());
+        statement.setInt(19, cards.getMinAge());
+        statement.setInt(20, cards.getMaxAge());
+        statement.setDouble(21, cards.getCardPerOnCreditStanding());
+        statement.setInt(22, cards.getOrderOfAppearance());
+        statement.setInt(23, cards.getSpecialOffer());
+        statement.setInt(24, cards.getFirstSearchList());
+        statement.setInt(25, cards.getSendRequest());
+        statement.setInt(26, cards.getLastlogic());
+        statement.setDouble(27, cards.getMinCashBack());
+        statement.setDouble(28, cards.getMaxCashBack());
+        statement.setString(29, cards.getBankLink());
+        statement.setString(30, cards.getDetails());
+        statement.setString(31, cards.getCashback());
+        statement.setString(32, cards.getTimer());
+        statement.setString(33, cards.getFree());
+        statement.setString(34, cards.getDebit());
+        statement.setString(35, cards.getCredit());
+        statement.setString(36, cards.getCardInfo());
     }
 
     /**
@@ -1338,6 +1342,62 @@ public class CardsDao {
 
     }
 
+    public int UpdateCardPDFInDataById(Cards cards, int cardId) throws SQLException {
+        int rowsUpdated = 0;
+        PreparedStatement statment = null;
+        Connection connection = null;
+        try {
+            connection = connectToData();
+            String sql = "UPDATE `cardcontroller`  SET pdf=?  WHERE id=" + cardId;
+            statment = connection.prepareStatement(sql);
+            statment.setString(1, cards.getCardImage());
+
+            rowsUpdated = statment.executeUpdate();
+            if (rowsUpdated > 0) {
+
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+            if (statment != null) {
+                statment.close();
+            }
+        }
+        return rowsUpdated;
+
+    }
+
+    public int UpdateCardPDFSalesInDataById(Cards cards, int cardId) throws SQLException {
+        int rowsUpdated = 0;
+        PreparedStatement statment = null;
+        Connection connection = null;
+        try {
+            connection = connectToData();
+            String sql = "UPDATE `cardcontroller`  SET pdf2=?  WHERE id=" + cardId;
+            statment = connection.prepareStatement(sql);
+            statment.setString(1, cards.getCardImage());
+
+            rowsUpdated = statment.executeUpdate();
+            if (rowsUpdated > 0) {
+
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+            if (statment != null) {
+                statment.close();
+            }
+        }
+        return rowsUpdated;
+
+    }
+
     private Connection connectToData() {
         return DBConnection.getConnectionToDatabase();
     }
@@ -1359,8 +1419,6 @@ public class CardsDao {
             cards.setCardId(set.getLong("id"));
             cards.setProductCode(set.getInt("productCode"));
             cards.setCardName(set.getString("cardName"));
-            cards.setCardTypeId(set.getLong("cardTypeId"));
-            cards.setCardType(set.getString("cardType"));
             cards.setCardImage(set.getString("cardImage"));
             cards.setCardMinServiceFee(set.getInt("cardMinServiceFee"));
             cards.setCardMaxServiceFee(set.getInt("cardMaxServiceFee"));
@@ -1386,6 +1444,9 @@ public class CardsDao {
             cards.setMaxCashBack(set.getDouble("maxCashBack"));
             cards.setDetails(set.getString("details"));
             cards.setBankLink(set.getString("bankLink"));
+            cards.setPDF(set.getString("pdf"));
+            cards.setPDFSale(set.getString("pdf2"));
+            cards.setCardInfo(set.getString("cardinfo"));
             cards.setBanksList(cardsList);
             cardsList.add(cards);
         }
@@ -1566,5 +1627,74 @@ public class CardsDao {
         }
         return mortgageList;
     }
+
+    /**
+     * Add or update image of card in database
+     *
+     * @param cards
+     * @param cardId
+     * @return
+     */
+    public int UpdateCardPDFInData(Cards cards, int cardId) throws SQLException {
+        int rowsUpdated = 0;
+        PreparedStatement statment = null;
+        Connection connection = null;
+        try {
+            connection = connectToData();
+            String sql = "UPDATE `cardcontroller`  SET pdf=?  WHERE productcode=" + cardId;
+            statment = connection.prepareStatement(sql);
+            statment.setString(1, cards.getCardImage());
+
+            rowsUpdated = statment.executeUpdate();
+            if (rowsUpdated > 0) {
+
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+            if (statment != null) {
+                statment.close();
+            }
+        }
+        return rowsUpdated;
+    }
+
+    /**
+     * Add or update image of card in database
+     *
+     * @param cards
+     * @param cardId
+     * @return
+     */
+    public int UpdateCardPDFInDataSales(Cards cards, int cardId) throws SQLException {
+        int rowsUpdated = 0;
+        PreparedStatement statment = null;
+        Connection connection = null;
+        try {
+            connection = connectToData();
+            String sql = "UPDATE `cardcontroller`  SET pdf2=?  WHERE productcode=" + cardId;
+            statment = connection.prepareStatement(sql);
+            statment.setString(1, cards.getCardImage());
+
+            rowsUpdated = statment.executeUpdate();
+            if (rowsUpdated > 0) {
+
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+            if (statment != null) {
+                statment.close();
+            }
+        }
+        return rowsUpdated;
+    }
+
 }
 

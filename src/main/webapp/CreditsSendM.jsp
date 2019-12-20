@@ -1653,7 +1653,7 @@
 
                                 long balanceMonth = (long) (balance * monthlyRate);
                                 addingBalanceShow = balanceMonth;
-                                long substracing = (long) (calculateMonthlyPaymentSpecial(AmountOfLoan,termInYears,interestRate) - addingBalanceShow );
+                                long substracing = (calculateMonthlyPaymentSpecial(AmountOfLoan,termInYears,interestRate) - addingBalanceShow );
                                 addingSubstruc = substracing;
                                 System.out.println("balance3 " + balance);
                                 return balance;

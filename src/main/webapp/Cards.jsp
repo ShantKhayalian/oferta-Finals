@@ -1006,15 +1006,13 @@
                                     </ul>
                                 </div>
                                 <div class="item-desc col">
-                                    <p>Շատ համակարգչային տպագրական ծրագրեր և ինտերնետային էջերի խմբագրիչներ այն
-                                        օգտագործում են որպես իրենց ստանդարտ տեքստային</p>
+                                    <p>${cardList.cardInfo}</p>
                                     <p><a href="" class="blue-link width-icon right-icon"><span>Զեղչ խանութներում</span>
                                         <img src="../images/pdf.svg"></a></p>
                                 </div>
                                 <div class="flex-item col">
                                    <%-- <form action="<%=request.getContextPath()%>/SendEmailForCards" method="post">--%>
-                                        <button onclick = "createPopupWin('SendEmailToBank.jsp?ProductCode=${cardList.productCode}',
-            'oferta.am', 800, 650);" class="def-button btn-green with-shadow  margin-bottom-15">Ուղարկել հայտ
+                                        <button onclick = "createPopupWin('SendEmailToBank.jsp?ProductCode=${cardList.productCode}', 'oferta.am', 800, 650);" class="def-button btn-green with-shadow  margin-bottom-15">Ուղարկել հայտ
                                         </button>
                                         <input type="hidden" name="BankId" value="${cardList.bankId}"/>
                                         <input type="hidden" name="productCode" value="${cardList.productCode}"/>
