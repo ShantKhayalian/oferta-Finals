@@ -138,7 +138,7 @@ public class CardClient extends HttpServlet {
     }
 
     private void getCards(HttpServletRequest request) throws SQLException {
-        int cardIdCheck=0;
+        int cardIdCheck = 0;
         List<Cards> firstCardList = new ArrayList<>();
         firstCardList = cardsDao.getAllCardsList();
         filterByCurancy = new ArrayList<>();
@@ -147,7 +147,7 @@ public class CardClient extends HttpServlet {
             String GracePeriod = firstCardList.get(i).getTimer();
             if (currancy.equals("AMD") && !Dram.equals("OFF")) {
                 int cardId = Integer.parseInt(String.valueOf(firstCardList.get(i).getCardId()));
-                cardIdCheck=cardId;
+                cardIdCheck = cardId;
                 filterByCurancy.addAll(cardsDao.getCardsById(cardId));
             }
             if (currancy.equals("EUR") && !Euro.equals("OFF")) {
@@ -163,35 +163,33 @@ public class CardClient extends HttpServlet {
                 filterByCurancy.addAll(cardsDao.getCardsById(cardId));
             }
             if (Cashback.equals("Cash") && !Cashback.equals("OFF")) {
-
                 int cardId = Integer.parseInt(String.valueOf(firstCardList.get(i).getCardId()));
-                if (IsEqualId(cardIdCheck, cardId)) {
-                    filterByCurancy.addAll(cardsDao.getCardsById(cardId));
-                }
+                filterByCurancy.addAll(cardsDao.getCardsById(cardId));
+
             }
             if (Period.equals("Periods") && !Period.equals("OFF")) {
                 int cardId = Integer.parseInt(String.valueOf(firstCardList.get(i).getCardId()));
-                if (IsEqualId(cardIdCheck, cardId)) {
+
                 filterByCurancy.addAll(cardsDao.getCardsById(cardId));
-                }
+
             }
             if (Free.equals("free") && !Free.equals("OFF")) {
                 int cardId = Integer.parseInt(String.valueOf(firstCardList.get(i).getCardId()));
-                if (IsEqualId(cardIdCheck, cardId)) {
+
                 filterByCurancy.addAll(cardsDao.getCardsById(cardId));
-                }
+
             }
             if (Depit.equals("Depit") && !Depit.equals("OFF")) {
                 int cardId = Integer.parseInt(String.valueOf(firstCardList.get(i).getCardId()));
-                if (IsEqualId(cardIdCheck, cardId)) {
+
                 filterByCurancy.addAll(cardsDao.getCardsById(cardId));
-                }
+
             }
             if (Credit.equals("credit") && !Credit.equals("OFF")) {
                 int cardId = Integer.parseInt(String.valueOf(firstCardList.get(i).getCardId()));
-                if (IsEqualId(cardIdCheck, cardId)) {
-                    filterByCurancy.addAll(cardsDao.getCardsById(cardId));
-                }
+
+                filterByCurancy.addAll(cardsDao.getCardsById(cardId));
+
             }
 
 

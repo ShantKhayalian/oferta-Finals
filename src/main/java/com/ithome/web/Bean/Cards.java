@@ -106,7 +106,7 @@ public class Cards extends PojoHelper {
                  int cardMinServiceFee, int cardMaxServiceFee, double cardPerMinCashBack,
                  double cardPerMaxCashBack, double cardPerMaxDiscount, double cardPerMinDiscount,
                  int cardMinCreditLimit, int cardMaxCreditLimit, double cardPerCreditLimit, double cardPerFactual,
-                 int cardGracePeriod, String currancy, int minAge, int maxAge, double cardPerOnCreditStanding,double minCashBack,double maxCashBack,String bankLink,String details) {
+                 int cardGracePeriod, String currancy, int minAge, int maxAge, double cardPerOnCreditStanding,double minCashBack,double maxCashBack,String bankLink,String details,String cashback,String timer,String free,String debit,String credit,String cardInfo) {
         super(productCode, bankId, bankName, bankWebSite, minAge, maxAge, currancy);
 
         this.cardName = cardName;
@@ -129,7 +129,12 @@ public class Cards extends PojoHelper {
         this.maxCashBack=maxCashBack;
         this.bankLink =bankLink;
         this.Details=details;
-
+        this.Cashback= cashback;
+        this.Timer=timer;
+        this.Free = free;
+        this.Debit  = debit;
+        this.Credit=credit;
+        this.CardInfo=cardInfo;
 
     }
 

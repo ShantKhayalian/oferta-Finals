@@ -991,6 +991,7 @@ public class CardsDao {
         statement.setString(4, cards.getBankWebSite());
         statement.setString(5, cards.getCardName());
         statement.setString(6, cards.getCardImage());
+
         statement.setInt(7, cards.getCardMinServiceFee());
         statement.setInt(8, cards.getCardMaxServiceFee());
         statement.setDouble(9, cards.getCardPerMinCashBack());
@@ -1000,27 +1001,33 @@ public class CardsDao {
         statement.setInt(13, cards.getCardMinCreditLimit());
         statement.setInt(14, cards.getCardMaxCreditLimit());
         statement.setDouble(15, cards.getCardPerCreditLimit());
+
         statement.setDouble(16, cards.getCardPerFactual());
         statement.setInt(17, cards.getCardGracePeriod());
         statement.setString(18, cards.getCurrancy());
         statement.setInt(19, cards.getMinAge());
         statement.setInt(20, cards.getMaxAge());
         statement.setDouble(21, cards.getCardPerOnCreditStanding());
+
         statement.setInt(22, cards.getOrderOfAppearance());
         statement.setInt(23, cards.getSpecialOffer());
         statement.setInt(24, cards.getFirstSearchList());
         statement.setInt(25, cards.getSendRequest());
         statement.setInt(26, cards.getLastlogic());
+
         statement.setDouble(27, cards.getMinCashBack());
         statement.setDouble(28, cards.getMaxCashBack());
         statement.setString(29, cards.getBankLink());
         statement.setString(30, cards.getDetails());
-        statement.setString(31, cards.getCashback());
-        statement.setString(32, cards.getTimer());
-        statement.setString(33, cards.getFree());
-        statement.setString(34, cards.getDebit());
-        statement.setString(35, cards.getCredit());
+
+        statement.setString(31, cards.getCredit());
+        statement.setString(32, cards.getFree());
+        statement.setString(33, cards.getDebit());
+        statement.setString(34, cards.getCashback());
+        statement.setString(35, cards.getTimer());
+
         statement.setString(36, cards.getCardInfo());
+
     }
 
     /**
@@ -1444,6 +1451,13 @@ public class CardsDao {
             cards.setMaxCashBack(set.getDouble("maxCashBack"));
             cards.setDetails(set.getString("details"));
             cards.setBankLink(set.getString("bankLink"));
+
+            cards.setDebit(set.getString("cardtypedebit"));
+            cards.setTimer(set.getString("cardTypefree"));
+            cards.setFree(set.getString("cardtypegrace"));
+            cards.setCashback(set.getString("cardtypecashback"));
+            cards.setCredit(set.getString("cardtypecredit"));
+
             cards.setPDF(set.getString("pdf"));
             cards.setPDFSale(set.getString("pdf2"));
             cards.setCardInfo(set.getString("cardinfo"));
@@ -1460,10 +1474,10 @@ public class CardsDao {
 
         try {
             connection = connectToData();
-            String sql = "UPDATE `cardcontroller`  SET productcode=?,bankid=?,bankname=?,bankwebsite=?,cardname=?,cardtypeid=?,cardtype=?,cardImage=?," +
+            String sql = "UPDATE `cardcontroller`  SET productcode=?,bankid=?,bankname=?,bankwebsite=?,cardname=?,cardImage=?," +
                     "cardMinServiceFee=?,cardMaxservicefee=?,cardpermincashback=?,cardpermaxcashback=?,cardpermindiscount=?,cardpermaxdiscount=?,cardmincreditlimit=?" +
                     ",cardmaxcreditlimit=?,cardpercreditlimit=?,cardperfactual=?,cardgraceperiod=?,currancy=?,minage=?,maxage=?,cardperoncreditstanding=?," +
-                    "orderonappearance=?,specialofferid=?,Searchpositionid=?,sendrequest=?,LastLogic=?,mincashback=?,maxcashback=?,BankLink=?,details=? WHERE id=" + cardId;
+                    "orderonappearance=?,specialofferid=?,Searchpositionid=?,sendrequest=?,LastLogic=?,mincashback=?,maxcashback=?,BankLink=?,details=?,cardtypecredit=?,cardTypefree=?,cardtypedebit=?,cardtypecashback=?,cardtypegrace=?,cardinfo=? WHERE id=" + cardId;
 
             statment = connection.prepareStatement(sql);
             setStatment(prepaireCardInfoForData, statment);

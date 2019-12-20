@@ -980,25 +980,61 @@
                                             <span class="bold">${cardList.cardMaxServiceFee}</span>
                                         </li>
                                         <li>
+
                                     <span>
-                                        <a href="" class="blue-link width-icon right-icon">
+                                        <c:set var="CashBack" value="${cardList.cashback}"/>
+                                        <c:choose>
+                                            <c:when test="${CashBack.equals('0') || CashBack==null}">
+                                                 <a href="${cardList.PDF}" class="blue-link width-icon right-icon">
                                             <span>Քեշ բեք</span><img src="../images/pdf.svg">
                                         </a>
+                                            </c:when>
+                                            <c:otherwise>
+
+                                            </c:otherwise>
+                                        </c:choose>
+
                                     </span>
+                                            <c:set var="CashBack" value="${cardList.cashback}"/>
+                                            <c:choose>
+                                            <c:when test="${CashBack.equals('0') || CashBack==null}">
                                             <span class="bold">${cardList.cardPerMinCashBack}-${cardList.cardPerMaxCashBack} %</span>
+                                            </c:when>
+                                                <c:otherwise>
+
+                                                </c:otherwise>
+                                            </c:choose>
                                         </li>
-                                        <li>
-                                            <span>Վարկային գիծ</span>
-                                            <span class="bold">${cardList.cardMaxCreditLimit}</span>
-                                        </li>
+                                        <c:set var="Credit" value="${cardList.credit}"/>
+                                        <c:choose>
+                                        <c:when test="${Credit.equals('0') || Credit==null}">
+                                            <li>
+                                                <span>Վարկային գիծ</span>
+                                                <span class="bold">${cardList.cardMaxCreditLimit}</span>
+                                            </li>
+                                        </c:when>
+                                            <c:otherwise>
+
+                                            </c:otherwise>
+                                        </c:choose>
+
                                         <li>
                                             <span>Տոկոս</span>
                                             <span class="bold">${cardList.cardPerCreditLimit} %</span>
                                         </li>
+
+                                        <c:set var="Timering" value="${cardList.timer}"/>
+                                        <c:choose>
+                                        <c:when test="${Timering.equals('0') || Timering==null}">
                                         <li>
                                             <span>Արտոնյալ ժամանակաշրջան</span>
-                                            <span class="bold">${cardList.cardGracePeriod} օր</span>
+                                            <span class="bold">${cardList.timer} օր</span>
                                         </li>
+                                        </c:when>
+                                            <c:otherwise>
+
+                                            </c:otherwise>
+                                        </c:choose>
                                         <li>
                                             <span>Տոկոսը դրական մնացորդի վրա</span>
                                             <span class="bold">${cardList.cardPerOnCreditStanding} %</span>
@@ -1007,8 +1043,16 @@
                                 </div>
                                 <div class="item-desc col">
                                     <p>${cardList.cardInfo}</p>
-                                    <p><a href="" class="blue-link width-icon right-icon"><span>Զեղչ խանութներում</span>
+                                    <c:set var="CashBack" value="${cardList.cashback}"/>
+                                    <c:choose>
+                                    <c:when test="${CashBack.equals('0') || CashBack==null}">
+                                    <p><a href="${cardList.PDFSale}" class="blue-link width-icon right-icon"><span>Զեղչ խանութներում</span>
                                         <img src="../images/pdf.svg"></a></p>
+                                    </c:when>
+                                        <c:otherwise>
+
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <div class="flex-item col">
                                    <%-- <form action="<%=request.getContextPath()%>/SendEmailForCards" method="post">--%>
@@ -1017,9 +1061,9 @@
                                         <input type="hidden" name="BankId" value="${cardList.bankId}"/>
                                         <input type="hidden" name="productCode" value="${cardList.productCode}"/>
                                    <%-- </form>--%>
-                                    <p><a href="CreditSend?PageToGo=Cards&&ProductCode=${cardList.productCode}"
+                                   <%-- <p><a href="CreditSend?PageToGo=Cards&&ProductCode=${cardList.productCode}"
                                           class="green-link font-12">Իմանալ
-                                        ավելին</a></p>
+                                        ավելին</a></p>--%>
                                 </div>
                             </div>
                         </div>

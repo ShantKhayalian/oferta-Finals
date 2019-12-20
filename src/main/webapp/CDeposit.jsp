@@ -505,12 +505,12 @@
 
                                 <c:when test="${IsTrue == 1}">
                                     <div class="flex-item">
-                                        <p class="grey font-18">Ոչ</p>
+                                        <p class="green font-18">Ոչ</p>
                                     </div>
                                 </c:when>
                                 <c:when test="${IsTrue != 1}">
                                     <div class="flex-item">
-                                        <p class="green font-18">Այո</p>
+                                        <p class="grey font-18">Այո</p>
                                     </div>
                                 </c:when>
 
@@ -532,12 +532,12 @@
 
                                 <c:when test="${IsTrue == 1}">
                                     <div class="flex-item">
-                                        <p class="grey font-18">Ոչ</p>
+                                        <p class="green font-18">Ոչ</p>
                                     </div>
                                 </c:when>
                                 <c:when test="${IsTrue != 1}">
                                     <div class="flex-item">
-                                        <p class="green font-18">Այո</p>
+                                        <p class="grey font-18">Այո</p>
                                     </div>
                                 </c:when>
                             </c:choose>
@@ -558,12 +558,12 @@
 
                                 <c:when test="${IsTrue == 1}">
                                     <div class="flex-item">
-                                        <p class="grey font-18">Ոչ</p>
+                                        <p class="green font-18">Ոչ</p>
                                     </div>
                                 </c:when>
                                 <c:when test="${IsTrue != 1}">
                                     <div class="flex-item">
-                                        <p class="green font-18">Այո</p>
+                                        <p class="grey font-18">Այո</p>
                                     </div>
                                 </c:when>
                             </c:choose>
@@ -584,12 +584,12 @@
 
                                 <c:when test="${IsTrue == 1}">
                                     <div class="flex-item">
-                                        <p class="grey font-18">Ոչ</p>
+                                        <p class="green font-18">Ոչ</p>
                                     </div>
                                 </c:when>
                                 <c:when test="${IsTrue != 1}">
                                     <div class="flex-item">
-                                        <p class="green font-18">Այո</p>
+                                        <p class="grey font-18">Այո</p>
                                     </div>
                                 </c:when>
 

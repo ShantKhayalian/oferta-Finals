@@ -1289,7 +1289,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="padding-bt-60" style="width: 100%">
+                    <div class="padding-bt-60">
                         <div class="inner-container">
                             <p class="font-24 title margin-bottom-35">
                                 Հատուկ առաջարկներ

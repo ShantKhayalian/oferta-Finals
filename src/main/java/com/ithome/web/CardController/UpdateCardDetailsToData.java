@@ -70,6 +70,13 @@ public class UpdateCardDetailsToData extends HttpServlet {
 
     private String imageAddress =null;
 
+    private String Cashback = null;
+    private String Timer = null;
+    private String Free = null;
+    private String Debit = null;
+    private String Credit = null;
+    private String CardInfo = null;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             updateCardDetailsToData(request,response);
@@ -181,12 +188,12 @@ public class UpdateCardDetailsToData extends HttpServlet {
 
     private Cards prepaireCardInfoForData() {
         return new Cards(ProductCode, cardName, BankId, BankName, BankWebAddress, typeId, cardType,imageAddress, cardMinServiceFee, cardMaxServiceFee, cardPerMinCashBack, cardPerMaxCashBack, cardPerMaxDiscount, cardPerMaxDiscount
-                , cardMinCreditLimit, cardMaxCreditLimit, cardPerCreditLimit, cardPerFactual, cardGracePeriod, currancy, minAge, maxAge, cardPerOnCreditStanding,minCashBack,maxCashBack,BankLink,Detail);
+                , cardMinCreditLimit, cardMaxCreditLimit, cardPerCreditLimit, cardPerFactual, cardGracePeriod, currancy, minAge, maxAge, cardPerOnCreditStanding,minCashBack,maxCashBack,BankLink,Detail,Cashback,Timer,Free,Debit,Credit,CardInfo);
     }
 
     private void getParameters(HttpServletRequest request) {
         cardId = Integer.parseInt(request.getParameter("cardId"));
-        cardType = request.getParameter("cardType");
+       /* cardType = request.getParameter("cardType");*/
         currancy = request.getParameter("currancy");
         ProductCode = Integer.parseInt(request.getParameter("ProductCode"));
         BankName = request.getParameter("BankName");
@@ -209,6 +216,12 @@ public class UpdateCardDetailsToData extends HttpServlet {
         maxCashBack = Double.parseDouble(request.getParameter("MaxCashBack"));
         Detail = request.getParameter("cardDetails");
         BankLink = request.getParameter("BankLink");
+        Cashback = request.getParameter("Cashback");
+        Timer = request.getParameter("Timer");
+        Free = request.getParameter("Free");
+        Debit = request.getParameter("Debit");
+        Credit = request.getParameter("Credit");
+        CardInfo = request.getParameter("cardInfo");
     }
 
     /**

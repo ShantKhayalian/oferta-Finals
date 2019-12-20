@@ -61,7 +61,7 @@
                         </ul>
                     </div>&ndash;%&gt;
                 </span>--%>
-                        <span class="compere-box hide-for-tablet relative">
+                        <span class="compere-box show-for-tablet relative">
                      <span class="compere-icon" onclick="toggleBoxes('compareTooltipMb')">
                         <span class="count">4</span>
                         <i class="icon-libra"></i>

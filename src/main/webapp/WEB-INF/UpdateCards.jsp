@@ -7,20 +7,22 @@
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+              type="text/css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
         <!-- Bootstrap Core Css -->
         <link href="<%=request.getContextPath()%>/admin/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
         <!-- Waves Effect Css -->
-        <link href="<%=request.getContextPath()%>/admin/plugins/node-waves/waves.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/admin/plugins/node-waves/waves.css" rel="stylesheet"/>
 
         <!-- Animation Css -->
-        <link href="<%=request.getContextPath()%>/admin/plugins/animate-css/animate.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/admin/plugins/animate-css/animate.css" rel="stylesheet"/>
 
         <!-- Colorpicker Css -->
-        <link href="<%=request.getContextPath()%>/admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css"
+              rel="stylesheet"/>
 
         <!-- Dropzone Css -->
         <link href="<%=request.getContextPath()%>/admin/plugins/dropzone/dropzone.css" rel="stylesheet">
@@ -29,22 +31,25 @@
         <link href="<%=request.getContextPath()%>/admin/plugins/multi-select/css/multi-select.css" rel="stylesheet">
 
         <!-- Bootstrap Spinner Css -->
-        <link href="<%=request.getContextPath()%>/admin/plugins/jquery-spinner/css/bootstrap-spinner.css" rel="stylesheet">
+        <link href="<%=request.getContextPath()%>/admin/plugins/jquery-spinner/css/bootstrap-spinner.css"
+              rel="stylesheet">
 
         <!-- Bootstrap Tagsinput Css -->
-        <link href="<%=request.getContextPath()%>/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+        <link href="<%=request.getContextPath()%>/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css"
+              rel="stylesheet">
 
         <!-- Bootstrap Select Css -->
-        <link href="<%=request.getContextPath()%>/admin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/admin/plugins/bootstrap-select/css/bootstrap-select.css"
+              rel="stylesheet"/>
 
         <!-- noUISlider Css -->
-        <link href="<%=request.getContextPath()%>/admin/plugins/nouislider/nouislider.min.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/admin/plugins/nouislider/nouislider.min.css" rel="stylesheet"/>
 
         <!-- Custom Css -->
         <link href="<%=request.getContextPath()%>/admin/css/style.css" rel="stylesheet">
 
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-        <link href="<%=request.getContextPath()%>/admin/css/themes/all-themes.css" rel="stylesheet" />
+        <link href="<%=request.getContextPath()%>/admin/css/themes/all-themes.css" rel="stylesheet"/>
     </head>
 </head>
 <body class="theme-deep-purple">
@@ -164,8 +169,10 @@
 
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control show-tick" id="BankName" name="BankName">
-                                                        <option name="bankName" value="${cardFullList.bankName}" selected>${cardFullList.bankName}</option>
+                                                    <select class="form-control show-tick" id="BankName"
+                                                            name="BankName">
+                                                        <option name="bankName" value="${cardFullList.bankName}"
+                                                                selected>${cardFullList.bankName}</option>
                                                         <c:if test="${requestScope.BankFullList != null}">
                                                             <c:forEach items="${requestScope.BankFullList}" var="bankList">
 
@@ -183,39 +190,141 @@
                                                     <label class=" form-label">Քարտի անվանում</label>
                                                 </div>
                                             </div>
+                                                <%-- <div class="form-group form-float">
+                                                     <div class="form-line">
+                                                         <select class="form-control show-tick" id="cardType" name="cardType" >
+                                                             <option name="bankName" value="${cardFullList.cardType}" selected>${cardFullList.cardType}</option>
+                                                             <c:if test="${requestScope.CardTypeFullList != null}">
+                                                                 <c:forEach items="${requestScope.CardTypeFullList}" var="CardList">
+                                                                     <option name="cardType"
+                                                                             value="${CardList.cardType}">${CardList.cardType}</option>
+                                                                 </c:forEach>
+                                                             </c:if>
+                                                         </select>
+                                                     </div>
+                                                 </div>--%>
+
+                                                <%-- <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <select class="form-control show-tick" id="cardType" name="cardType" required>
+                                                    <c:if test="${requestScope.CardTypeFullList != null}">
+                                                        <c:forEach items="${requestScope.CardTypeFullList}" var="CardList">
+                                                            <option name="bankName">${CardList.cardType}</option>
+                                                        </c:forEach>
+                                                    </c:if>
+                                                </select>
+                                            </div>
+                                        </div>--%>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control show-tick" id="cardType" name="cardType"
-                                                    >
-                                                        <option name="bankName" value="${cardFullList.cardType}" selected>${cardFullList.cardType}</option>
-                                                        <c:if test="${requestScope.CardTypeFullList != null}">
-                                                            <c:forEach items="${requestScope.CardTypeFullList}" var="CardList">
-                                                                <option name="cardType"
-                                                                        value="${CardList.cardType}">${CardList.cardType}</option>
-                                                            </c:forEach>
-                                                        </c:if>
+                                                    <select class="form-control show-tick" id="cardType" name="Cashback">
+                                                        <c:set  value="${cardFullList.cashback}" var="cashback"/>
+                                                        <c:choose>
+                                                            <c:when test="${cashback.equals('0') ||cashback==null}">
+                                                                <option value="0" selected>Ոչ - Cashback</option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="Cashback" selected>Cashback</option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <option value="0">Ոչ - Cashback</option>
+                                                        <option value="Cashback">Cashback</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control show-tick" name="Timer" required>
+                                                        <c:set  value="${cardFullList.timer}" var="Timer"/>
+                                                        <c:choose>
+                                                            <c:when test="${Timer.equals('0') ||Timer==null}">
+                                                                <option value="0" selected>Ոչ - Արտոնյալ ժամանակաշրջան</option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="Grace period" selected>Արտոնյալ ժամանակաշրջան</option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <option value="0">Ոչ - Արտոնյալ ժամանակաշրջան</option>
+                                                        <option value="Grace period">Արտոնյալ ժամանակաշրջան</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control show-tick" name="Free" required>
+                                                        <c:set  value="${cardFullList.free}" var="Free"/>
+                                                        <c:choose>
+                                                            <c:when test="${Free.equals('0') ||Free==null}">
+                                                                <option value="0" selected >Ոչ - Անվճար</option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="Grace period" selected>Անվճար</option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <option value="0">Ոչ - Անվճար</option>
+                                                        <option value="Free">Անվճար</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
+                                                    <select class="form-control show-tick" name="Debit" required>
+                                                        <c:set  value="${cardFullList.debit}" var="Debit"/>
+                                                        <c:choose>
+                                                            <c:when test="${Debit.equals('0') ||Debit==null}">
+                                                                <option value="0" selected >Ոչ - Դեբիտ</option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="Grace period" selected>Անվճար</option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <option value="0">Ոչ - Դեբիտ</option>
+                                                        <option value="Debit">Դեբիտ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control show-tick" name="Credit" required>
+                                                        <c:set value="${cardFullList.credit}" var="creditsBank"/>
+                                                        <c:choose>
+                                                            <c:when test="${creditsBank.equals(0) || creditsBank==null }">
+                                                                <option value="0" selected >Ոչ - Քրեդիտ</option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="Grace period" selected>Քրեդիտ</option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <option value="0">Ոչ - Քրեդիտ</option>
+                                                        <option value="Credit">Քրեդիտ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
                                                     <input type="number" name="cardMinServiceFee" class="form-control"
-                                                           value="${cardFullList.cardMinServiceFee}" />
+                                                           value="${cardFullList.cardMinServiceFee}"/>
                                                     <label class="form-label">Քարտի նվազագույն սպասարկման վճարը</label>
                                                 </div>
                                             </div>
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="number" name="cardMaxServiceFee" class="form-control"
-                                                           value="${cardFullList.cardMaxServiceFee}" />
+                                                           value="${cardFullList.cardMaxServiceFee}"/>
                                                     <label class="form-label">Քարտի առավելագույն սպասարկման վճար</label>
                                                 </div>
                                             </div>
 
+
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="number" name="cardPerMinCashBack" class="form-control"
-                                                           value="${cardFullList.cardPerMinCashBack}" />
+                                                           value="${cardFullList.cardPerMinCashBack}"/>
                                                     <label class="form-label">Քարտի նվազագույն կանխիկ գումար</label>
                                                 </div>
                                             </div>
@@ -223,7 +332,7 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="number" name="cardPerMaxCashBack" class="form-control"
-                                                           value="${cardFullList.cardPerMaxCashBack}" />
+                                                           value="${cardFullList.cardPerMaxCashBack}"/>
                                                     <label class="form-label">Քարտի առավելագույն կանխիկ գումար</label>
                                                 </div>
                                             </div>
@@ -231,7 +340,8 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="number" name="cardPerMinDiscount" class="form-control"
-                                                           value="${cardFullList.cardPerMinDiscount}" step="0.01" min="0" max="200"/>
+                                                           value="${cardFullList.cardPerMinDiscount}" step="0.01"
+                                                           min="0" max="200"/>
                                                     <label class="form-label">Քարտի նվազագույն զեղչը</label>
                                                 </div>
                                             </div>
@@ -239,7 +349,8 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="number" name="cardPerMaxDiscount" class="form-control"
-                                                           value="${cardFullList.cardPerMaxDiscount}" step="0.01" min="0" max="200"/>
+                                                           value="${cardFullList.cardPerMaxDiscount}" step="0.01"
+                                                           min="0" max="200"/>
                                                     <label class="form-label">Քարտի առավելագույն զեղչը</label>
                                                 </div>
                                             </div>
@@ -247,7 +358,8 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="number" name="MinCashBack" class="form-control"
-                                                           value="${cardFullList.minCashBack}" step="0.01" min="0" max="200"/>
+                                                           value="${cardFullList.minCashBack}" step="0.01" min="0"
+                                                           max="200"/>
                                                     <label class="form-label">Նվազագույն Քեշ բեք</label>
                                                 </div>
                                             </div>
@@ -255,7 +367,8 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="number" name="MaxCashBack" class="form-control"
-                                                           value="${cardFullList.maxCashBack}" step="0.01" min="0" max="200"/>
+                                                           value="${cardFullList.maxCashBack}" step="0.01" min="0"
+                                                           max="200"/>
                                                     <label class="form-label">Առավելագույն Քեշ բեք</label>
                                                 </div>
                                             </div>
@@ -263,7 +376,7 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="number" name="cardMinCreditLimit" class="form-control"
-                                                           value="${cardFullList.cardMinCreditLimit}" />
+                                                           value="${cardFullList.cardMinCreditLimit}"/>
                                                     <label class="form-label">Քարտի նվազագույն վարկային
                                                         սահմանաչափը</label>
                                                 </div>
@@ -273,7 +386,7 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="number" name="cardMaxCreditLimit" class="form-control"
-                                                           value="${cardFullList.cardMaxCreditLimit}" />
+                                                           value="${cardFullList.cardMaxCreditLimit}"/>
                                                     <label class="form-label">Քարտի առավելագույն վարկի սահմանը</label>
                                                 </div>
                                             </div>
@@ -282,7 +395,8 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="number" name="cardPerCreditLimit" class="form-control"
-                                                           value="${cardFullList.cardPerCreditLimit}" step="0.01" min="0" max="200"/>
+                                                           value="${cardFullList.cardPerCreditLimit}" step="0.01"
+                                                           min="0" max="200"/>
                                                     <label class="form-label">Քարտի վարկի սահմանաչափը</label>
                                                 </div>
                                             </div>
@@ -290,7 +404,8 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="number" name="cardPerFactual" class="form-control"
-                                                           value="${cardFullList.cardPerFactual}" step="0.01" min="0" max="200"/>
+                                                           value="${cardFullList.cardPerFactual}" step="0.01" min="0"
+                                                           max="200"/>
                                                     <label class="form-label">Փաստացի</label>
                                                 </div>
                                             </div>
@@ -299,7 +414,8 @@
                                                 <div class="form-line">
                                                     <select class="form-control show-tick" id="currancy"
                                                             name="currancy">
-                                                        <option name="bankName" value="${cardFullList.currancy}" selected>${cardFullList.currancy}</option>
+                                                        <option name="bankName" value="${cardFullList.currancy}"
+                                                                selected>${cardFullList.currancy}</option>
                                                         <c:if test="${requestScope.CurrancyListFullList != null}">
                                                             <c:forEach items="${requestScope.CurrancyListFullList}"
                                                                        var="CurrancyList">
@@ -356,13 +472,16 @@
 
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" name="BankLink"
-                                                           class="form-control"
-                                                           value="${cardFullList.bankLink}"/>
+                                                    <input type="text" name="BankLink" class="form-control" value="${cardFullList.bankLink}"/>
                                                     <label class="form-label">Բանկի հղում</label>
                                                 </div>
                                             </div>
-
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" name="cardInfo" class="form-control" value="${cardFullList.cardInfo}" />
+                                                     <label class="form-label">Տեղեկատվական բաժին</label>
+                                                </div>
+                                            </div>
 
                                             <div class="col-xs-3">
                                                 <input type="hidden" name="cardId" value="${cardFullList.cardId}"/>
